@@ -17,6 +17,7 @@ from kivy.uix.widget import Widget
 from kivymd.uix.list import OneLineListItem, MDList, TwoLineListItem, ThreeLineListItem, ThreeLineIconListItem
 from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
+from kivy.clock import Clock
 
 
 ############IMPORT ARQUIVOS LOCAIS############
@@ -60,10 +61,12 @@ class PawareApp(MDApp):
     try:
         store = JsonStore("userProfile.json")
         nome_perfil = store.get('UserInfo')['name']
-        email_perfil = store.get('UserInfo')['email'] 
+        email_perfil = store.get('UserInfo')['email']
     except:
-        nome_perfil = 'usuario desconhecio'
-        email_perfil = 'email desconhecio'
+        nome_perfil = "Usuário desconhecido"
+        email_perfil = "Email não cadastrado"
+        
+
 
     #####INICIO DO APP CARREGANDO PERFIL E CADASTRO####
     def on_start(self):                   
@@ -95,16 +98,16 @@ class PawareApp(MDApp):
     #################BLOCO DE AVISO NOME INVALIDO##################
     def close_username_dialogue(self,obj):
         self.dialog.dismiss()
-
+        
     
     def get_email(self):
-        self.username_text = self.strng.get_screen('dob').ids.username_text_fied.text
+        self.email_text = self.strng.get_screen('dob').ids.email_text_fied.text
         username_check_false = True
         try:
             int(self.username_text)
         except:
             username_check_false = False
-        if username_check_false or self.username_text.split() == []:
+        if username_check_false or self.email_text.split() == []:
                 cancel_btn_username_dialogue = MDFlatButton(text='OK',on_release = self.close_username_dialogue)
                 self.dialog = MDDialog(title = 'Email inválido',text = "Por favor preencha um email válido",size_hint = (0.7,0.2),buttons = [cancel_btn_username_dialogue])
                 self.dialog.open()
@@ -113,7 +116,7 @@ class PawareApp(MDApp):
             self.strng.get_screen('dob').ids.disabled_button.disabled = False
 
         ###############SALVANDO EM UM ARQUIVO OS DADOS LOGIN#################
-        self.store.put('UserInfo',name = self.username_text, email = self.username_text)
+        self.store.put('UserInfo',name = self.username_text, email = self.email_text)
         self.load_checklists()
  
     ############CARREGANDO E CRIANDO CHECKLIST DO BANCO DE DADOS####################
@@ -125,16 +128,16 @@ class PawareApp(MDApp):
         criado_em = checklists_data[2]
 
         ########ADCIONANDO WIDGET CHECKLIST###########
-        my_check_list = ThreeLineIconListItem(
-        text=list_name,
-        secondary_text=criado_por,
-        tertiary_text=criado_em, on_release=self.change_screen)
-        my_check_list.add_widget(IconLeftWidget(icon='inbox'))
-        self.strng.get_screen('screen1').ids.checklists.add_widget(my_check_list)
+        for i in range(6):
+            my_check_list = ThreeLineIconListItem(
+            text=list_name,
+            secondary_text=criado_por,
+            tertiary_text=criado_em, on_release=self.change_screen)
+            my_check_list.add_widget(IconLeftWidget(icon='inbox'))
+            self.strng.get_screen('screen1').ids.checklists.add_widget(my_check_list)
 
     
 
-             
     ##########DELETA CHECKLIST NA TELA SCREEN1######################
     def remove_checklist (self, ThreeLineIconListItem ):
         self.strng.get_screen('screen1').ids.checklists.remove_widget(ThreeLineIconListItem)
