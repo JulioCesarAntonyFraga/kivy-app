@@ -1,5 +1,4 @@
 from kivy.lang import Builder
-from kivy.properties import StringProperty
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen,ScreenManager
 from kivymd.uix.dialog import MDDialog
@@ -38,19 +37,19 @@ class Screen2(Screen):      #####MINHAS CHECKLISTS#####
     pass
 class Screen3(Screen):     #####CHECKLIST SELECIONADA#####
     pass
-class Screen5(Screen):     #####NOVA CHECKLIST#####
-    pass
-class ChecklistName(Screen):     #####NOME CHECKLIST#####
-    pass
-
-class ChecklistItem1(Screen):     #####ITEM 1 NOVA LV#####
-    pass
 
 class Screen5(Screen):
     pass
 
 class CreateCheckList(ThreeLineIconListItem):
     pass
+
+class ChecklistName(Screen):     #####NOME CHECKLIST#####
+    pass
+
+class ChecklistItem1(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+
 
 #######INTEGRANDO TELAS NO GERENCIADOR DE SCREEN########
 sm = ScreenManager()
@@ -60,8 +59,6 @@ sm.add_widget(DOB(name = 'dob'))
 sm.add_widget(Screen1(name = 'screen1'))
 sm.add_widget(Screen2(name = 'screen2'))
 sm.add_widget(Screen3(name = 'screen3'))
-sm.add_widget(Screen5(name = 'screen5'))
-
 sm.add_widget(Screen5(name = 'screen5'))
 sm.add_widget(ChecklistName(name = 'checklistName'))
 sm.add_widget(ChecklistItem1(name = 'checklistItem1'))
@@ -85,8 +82,7 @@ class PawareApp(MDApp):
 
 
     #####INICIO DO APP CARREGANDO PERFIL E CADASTRO####
-    def on_start(self):
-
+    def on_start(self):                   
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
@@ -115,7 +111,7 @@ class PawareApp(MDApp):
     #################BLOCO DE AVISO NOME INVALIDO##################
     def close_username_dialogue(self,obj):
         self.dialog.dismiss()
-
+        
     
     def get_email(self):
         self.email_text = self.strng.get_screen('dob').ids.email_text_fied.text
@@ -164,6 +160,10 @@ class PawareApp(MDApp):
     ############AO SELECIONAR UMA CHECKLIST MUDANDO DE TELA##########
     def change_screen(self, ThreeLineIconListItem):
         self.strng.get_screen('screen3').manager.current = 'screen3'
+
+    ###############MUDANDO A TELA PARA INICIAR A VERIFICACAO###########
+    def start_checklist(self):
+        self.strng.get_screen('screen5').manager.current = 'screen5'
        
     class ContentNavigationDrawer(BoxLayout):  #######PERFIL########
         pass

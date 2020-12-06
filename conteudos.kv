@@ -6,11 +6,8 @@ ScreenManager:
     Screen2:
     Screen3:
     Screen5:
-<<<<<<< HEAD
     ChecklistName:
     ChecklistItem1:
-=======
->>>>>>> 4ee695807c7e61d67f463f55e8115579e6453d0e
 
 
 
@@ -37,6 +34,7 @@ ScreenManager:
     MDProgressBar:
         value:30
         pos_hint:{'center_y' : 0.02}
+
 <UsernameScreen>:
     name:'usernamescreen'
 
@@ -144,7 +142,7 @@ ScreenManager:
         MDToolbar:
             title: 'CheckLists'
             left_action_items: [["menu", lambda x: nav_drawer.toggle_nav_drawer()]]
-            right_action_items: [["plus", lambda x: nav_drawer.toggle_nav_drawer()]]
+            right_action_items: [["plus", lambda x: app.start_checklist()]]
             size_hint_y: 0.11
             elevation:5
 
@@ -236,7 +234,7 @@ ScreenManager:
         MDToolbar:
             title: 'Minhas CheckList'
             left_action_items: [["menu",  lambda x: nav_drawer2.toggle_nav_drawer()]]
-            right_action_items: [["plus-box", lambda x: nav_drawer.toggle_nav_drawer()]]
+            right_action_items: [["plus", lambda x: app.start_checklist()]]
             size_hint_y: 0.11
             elevation:5
 
@@ -261,7 +259,8 @@ ScreenManager:
         MDLabel:
             text: "Body"
 
-
+    MDNavigationDrawer:
+        id: nav_drawer2
 
         ContentNavigationDrawer:
             orientation: 'vertical'
@@ -285,47 +284,47 @@ ScreenManager:
                 font_style: "Caption"
                 height: self.texture_size[1]
 
-            ScrollView:
+           
 
-                DrawerList:
-                    id: md_list
+            DrawerList:
+                id: md_list
+                
+                MDList:
+                    OneLineIconListItem:
+                        text: "CheckLists"
+                        on_release: root.manager.current = 'screen1'
                     
-                    MDList:
-                        OneLineIconListItem:
-                            text: "CheckLists"
-                            on_release: root.manager.current = 'screen1'
-                        
-                            IconLeftWidget:
-                                icon: "inbox"
-                        
-                                
-                        OneLineIconListItem:
-                            text: "Minhas CheckList"
-                            on_release: root.manager.current = 'screen2'
-                        
-                            IconLeftWidget:
-                                icon: "inbox"
-
+                        IconLeftWidget:
+                            icon: "inbox"
+                    
                             
-                        OneLineIconListItem:
-                            text: "Nova CheckList"
-                            
-                        
-                            IconLeftWidget:
-                                icon: "inbox-arrow-up"
-                                
-                        
-                        OneLineIconListItem:
-                            text: "Meu Perfil"
-                        
-                            IconLeftWidget:
-                                icon: "account"
+                    OneLineIconListItem:
+                        text: "Minhas CheckList"
+                        on_release: root.manager.current = 'screen2'
+                    
+                        IconLeftWidget:
+                            icon: "inbox"
 
-                        OneLineIconListItem:
-                            text: "Sair"
                         
-                            IconLeftWidget:
-                                icon: "exit-to-app"
+                    OneLineIconListItem:
+                        text: "Nova CheckList"
+                        
+                    
+                        IconLeftWidget:
+                            icon: "inbox-arrow-up"
+                            
+                    
+                    OneLineIconListItem:
+                        text: "Meu Perfil"
+                    
+                        IconLeftWidget:
+                            icon: "account"
+
+                    OneLineIconListItem:
+                        text: "Sair"
+                    
+                        IconLeftWidget:
+                            icon: "exit-to-app"
    
     
 <Screen3>:
@@ -336,7 +335,7 @@ ScreenManager:
         MDToolbar:
             title: 'Edit CheckList'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
-            right_action_items: [["exit-run", lambda x: nav_drawer.toggle_nav_drawer()]]
+            right_action_items: [["plus", lambda x: app.start_checklist()]]
             size_hint_y: 0.11
             elevation:5
 
@@ -376,43 +375,47 @@ ScreenManager:
                 font_style: "Caption"
                 height: self.texture_size[1]
 
-            ScrollView:
 
-                DrawerList:
-                    id: md_list
+            DrawerList:
+                id: md_list
+                
+                MDList:
+                    OneLineIconListItem:
+                        text: "CheckLists"
+                        on_release: root.manager.current = 'screen1'
                     
-                    MDList:
-                        OneLineIconListItem:
-                            text: "CheckLists"
-                            on_release: root.manager.current = 'screen1'
-                        
-                            IconLeftWidget:
-                                icon: "inbox"
-                        
-                                
-                        OneLineIconListItem:
-                            text: "Minhas CheckList"
-                            on_release: root.manager.current = 'screen2'
-                        
-                            IconLeftWidget:
-                                icon: "inbox"
-
+                        IconLeftWidget:
+                            icon: "inbox"
+                    
                             
-                        OneLineIconListItem:
-                            text: "Nova CheckList"
-                            
-                        
-                            IconLeftWidget:
-                                icon: "inbox-arrow-up"
-                                
-                        
-                        OneLineIconListItem:
-                            text: "Meu Perfil"
-                        
-                            IconLeftWidget:
-                                icon: "account"
+                    OneLineIconListItem:
+                        text: "Minhas CheckList"
+                        on_release: root.manager.current = 'screen2'
+                    
+                        IconLeftWidget:
+                            icon: "inbox"
 
-<<<<<<< HEAD
+                        
+                    OneLineIconListItem:
+                        text: "Nova CheckList"
+                        
+                    
+                        IconLeftWidget:
+                            icon: "inbox-arrow-up"
+                            
+                    
+                    OneLineIconListItem:
+                        text: "Meu Perfil"
+                    
+                        IconLeftWidget:
+                            icon: "account"
+
+                    OneLineIconListItem:
+                        text: "Sair"
+                    
+                        IconLeftWidget:
+                            icon: "exit-to-app"
+
 
 
 <Screen5>:
@@ -422,10 +425,78 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'ADD Checklist'
-            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            left_action_items: [["menu",  lambda x: nav_drawer4.toggle_nav_drawer()]]
             elevation:5
 
         Widget:
+
+
+    MDNavigationDrawer:
+        id: nav_drawer4
+
+        ContentNavigationDrawer:
+            orientation: 'vertical'
+            padding: "8dp"
+            spacing: "8dp"
+
+            Image:
+                id: avatar
+                size_hint: (1,1)
+                source: "mine.jpg"
+
+            MDLabel:
+                text: app.nome_perfil
+                font_style: "Subtitle1"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: app.email_perfil
+                size_hint_y: None
+                font_style: "Caption"
+                height: self.texture_size[1]
+
+
+            DrawerList:
+                id: md_list
+                
+                MDList:
+                    OneLineIconListItem:
+                        text: "CheckLists"
+                        on_release: root.manager.current = 'screen1'
+                    
+                        IconLeftWidget:
+                            icon: "inbox"
+                    
+                            
+                    OneLineIconListItem:
+                        text: "Minhas CheckList"
+                        on_release: root.manager.current = 'screen2'
+                    
+                        IconLeftWidget:
+                            icon: "inbox"
+
+                        
+                    OneLineIconListItem:
+                        text: "Nova CheckList"
+                        
+                    
+                        IconLeftWidget:
+                            icon: "inbox-arrow-up"
+                            
+                    
+                    OneLineIconListItem:
+                        text: "Meu Perfil"
+                    
+                        IconLeftWidget:
+                            icon: "account"
+
+                    OneLineIconListItem:
+                        text: "Sair"
+                    
+                        IconLeftWidget:
+                            icon: "exit-to-app"
+                            on_press: app.stop()
 
     MDFloatingActionButton:
         icon:'arrow-right'
@@ -581,13 +652,3 @@ ScreenManager:
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.5,'center_y':0.35}
         user_font_size: '50sp'
-=======
-                        OneLineIconListItem:
-                            text: "Sair"
-                        
-                            IconLeftWidget:
-                                icon: "exit-to-app"
-    
-
-
->>>>>>> 4ee695807c7e61d67f463f55e8115579e6453d0e
