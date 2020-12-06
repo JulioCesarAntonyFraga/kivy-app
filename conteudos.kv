@@ -498,7 +498,7 @@ ScreenManager:
     MDFloatingActionButton:
         icon:'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        user_font_size : '170sp'
+        user_font_size : '130sp'
         pos_hint: {'center_x':0.5,'center_y':0.47}
         on_press:
             root.manager.current = 'checklistName'
@@ -618,6 +618,21 @@ ScreenManager:
         pos_hint: {'center_y':0.7}
         text: 'Os locais adjacentes das caixas estão limpos e organizados?'
 
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
 
 
     FloatLayout:
