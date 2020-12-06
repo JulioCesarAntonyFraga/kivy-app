@@ -6,12 +6,8 @@ ScreenManager:
     Screen2:
     Screen3:
     Screen5:
-<<<<<<< HEAD
     ChecklistName:
     ChecklistItem1:
-=======
->>>>>>> 4ee695807c7e61d67f463f55e8115579e6453d0e
-
 
 
 <WelcomeScreen>:
@@ -412,8 +408,6 @@ ScreenManager:
                             IconLeftWidget:
                                 icon: "account"
 
-<<<<<<< HEAD
-
 
 <Screen5>:
     name : 'screen5'
@@ -552,26 +546,28 @@ ScreenManager:
 
 
 
-        BoxLayout:
+    FloatLayout:
 
-            MDCheckbox:
-                group: 'group'
-                size_hint: None, None
-                size: dp(90), dp(90)
-                active: True
-                pos_hint: {'center_x': 3, 'center_y': 3}
+        orientation: 'vertical'
 
-            MDCheckbox:
-                group: 'group'
-                size_hint: None, None
-                size: dp(90), dp(90)
-                pos_hint: {'center_x': 4, 'center_y': 3}
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
 
-            MDCheckbox:
-                group: 'group'
-                size_hint: None, None
-                size: dp(90), dp(90)
-                pos_hint: {'center_x': 5, 'center_y': 3}
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
 
 
 
@@ -581,13 +577,4 @@ ScreenManager:
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.5,'center_y':0.35}
         user_font_size: '50sp'
-=======
-                        OneLineIconListItem:
-                            text: "Sair"
-                        
-                            IconLeftWidget:
-                                icon: "exit-to-app"
-    
 
-
->>>>>>> 4ee695807c7e61d67f463f55e8115579e6453d0e

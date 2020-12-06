@@ -46,9 +46,6 @@ class ChecklistName(Screen):     #####NOME CHECKLIST#####
 class ChecklistItem1(Screen):     #####ITEM 1 NOVA LV#####
     pass
 
-class Screen5(Screen):
-    pass
-
 class CreateCheckList(ThreeLineIconListItem):
     pass
 
