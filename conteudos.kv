@@ -10,7 +10,6 @@ ScreenManager:
     ChecklistItem1:
 
 
-
 <WelcomeScreen>:
     name : 'welcomescreen'
     
@@ -182,48 +181,47 @@ ScreenManager:
                 font_style: "Caption"
                 height: self.texture_size[1]
 
-            ScrollView:
 
-                DrawerList:
-                    id: md_list
+            DrawerList:
+                id: md_list
+                
+                MDList:
+                    OneLineIconListItem:
+                        text: "CheckLists"
+                        on_release: root.manager.current = 'screen1'
                     
-                    MDList:
-                        OneLineIconListItem:
-                            text: "CheckLists"
-                            on_release: root.manager.current = 'screen1'
-                        
-                            IconLeftWidget:
-                                icon: "inbox"
-                        
-                                
-                        OneLineIconListItem:
-                            text: "Minhas CheckList"
-                            on_release: root.manager.current = 'screen2'
-                        
-                            IconLeftWidget:
-                                icon: "inbox"
-
+                        IconLeftWidget:
+                            icon: "inbox"
+                    
                             
-                        OneLineIconListItem:
-                            text: "Nova CheckList"
-                            on_release: root.manager.current = 'screen5'
-                            
-                        
-                            IconLeftWidget:
-                                icon: "inbox-arrow-up"
-                                
-                        
-                        OneLineIconListItem:
-                            text: "Meu Perfil"
-                        
-                            IconLeftWidget:
-                                icon: "account"
+                    OneLineIconListItem:
+                        text: "Minhas CheckList"
+                        on_release: root.manager.current = 'screen2'
+                    
+                        IconLeftWidget:
+                            icon: "inbox"
 
-                        OneLineIconListItem:
-                            text: "Sair"
                         
-                            IconLeftWidget:
-                                icon: "exit-to-app"
+                    OneLineIconListItem:
+                        text: "Nova CheckList"
+                        on_release: root.manager.current = 'screen5'
+                        
+                    
+                        IconLeftWidget:
+                            icon: "inbox-arrow-up"
+                            
+                    
+                    OneLineIconListItem:
+                        text: "Meu Perfil"
+                    
+                        IconLeftWidget:
+                            icon: "account"
+
+                    OneLineIconListItem:
+                        text: "Sair"
+                    
+                        IconLeftWidget:
+                            icon: "exit-to-app"
     
     
 <Screen2>:
@@ -415,7 +413,6 @@ ScreenManager:
                     
                         IconLeftWidget:
                             icon: "exit-to-app"
-
 
 
 <Screen5>:
@@ -623,26 +620,28 @@ ScreenManager:
 
 
 
-        BoxLayout:
+    FloatLayout:
 
-            MDCheckbox:
-                group: 'group'
-                size_hint: None, None
-                size: dp(90), dp(90)
-                active: True
-                pos_hint: {'center_x': 3, 'center_y': 3}
+        orientation: 'vertical'
 
-            MDCheckbox:
-                group: 'group'
-                size_hint: None, None
-                size: dp(90), dp(90)
-                pos_hint: {'center_x': 4, 'center_y': 3}
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
 
-            MDCheckbox:
-                group: 'group'
-                size_hint: None, None
-                size: dp(90), dp(90)
-                pos_hint: {'center_x': 5, 'center_y': 3}
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
 
 
 
