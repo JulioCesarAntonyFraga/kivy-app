@@ -5,6 +5,7 @@ ScreenManager:
     Screen1:
     Screen2:
     Screen3:
+    Screen5:
 
 
 
@@ -16,7 +17,7 @@ ScreenManager:
         MDToolbar:
             title: 'Paware Softwares'
             right_action_items: [["exit-run", lambda x: nav_drawer.toggle_nav_drawer()]]
-            elevation:5
+            elevation:4
 
         Widget:
 
@@ -87,7 +88,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Paware Softwares'
-            right_action_items: [["exit-run", lambda x: nav_drawer.toggle_nav_drawer()]]
+            right_action_text: [["exit-run", lambda x: nav_drawer.toggle_nav_drawer()]]
             elevation:5
 
         Widget:
@@ -138,12 +139,20 @@ ScreenManager:
         MDToolbar:
             title: 'CheckLists'
             left_action_items: [["menu", lambda x: nav_drawer.toggle_nav_drawer()]]
+            right_action_items: [["plus", lambda x: nav_drawer.toggle_nav_drawer()]]
+            size_hint_y: 0.11
             elevation:5
 
         Widget:
 
-    MDList:
-        id: checklists
+    ScrollView:
+        size_hint: (1.10, 0.90)
+        pos_hint: {'center_x': .55}
+
+        
+        MDList:
+            id: checklists
+        
 
     MDNavigationDrawer:
         id: nav_drawer
@@ -194,6 +203,7 @@ ScreenManager:
                             
                         OneLineIconListItem:
                             text: "Nova CheckList"
+                            on_release: root.manager.current = 'screen5'
                             
                         
                             IconLeftWidget:
@@ -205,6 +215,12 @@ ScreenManager:
                         
                             IconLeftWidget:
                                 icon: "account"
+
+                        OneLineIconListItem:
+                            text: "Sair"
+                        
+                            IconLeftWidget:
+                                icon: "exit-to-app"
     
     
 <Screen2>:
@@ -215,12 +231,32 @@ ScreenManager:
         MDToolbar:
             title: 'Minhas CheckList'
             left_action_items: [["menu",  lambda x: nav_drawer2.toggle_nav_drawer()]]
+            right_action_items: [["plus-box", lambda x: nav_drawer.toggle_nav_drawer()]]
+            size_hint_y: 0.11
             elevation:5
 
         Widget:
-    
-    MDNavigationDrawer:
-        id: nav_drawer2
+
+    MDCard:
+        orientation: "vertical"
+        padding: "10dp"
+        size_hint: None, None
+        size: "280dp", "180dp"
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDLabel:
+            text: "Title"
+            theme_text_color: "Secondary"
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDSeparator:
+            height: "1dp"
+
+        MDLabel:
+            text: "Body"
+
+
 
         ContentNavigationDrawer:
             orientation: 'vertical'
@@ -279,6 +315,12 @@ ScreenManager:
                         
                             IconLeftWidget:
                                 icon: "account"
+
+                        OneLineIconListItem:
+                            text: "Sair"
+                        
+                            IconLeftWidget:
+                                icon: "exit-to-app"
    
     
 <Screen3>:
@@ -289,6 +331,8 @@ ScreenManager:
         MDToolbar:
             title: 'Edit CheckList'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            right_action_items: [["exit-run", lambda x: nav_drawer.toggle_nav_drawer()]]
+            size_hint_y: 0.11
             elevation:5
 
         Widget:
@@ -362,5 +406,12 @@ ScreenManager:
                         
                             IconLeftWidget:
                                 icon: "account"
+
+                        OneLineIconListItem:
+                            text: "Sair"
+                        
+                            IconLeftWidget:
+                                icon: "exit-to-app"
     
-    
+
+

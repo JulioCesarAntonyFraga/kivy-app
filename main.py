@@ -38,8 +38,11 @@ class Screen2(Screen):      #####MINHAS CHECKLISTS#####
 class Screen3(Screen):     #####CHECKLIST SELECIONADA#####
     pass
 
+class Screen5(Screen):
+    pass
+
 class CreateCheckList(ThreeLineIconListItem):
-        pass
+    pass
 
 #######INTEGRANDO TELAS NO GERENCIADOR DE SCREEN########
 sm = ScreenManager()
@@ -49,6 +52,7 @@ sm.add_widget(DOB(name = 'dob'))
 sm.add_widget(Screen1(name = 'screen1'))
 sm.add_widget(Screen2(name = 'screen2'))
 sm.add_widget(Screen3(name = 'screen3'))
+sm.add_widget(Screen5(name = 'screen5'))
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
@@ -73,7 +77,7 @@ class PawareApp(MDApp):
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
-                self.load_checklists()
+                self.load_checklists_screen_main()
                 self.strng.get_screen('screen1').manager.current = 'screen1'
                 
         except KeyError:
@@ -117,12 +121,13 @@ class PawareApp(MDApp):
 
         ###############SALVANDO EM UM ARQUIVO OS DADOS LOGIN#################
         self.store.put('UserInfo',name = self.username_text, email = self.email_text)
-        self.load_checklists()
+        self.load_checklists_screen_main()
+        
  
     ############CARREGANDO E CRIANDO CHECKLIST DO BANCO DE DADOS####################
-    def load_checklists(self):
+    def load_checklists_screen_main(self):
         ######BUSCANDO NO BANCO AS CHECKLIST############
-        checklists_data = ('APR 01', 'Gabriel Fraga', '12/02/2020')
+        checklists_data = ('APR 02', 'Julio', '11/03/2020')
         list_name = checklists_data[0]
         criado_por = checklists_data[1]
         criado_em = checklists_data[2]
@@ -131,17 +136,17 @@ class PawareApp(MDApp):
         for i in range(6):
             my_check_list = ThreeLineIconListItem(
             text=list_name,
-            secondary_text=criado_por,
-            tertiary_text=criado_em, on_release=self.change_screen)
+            secondary_text='Criado por: ' + criado_por,
+            tertiary_text='Data de emissão: ' + criado_em, on_release=self.change_screen)
             my_check_list.add_widget(IconLeftWidget(icon='inbox'))
             self.strng.get_screen('screen1').ids.checklists.add_widget(my_check_list)
-
-    
+     
 
     ##########DELETA CHECKLIST NA TELA SCREEN1######################
     def remove_checklist (self, ThreeLineIconListItem ):
         self.strng.get_screen('screen1').ids.checklists.remove_widget(ThreeLineIconListItem)
-        self.strng.get_screen('screen1').ids.checklists.clear_widgets()
+      
+        
 
     ############AO SELECIONAR UMA CHECKLIST MUDANDO DE TELA##########
     def change_screen(self, ThreeLineIconListItem):
