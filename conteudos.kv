@@ -5,6 +5,9 @@ ScreenManager:
     Screen1:
     Screen2:
     Screen3:
+    Screen5:
+    ChecklistName:
+    ChecklistItem1:
 
 
 
@@ -194,6 +197,7 @@ ScreenManager:
                             
                         OneLineIconListItem:
                             text: "Nova CheckList"
+                            on_release: root.manager.current = 'screen5'
                             
                         
                             IconLeftWidget:
@@ -362,5 +366,172 @@ ScreenManager:
                         
                             IconLeftWidget:
                                 icon: "account"
-    
-    
+
+
+
+<Screen5>:
+    name : 'screen5'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon:'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        user_font_size : '170sp'
+        pos_hint: {'center_x':0.5,'center_y':0.47}
+        on_press:
+            root.manager.current = 'checklistName'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:30
+        pos_hint:{'center_y' : 0.02}
+<ChecklistName>:
+    name:'checklistName'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'screen5'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem1'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDTextField:
+        id:local_text_fied
+        pos_hint: {'center_x':0.5,'center_y':0.6}
+        size_hint: (0.7,0.1)
+        hint_text : 'Local de inspeção'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'book'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id:name_text_fied
+        pos_hint: {'center_x':0.5,'center_y':0.7}
+        size_hint: (0.7,0.1)
+        hint_text : 'Nome da LV'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'book'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id:date_text_fied
+        pos_hint: {'center_x':0.5,'center_y':0.8}
+        size_hint: (0.7,0.1)
+        hint_text : 'Data de inspeção'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'book'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDFloatingActionButton:
+        icon:'plus'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.5,'center_y':0.35}
+        user_font_size: '50sp'
+
+<ChecklistItem1>:
+    name:'checklistItem1'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'screen5'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'chekclistItem1'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'Os locais adjacentes das caixas estão limpos e organizados?'
+
+
+
+        BoxLayout:
+
+            MDCheckbox:
+                group: 'group'
+                size_hint: None, None
+                size: dp(90), dp(90)
+                active: True
+                pos_hint: {'center_x': 3, 'center_y': 3}
+
+            MDCheckbox:
+                group: 'group'
+                size_hint: None, None
+                size: dp(90), dp(90)
+                pos_hint: {'center_x': 4, 'center_y': 3}
+
+            MDCheckbox:
+                group: 'group'
+                size_hint: None, None
+                size: dp(90), dp(90)
+                pos_hint: {'center_x': 5, 'center_y': 3}
+
+
+
+
+    MDFloatingActionButton:
+        icon:'plus'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.5,'center_y':0.35}
+        user_font_size: '50sp'
