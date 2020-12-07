@@ -23,6 +23,7 @@ from kivy.clock import Clock
 ############IMPORT ARQUIVOS LOCAIS############
 
 
+
 ##################TELAS APP####################
 class WelcomeScreen(Screen):
     pass
@@ -140,6 +141,7 @@ class PawareApp(MDApp):
         list_name = checklists_data[0]
         criado_por = checklists_data[1]
         criado_em = checklists_data[2]
+
 
         ########ADCIONANDO WIDGET CHECKLIST###########
         for i in range(6):
