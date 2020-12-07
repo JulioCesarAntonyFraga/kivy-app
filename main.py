@@ -19,6 +19,7 @@ from kivymd.uix.list import OneLineListItem, MDList, TwoLineListItem, ThreeLineL
 from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.clock import Clock
+import os
 
 
 ############IMPORT ARQUIVOS LOCAIS############
@@ -219,7 +220,11 @@ class PawareApp(MDApp):
     def show_alert_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
+
                 title="Você deseja mesmo sair ?",
+
+                size_hint= (0.7,0.1),
+                text="Você deseja mesmo sair ?",
                 buttons=[
                     MDFlatButton(
                         text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_app
@@ -229,9 +234,40 @@ class PawareApp(MDApp):
                     ),
                 ],
             )
-        self.dialog.open()    
+        self.dialog.open()  
+    ####################CONFIRMAR EXCLUIR CHECKLIST######################
+    def show_alert__delete_dialog(self):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                size_hint= (0.7,0.1),
+                text="Você deseja mesmo excluir ?",
+                buttons=[
+                    MDFlatButton(
+                        text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_excluir
+                    ),
+                    MDFlatButton(
+                        text="Não", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue
+                    ),
+                ],
+            )
+        self.dialog.open()  
 
     ################CONFIG DA TELA DA CHECKLIST#################
+    def save_in_data(self):
+        name =   self.strng.get_screen('screen3').ids.profile_name_input.disabled = False
+        data = self.strng.get_screen('screen3').ids.profile_data_input.disabled = False
+        responsavel = self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = False
+        acao = self.strng.get_screen('screen3').ids.profile_acao_input.disabled = False
+        responsavel_realizar = self.strng.get_screen('screen3').ids.profile_responsavel_realizar_input.disabled = False
+        prazo = self.strng.get_screen('screen3').ids.profile_prazo_input.disabled = False
+        status  = self.strng.get_screen('screen3').ids.profile_status_input.disabled = False
+ 
+        self.email_text = self.strng.get_screen('dob').ids.email_text_fied.text
+        self.store = JsonStore("dataChecklist.json")
+        self.store.put('UserInfo',name = name, data= data, responsavel= responsavel, acao= acao, reponsavel_relizar= responsavel_realizar, prazo= prazo, status= status)
+
+
+
     def enable_checklist_inputs(self):
         if self.strng.get_screen('screen3').ids.profile_name_input.disabled == True:
 
@@ -243,7 +279,20 @@ class PawareApp(MDApp):
             self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = False
 
 
+            self.strng.get_screen('screen3').ids.profile_acao_input.disabled = False
+            self.strng.get_screen('screen3').ids.profile_acao_input.disabled = False
+            
+            self.strng.get_screen('screen3').ids.profile_responsavel_realizar_input.disabled = False
+            self.strng.get_screen('screen3').ids.profile_responsavel_realizar_input.disabled = False
+
+            self.strng.get_screen('screen3').ids.profile_prazo_input.disabled = False
+            self.strng.get_screen('screen3').ids.profile_prazo_input.disabled = False
+
+            self.strng.get_screen('screen3').ids.profile_status_input.disabled = False
+            self.strng.get_screen('screen3').ids.profile_status_input.disabled = False
+
             self.strng.get_screen('screen3').ids.save_checklist_button.disabled = False
+            self.strng.get_screen('screen3').ids.delete_checklist_button.disabled = False
 
         else:
             self.strng.get_screen('screen3').ids.profile_name_input.disabled = True
@@ -252,7 +301,20 @@ class PawareApp(MDApp):
 
             self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = True
 
+            self.strng.get_screen('screen3').ids.profile_acao_input.disabled = True
+            self.strng.get_screen('screen3').ids.profile_acao_input.disabled = True
+            
+            self.strng.get_screen('screen3').ids.profile_responsavel_realizar_input.disabled = True
+            self.strng.get_screen('screen3').ids.profile_responsavel_realizar_input.disabled = True
+
+            self.strng.get_screen('screen3').ids.profile_prazo_input.disabled = True
+            self.strng.get_screen('screen3').ids.profile_prazo_input.disabled = True
+
+            self.strng.get_screen('screen3').ids.profile_status_input.disabled = True
+            self.strng.get_screen('screen3').ids.profile_status_input.disabled = True
+
             self.strng.get_screen('screen3').ids.save_checklist_button.disabled = True
+            self.strng.get_screen('screen3').ids.delete_checklist_button.disabled = True
     #######################CONFIG DA TELA MEU PERFIL################
     def enable_profile_inputs(self):
         if self.strng.get_screen('profile').ids.profile_email_input.disabled == True:
@@ -342,6 +404,11 @@ class PawareApp(MDApp):
 
     def close_username_dialogue_app(self,obj):
         quit()
+    #####################BLOCO DE AVISO ECLUIR CHECKLIST##############
+    def close_username_dialogue_excluir(self, obj):
+        os. remove("dataChecklist.json") 
+        self.dialog.dismiss()
+
         
     
     def get_email(self):
