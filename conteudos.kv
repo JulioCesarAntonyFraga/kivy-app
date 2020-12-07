@@ -838,8 +838,8 @@ ScreenManager:
             root.manager.current = 'screen5'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:next_button1
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -968,8 +968,8 @@ ScreenManager:
             root.manager.current = 'checklistItem1'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:next_button2
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -977,6 +977,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem3'
             root.manager.transition.direction = 'left'
+
     MDProgressBar:
         value:20.20
         pos_hint: {'center_y':0.02}
@@ -1037,6 +1038,7 @@ ScreenManager:
 
     MDTextField:
         id: acao_item2
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
@@ -1049,6 +1051,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item2
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
@@ -1070,7 +1073,7 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
+        on_focus: app.check_lv_items()
 
 #Item 3
 <ChecklistItem3>:
@@ -1094,8 +1097,8 @@ ScreenManager:
             root.manager.current = 'checklistItem2'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:next_button3
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -1103,6 +1106,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem4'
             root.manager.transition.direction = 'left'
+
     MDProgressBar:
         value:30.30
         pos_hint: {'center_y':0.02}
@@ -1163,6 +1167,7 @@ ScreenManager:
 
     MDTextField:
         id: acao_item3
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
@@ -1175,6 +1180,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item3
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
@@ -1196,7 +1202,7 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
+        on_focus: app.check_lv_items()
 
 
 #Item 4
@@ -1221,8 +1227,8 @@ ScreenManager:
             root.manager.current = 'checklistItem3'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:next_button4
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -1230,6 +1236,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem5'
             root.manager.transition.direction = 'left'
+
     MDProgressBar:
         value:40.40
         pos_hint: {'center_y':0.02}
@@ -1290,6 +1297,7 @@ ScreenManager:
 
     MDTextField:
         id: acao_item4
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
@@ -1302,6 +1310,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item4
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
@@ -1323,7 +1332,7 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
+        on_focus: app.check_lv_items()
 
 
 
@@ -1349,8 +1358,8 @@ ScreenManager:
             root.manager.current = 'checklistItem4'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:next_button5
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -1358,6 +1367,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem6'
             root.manager.transition.direction = 'left'
+
     MDProgressBar:
         value:50.50
         pos_hint: {'center_y':0.02}
@@ -1418,6 +1428,7 @@ ScreenManager:
 
     MDTextField:
         id: acao_item5
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
@@ -1430,6 +1441,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item5
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
@@ -1451,7 +1463,7 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
+        on_focus: app.check_lv_items()
 
 
 #Item 6
@@ -1475,9 +1487,10 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem5'
             root.manager.transition.direction = 'right'
+
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:next_button6
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -1485,6 +1498,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem7'
             root.manager.transition.direction = 'left'
+
     MDProgressBar:
         value:60.60
         pos_hint: {'center_y':0.02}
@@ -1545,6 +1559,7 @@ ScreenManager:
 
     MDTextField:
         id: acao_item6
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
@@ -1557,6 +1572,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item6
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
@@ -1578,7 +1594,7 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
+        on_focus: app.check_lv_items()
 
 
 #Item 7
@@ -1603,8 +1619,8 @@ ScreenManager:
             root.manager.current = 'checklistItem6'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:next_button7
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -1612,6 +1628,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem8'
             root.manager.transition.direction = 'left'
+
     MDProgressBar:
         value:70.70
         pos_hint: {'center_y':0.02}
@@ -1673,6 +1690,7 @@ ScreenManager:
 
     MDTextField:
         id: acao_item7
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
@@ -1685,6 +1703,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item7
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
@@ -1697,6 +1716,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item7
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
@@ -1706,7 +1726,6 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
 
 
 #Item 8
@@ -1731,8 +1750,8 @@ ScreenManager:
             root.manager.current = 'checklistItem7'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:next_button8
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -1740,6 +1759,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem9'
             root.manager.transition.direction = 'left'
+
     MDProgressBar:
         value:80.80
         pos_hint: {'center_y':0.02}
@@ -1802,6 +1822,7 @@ ScreenManager:
     MDTextField:
         id: acao_item8
         disabled: True
+        on_focus: app.check_lv_items()
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1813,6 +1834,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item8
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
@@ -1825,6 +1847,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item8
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
@@ -1834,7 +1857,6 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
 
 
 
@@ -1939,9 +1961,11 @@ ScreenManager:
         icon_right: 'alert'
         icon_right_color: app.theme_cls.primary_color
         required : True
+        on_focus: app.check_lv_items()
 
     MDTextField:
         id: responsavel_item9
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
@@ -1954,6 +1978,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item9
+        on_focus: app.check_lv_items()
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
@@ -1963,5 +1988,4 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
 
