@@ -2,13 +2,14 @@ from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen,ScreenManager
 from kivymd.uix.dialog import MDDialog
-from kivymd.uix.button import MDFlatButton
+from kivymd.uix.button import MDFlatButton, MDRaisedButton
 from kivy.storage.jsonstore import JsonStore
 from kivymd.uix.picker import MDDatePicker
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.card import MDCardSwipe
+from kivymd.uix.textfield import MDTextField
 from kivymd.uix.list import IRightBodyTouch
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.expansionpanel import MDExpansionPanel, MDExpansionPanelThreeLine
@@ -74,11 +75,16 @@ class ChecklistItem9(Screen):     #####ITEM 1 NOVA LV#####
     pass
 
 
+class Profile(Screen):     #####PERFIL#####
+    pass
+
+
 #######INTEGRANDO TELAS NO GERENCIADOR DE SCREEN########
 sm = ScreenManager()
 sm.add_widget(WelcomeScreen(name = 'welcomescreen'))
 sm.add_widget(UsernameScreen(name = 'usernamescreen'))
 sm.add_widget(DOB(name = 'dob'))
+
 sm.add_widget(Screen1(name = 'screen1'))
 sm.add_widget(Screen2(name = 'screen2'))
 sm.add_widget(Screen3(name = 'screen3'))
@@ -95,13 +101,75 @@ sm.add_widget(ChecklistItem7(name = 'checklistItem7'))
 sm.add_widget(ChecklistItem8(name = 'checklistItem8'))
 sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 
+sm.add_widget(Profile(name = 'profile'))
+
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
-    def get_date(self, date):
-        '''
-        :type date: <class 'datetime.date'>
-        '''
+    ##################CONFIRMAÇAO DE SAIDA FUNÇAO################
+    dialog = None
+    def show_alert_dialog(self):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                text="Você deseja mesmo sair ?",
+                buttons=[
+                    MDFlatButton(
+                        text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_app
+                    ),
+                    MDFlatButton(
+                        text="Não", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue
+                    ),
+                ],
+            )
+        self.dialog.open()    
+
+    ################CONFIG DA TELA DA CHECKLIST#################
+    def enable_checklist_inputs(self):
+        if self.strng.get_screen('screen3').ids.profile_name_input.disabled == True:
+
+            self.strng.get_screen('screen3').ids.profile_name_input.disabled = False
+            self.strng.get_screen('screen3').ids.profile_name_input.disabled = False
+            
+            self.strng.get_screen('screen3').ids.profile_data_input.disabled = False
+            self.strng.get_screen('screen3').ids.profile_data_input.disabled = False
+
+            self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = False
+            self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = False
+
+            self.strng.get_screen('screen3').ids.save_checklist_button.disabled = False
+
+        else:
+            self.strng.get_screen('screen3').ids.profile_name_input.disabled = True
+            self.strng.get_screen('screen3').ids.profile_name_input.disabled = True
+
+            self.strng.get_screen('screen3').ids.profile_data_input.disabled = True
+            self.strng.get_screen('screen3').ids.profile_data_input.disabled = True
+
+            self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = True
+            self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = True
+
+            self.strng.get_screen('screen3').ids.save_checklist_button.disabled = True
+    #######################CONFIG DA TELA MEU PERFIL################
+    def enable_profile_inputs(self):
+        if self.strng.get_screen('profile').ids.profile_email_input.disabled == True:
+
+            self.strng.get_screen('profile').ids.profile_email_input.disabled = False
+            self.strng.get_screen('profile').ids.profile_email_input.disabled = False
+
+            self.strng.get_screen('profile').ids.profile_name_input.disabled = False
+            self.strng.get_screen('profile').ids.profile_name_input.disabled = False
+
+            self.strng.get_screen('profile').ids.save_profile_button.disabled = False
+
+        else:
+            self.strng.get_screen('profile').ids.profile_email_input.disabled = True
+            self.strng.get_screen('profile').ids.profile_email_input.disabled = True
+
+            self.strng.get_screen('profile').ids.profile_name_input.disabled = True
+            self.strng.get_screen('profile').ids.profile_name_input.disabled = True
+
+            self.strng.get_screen('profile').ids.save_profile_button.disabled = True
+
 
     def show_date_picker(self):
         date_dialog = MDDatePicker(callback=self.get_date)
@@ -119,10 +187,22 @@ class PawareApp(MDApp):
     except:
         nome_perfil = "Usuário desconhecido"
         email_perfil = "Email não cadastrado"
+
+    try:
+        store = JsonStore("dataChecklist.json")
+        list_name = store.get('UserInfo')['name']
+        criado_em = store.get('UserInfo')['data']
+        criado_por = store.get('UserInfo')['responsavel']
+        reponsavel_relizar = store.get('UserInfo')['reponsavel_relizar']
+        acao = store.get('UserInfo')['acao']
+        prazo = store.get('UserInfo')['prazo']
+        status = store.get('UserInfo')['status']
+    except:
+        pass
         
 
     #####INICIO DO APP CARREGANDO PERFIL E CADASTRO####
-    def on_start(self):                  
+    def on_start(self):             
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
@@ -151,6 +231,9 @@ class PawareApp(MDApp):
     #################BLOCO DE AVISO NOME INVALIDO##################
     def close_username_dialogue(self,obj):
         self.dialog.dismiss()
+
+    def close_username_dialogue_app(self,obj):
+        quit()
         
     
     def get_email(self):
