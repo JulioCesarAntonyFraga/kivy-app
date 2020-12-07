@@ -66,6 +66,16 @@ sm.add_widget(ChecklistItem1(name = 'checklistItem1'))
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
+
+    def get_date(self, date):
+        '''
+        :type date: <class 'datetime.date'>
+        '''
+
+    def show_date_picker(self):
+        date_dialog = MDDatePicker(callback=self.get_date)
+        date_dialog.open()
+
     def build(self):
         self.strng = Builder.load_file('conteudos.kv') #####CARREGANDO KV DAS TELA####
         return self.strng
