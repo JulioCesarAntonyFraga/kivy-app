@@ -8,6 +8,14 @@ ScreenManager:
     Screen5:
     ChecklistName:
     ChecklistItem1:
+    ChecklistItem2:
+    ChecklistItem3:
+    ChecklistItem4:
+    ChecklistItem5:
+    ChecklistItem6:
+    ChecklistItem7:
+    ChecklistItem8:
+    ChecklistItem9:
 
 
 <WelcomeScreen>:
@@ -574,6 +582,7 @@ ScreenManager:
         required : True
         on_focus: app.show_date_picker()
 
+#Item 1
 <ChecklistItem1>:
     name:'checklistItem1'
 
@@ -602,7 +611,7 @@ ScreenManager:
         pos_hint: {'center_x':0.9,'center_y':0.1}
         user_font_size : '45sp'
         on_press:
-            root.manager.current = 'chekclistItem1'
+            root.manager.current = 'checklistItem2'
             root.manager.transition.direction = 'left'
     MDProgressBar:
         value:60
@@ -612,6 +621,1060 @@ ScreenManager:
         halign: "center"
         pos_hint: {'center_y':0.7}
         text: 'Os locais adjacentes das caixas estão limpos e organizados?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+
+#Item 2
+<ChecklistItem2>:
+    name:'checklistItem2'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem1'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem3'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'As caixas estão com acúmulo excessivo de gordura?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+#Item 3
+<ChecklistItem3>:
+    name:'checklistItem3'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem2'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem4'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'As caixas de gordura estão obstruídas?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+
+#Item 4
+<ChecklistItem4>:
+    name:'checklistItem4'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem3'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem5'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'Há evidências de transbordo?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+
+#Item 6
+<ChecklistItem6>:
+    name:'checklistItem6'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem5'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem7'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'Há detritos de alimentos, sobras de embalagens, entre outros?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+
+
+#Item 5
+<ChecklistItem5>:
+    name:'checklistItem5'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem4'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem6'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'Há evidência de odores?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+#Item 6
+<ChecklistItem6>:
+    name:'checklistItem6'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem5'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem7'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'Há detritos de alimentos, sobras de embalagens, entre outros?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+
+
+#Item 7
+<ChecklistItem7>:
+    name:'checklistItem7'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem6'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem8'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'Há telas (grade) de retenção nas áreas internas do refeitório cin objetivo de reter sobras de alimentos?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+
+#Item 8
+<ChecklistItem8>:
+    name:'checklistItem8'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem7'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'arrow-right'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem9'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'As tampas das caixas estão encaixadas de acordo com a construção?'
+        font_size: '30sp'
+
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        text: 'C'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        text: 'NC'
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        text: 'NA'
+
+
+    FloatLayout:
+
+        orientation: 'vertical'
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            active: True
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCheckbox:
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+
+
+    MDTextField:
+        id: acao_item1
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Ação'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: responsavel_item1
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        size_hint: (0.7,0.1)
+        hint_text : 'Responsável'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'alert'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
+        id: prazo_item1
+        pos_hint: {'center_x':0.5,'center_y':0.2}
+        size_hint: (0.7,0.1)
+        hint_text : 'Prazo'
+        icon_right: 'calendar'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+        on_focus: app.show_date_picker()
+
+
+
+#Item 9
+<ChecklistItem9>:
+    name:'checklistItem9'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'ADD Checklist'
+            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
+            elevation:5
+
+        Widget:
+
+    MDFloatingActionButton:
+        icon: 'arrow-left'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem8'
+            root.manager.transition.direction = 'right'
+    MDFloatingActionButton:
+        id:disabled_button
+        disabled: False
+        icon: 'check'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            root.manager.current = 'checklistItem9'
+            root.manager.transition.direction = 'left'
+    MDProgressBar:
+        value:60
+        pos_hint: {'center_y':0.02}
+
+    MDLabel:
+        halign: "center"
+        pos_hint: {'center_y':0.7}
+        text: 'O efluente está sendo direcionado para a Estação de tratamento de Efluente - ETE?'
         font_size: '30sp'
 
 
