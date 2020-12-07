@@ -170,6 +170,10 @@ class PawareApp(MDApp):
 
             self.strng.get_screen('profile').ids.save_profile_button.disabled = True
 
+    def get_date(self, date):
+        '''
+        :type date: <class 'datetime.date'>
+        '''
 
     def show_date_picker(self):
         date_dialog = MDDatePicker(callback=self.get_date)
