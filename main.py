@@ -221,12 +221,12 @@ class PawareApp(MDApp):
         if not self.dialog:
             self.dialog = MDDialog(
                 size_hint= (0.7,0.1),
-                text="Você deseja mesmo sair ?",
+                title="Você deseja mesmo sair ?",
                 buttons=[
                     MDFlatButton(
                         text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_app
                     ),
-                    MDFlatButton(
+                    MDRaisedButton(
                         text="Não", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue
                     ),
                 ],
@@ -237,12 +237,12 @@ class PawareApp(MDApp):
         if not self.dialog:
             self.dialog = MDDialog(
                 size_hint= (0.7,0.1),
-                text="Você deseja mesmo excluir ?",
+                title="Você deseja mesmo excluir ?",
                 buttons=[
                     MDFlatButton(
                         text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_excluir
                     ),
-                    MDFlatButton(
+                    MDRaisedButton(
                         text="Não", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue
                     ),
                 ],
@@ -403,7 +403,8 @@ class PawareApp(MDApp):
         quit()
     #####################BLOCO DE AVISO ECLUIR CHECKLIST##############
     def close_username_dialogue_excluir(self, obj):
-        os. remove("dataChecklist.json") 
+        os.remove("dataChecklist.json")
+        self.remove_checklist() 
         self.dialog.dismiss()
 
         
@@ -437,20 +438,24 @@ class PawareApp(MDApp):
         self.list_name = ThreeLineIconListItem(
         text=self.list_name,
         secondary_text='Responsável: ' + criado_por,
-        tertiary_text='Data de emissão: ' + criado_em, on_release=self.change_screen)
+        tertiary_text='Data de emissão: ' + criado_em, on_release=self.change_screen_to_my_checklist)
         self.list_name.add_widget(IconLeftWidget(icon='check-box-outline'))
         self.strng.get_screen('screen2').ids.my_checklists.add_widget(self.list_name)
         self.strng.get_screen('screen1').manager.current = 'screen1'
 
-        
+    #################DELETAR O WIDGET CHECKLIST##########
     def remove_checklist(self):
         self.strng.get_screen('screen2').ids.my_checklists.remove_widget(self.list_name)
-        print(self.list_name)
+        
     
 
     ############AO SELECIONAR UMA CHECKLIST MUDANDO DE TELA##########
-    def change_screen(self, ThreeLineIconListItem):
+    def change_screen_to_my_checklist(self, ThreeLineIconListItem):
         self.strng.get_screen('screen3').manager.current = 'screen3'
+
+    #################MUDANDO PARA TELA DAS CHECKLISTS######################3
+    def change_screen_to_checklists(self):
+        self.strng.get_screen('screen1').manager.current = 'screen1'
 
     ###############MUDANDO A TELA PARA INICIAR A VERIFICACAO###########
     def start_checklist(self):
