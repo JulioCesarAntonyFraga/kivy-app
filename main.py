@@ -212,8 +212,72 @@ class PawareApp(MDApp):
             self.strng.get_screen(f'checklistItem9').ids.prazo_item9.disabled = True
 
     def check_lv_items(self):
-        if self.strng.get_screen('checklistItem1').ids.radio_item1_nc.active == True and self.strng.get_screen(f'checklistItem1').ids.acao_item1.text.split() != [] and self.strng.get_screen(f'checklistItem1').ids.responsavel_item1.text.split() != [] and self.strng.get_screen(f'checklistItem1').ids.prazo_item1.text.split() != []:
+
+        #Item 1
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_nc.active == True and self.strng.get_screen(
+                f'checklistItem1').ids.acao_item1.text.split() != [] and self.strng.get_screen(
+                f'checklistItem1').ids.responsavel_item1.text.split() != [] and self.strng.get_screen(
+                f'checklistItem1').ids.prazo_item1.text.split() != []:
             self.strng.get_screen(f'checklistItem1').ids.next_button1.disabled = False
+
+        # Item 2
+        if self.strng.get_screen('checklistItem2').ids.radio_item2_nc.active == True and self.strng.get_screen(
+                f'checklistItem2').ids.acao_item2.text.split() != [] and self.strng.get_screen(
+                f'checklistItem2').ids.responsavel_item2.text.split() != [] and self.strng.get_screen(
+                f'checklistItem2').ids.prazo_item2.text.split() != []:
+            self.strng.get_screen(f'checklistItem2').ids.next_button2.disabled = False
+
+        # Item 3
+        if self.strng.get_screen('checklistItem3').ids.radio_item3_nc.active == True and self.strng.get_screen(
+                f'checklistItem3').ids.acao_item3.text.split() != [] and self.strng.get_screen(
+                f'checklistItem3').ids.responsavel_item3.text.split() != [] and self.strng.get_screen(
+                f'checklistItem3').ids.prazo_item3.text.split() != []:
+            self.strng.get_screen(f'checklistItem3').ids.next_button3.disabled = False
+
+        # Item 4
+        if self.strng.get_screen('checklistItem4').ids.radio_item4_nc.active == True and self.strng.get_screen(
+                f'checklistItem4').ids.acao_item4.text.split() != [] and self.strng.get_screen(
+                f'checklistItem4').ids.responsavel_item4.text.split() != [] and self.strng.get_screen(
+                f'checklistItem4').ids.prazo_item4.text.split() != []:
+            self.strng.get_screen(f'checklistItem4').ids.next_button4.disabled = False
+
+        # Item 5
+        if self.strng.get_screen('checklistItem5').ids.radio_item5_nc.active == True and self.strng.get_screen(
+                f'checklistItem5').ids.acao_item5.text.split() != [] and self.strng.get_screen(
+                f'checklistItem5').ids.responsavel_item5.text.split() != [] and self.strng.get_screen(
+                f'checklistItem5').ids.prazo_item5.text.split() != []:
+            self.strng.get_screen(f'checklistItem5').ids.next_button5.disabled = False
+
+        # Item 6
+        if self.strng.get_screen('checklistItem6').ids.radio_item6_nc.active == True and self.strng.get_screen(
+                f'checklistItem6').ids.acao_item6.text.split() != [] and self.strng.get_screen(
+                f'checklistItem6').ids.responsavel_item6.text.split() != [] and self.strng.get_screen(
+                f'checklistItem6').ids.prazo_item6.text.split() != []:
+            self.strng.get_screen(f'checklistItem6').ids.next_button6.disabled = False
+
+        # Item 7
+        if self.strng.get_screen('checklistItem7').ids.radio_item7_nc.active == True and self.strng.get_screen(
+                f'checklistItem7').ids.acao_item7.text.split() != [] and self.strng.get_screen(
+                f'checklistItem7').ids.responsavel_item7.text.split() != [] and self.strng.get_screen(
+                f'checklistItem7').ids.prazo_item7.text.split() != []:
+            self.strng.get_screen(f'checklistItem7').ids.next_button7.disabled = False
+
+        # Item 8
+        if self.strng.get_screen('checklistItem8').ids.radio_item8_nc.active == True and self.strng.get_screen(
+                f'checklistItem8').ids.acao_item8.text.split() != [] and self.strng.get_screen(
+            f'checklistItem8').ids.responsavel_item8.text.split() != [] and self.strng.get_screen(
+            f'checklistItem8').ids.prazo_item8.text.split() != []:
+            self.strng.get_screen(f'checklistItem8').ids.next_button8.disabled = False
+
+        # Item 9
+        if self.strng.get_screen('checklistItem9').ids.radio_item9_nc.active == True and self.strng.get_screen(
+                f'checklistItem9').ids.acao_item9.text.split() != [] and self.strng.get_screen(
+            f'checklistItem9').ids.responsavel_item9.text.split() != [] and self.strng.get_screen(
+            f'checklistItem9').ids.prazo_item9.text.split() != []:
+            self.strng.get_screen(f'checklistItem9').ids.next_button9.disabled = False
+
+
+
 
     ##################CONFIRMAÇAO DE SAIDA FUNÇAO################
     dialog = None
@@ -240,7 +304,7 @@ class PawareApp(MDApp):
         if not self.dialog:
             self.dialog = MDDialog(
                 size_hint= (0.7,0.1),
-                text="Você deseja mesmo excluir ?",
+                title="Você deseja mesmo excluir ?",
                 buttons=[
                     MDFlatButton(
                         text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_excluir
