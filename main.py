@@ -220,10 +220,6 @@ class PawareApp(MDApp):
     def show_alert_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
-
-                title="Você deseja mesmo sair ?",
-
-                size_hint= (0.7,0.1),
                 title="Você deseja mesmo sair ?",
                 buttons=[
                     MDFlatButton(
@@ -239,7 +235,6 @@ class PawareApp(MDApp):
     def show_alert__delete_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
-                size_hint= (0.7,0.1),
                 title="Você deseja mesmo excluir ?",
                 buttons=[
                     MDFlatButton(
@@ -404,9 +399,11 @@ class PawareApp(MDApp):
 
     def close_username_dialogue_app(self,obj):
         quit()
+
     #####################BLOCO DE AVISO ECLUIR CHECKLIST##############
     def close_username_dialogue_excluir(self, obj):
         os.remove("dataChecklist.json")
+        self.change_screen_to_checklists()
         self.remove_checklist() 
         self.dialog.dismiss()
 

@@ -449,8 +449,6 @@ ScreenManager:
         user_font_size : '45sp'
         on_press:
             app.show_alert__delete_dialog()
-            app.remove_checklist()
-            root.manager.current = 'screen1'
             
 
 
@@ -840,8 +838,8 @@ ScreenManager:
             root.manager.current = 'screen5'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button1
-        disabled: True
+        id:disabled_button
+        disabled: False
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.9,'center_y':0.1}
@@ -921,7 +919,6 @@ ScreenManager:
         icon_right: 'alert'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.check_lv_items()
 
     MDTextField:
         disabled: True
@@ -934,7 +931,6 @@ ScreenManager:
         icon_right: 'alert'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.check_lv_items()
 
     MDTextField:
         disabled: True
@@ -947,9 +943,7 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus:
-            app.show_date_picker()
-            app.check_lv_items()
+        on_focus: app.show_date_picker()
 
 
 #Item 2
