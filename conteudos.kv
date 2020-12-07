@@ -833,6 +833,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem2'
             root.manager.transition.direction = 'left'
+            app.check_lv_items()
     MDProgressBar:
         value:11.11
         pos_hint: {'center_y':0.02}
@@ -866,19 +867,27 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press: app.enable_items_inputs()
+            id: radio_item1_c
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            active: True
+            active: False
             pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
+            on_press: app.enable_items_inputs()
+            active: False
+            id: radio_item1_nc
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            on_press: app.enable_items_inputs()
+            active: False
+            id: radio_item1_c
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -886,7 +895,8 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item1
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -897,7 +907,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
+        disabled: True
+        id: responsavel_item1
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -908,7 +919,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
+        disabled: True
+        id: prazo_item1
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -984,6 +996,8 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press: app.enable_items_inputs()
+            id: radio_item2_c
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -991,12 +1005,16 @@ ScreenManager:
             pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item2_nc
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item2_na
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1004,7 +1022,8 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item2
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1015,7 +1034,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
+        id: responsavel_item2
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1026,7 +1046,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
+        id: prazo_item2
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1101,6 +1122,8 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            id: radio_item3_c
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1108,12 +1131,16 @@ ScreenManager:
             pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item3_nc
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item3_na
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1121,7 +1148,8 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item3
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1132,7 +1160,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
+        id: responsavel_item3
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1143,7 +1172,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
+        id: prazo_item3
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1219,6 +1249,8 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            id: radio_item4_c
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1226,12 +1258,16 @@ ScreenManager:
             pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item4_nc
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item4_na
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1239,7 +1275,8 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item4
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1250,7 +1287,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
+        id: responsavel_item4
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1261,7 +1299,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
+        id: prazo_item4
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1338,6 +1377,8 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            id: radio_item5_c
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1346,11 +1387,15 @@ ScreenManager:
 
         MDCheckbox:
             group: 'group'
+            on_press: app.enable_items_inputs()
+            id: radio_item5_nc
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item5_na
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1358,7 +1403,8 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item5
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1369,7 +1415,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
+        id: responsavel_item5
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1380,7 +1427,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
+        id: prazo_item5
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1456,6 +1504,8 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            id: radio_item6_c
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1463,12 +1513,16 @@ ScreenManager:
             pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item6_nc
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item6_na
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1477,6 +1531,7 @@ ScreenManager:
 
     MDTextField:
         id: acao_item6
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1488,6 +1543,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item6
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1499,6 +1555,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item6
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1575,6 +1632,8 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            id: radio_item7_c
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1582,12 +1641,16 @@ ScreenManager:
             pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item7_nc
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item7_na
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1595,7 +1658,8 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item7
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1606,7 +1670,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
+        id: responsavel_item7
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1617,7 +1682,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
+        id: prazo_item7
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1694,6 +1760,8 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            id: radio_item8_c
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1701,12 +1769,16 @@ ScreenManager:
             pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item8_nc
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item8_na
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1714,7 +1786,8 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item8
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1725,7 +1798,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
+        id: responsavel_item8
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1736,7 +1810,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
+        id: prazo_item8
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1814,6 +1889,8 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            id: radio_item9_c
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1821,12 +1898,16 @@ ScreenManager:
             pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item9_nc
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
             pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
+            id: radio_item9_na
+            on_press: app.enable_items_inputs()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1834,7 +1915,8 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item9
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
@@ -1845,7 +1927,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
+        id: responsavel_item9
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1856,7 +1939,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
+        id: prazo_item9
+        disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'

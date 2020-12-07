@@ -106,6 +106,114 @@ sm.add_widget(Profile(name = 'profile'))
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
+
+    def enable_items_inputs(self):
+
+        ##Item 1
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_nc.active == True:
+            self.strng.get_screen(f'checklistItem1').ids.acao_item1.disabled = False
+            self.strng.get_screen(f'checklistItem1').ids.responsavel_item1.disabled = False
+            self.strng.get_screen(f'checklistItem1').ids.prazo_item1.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem1').ids.acao_item1.disabled = True
+            self.strng.get_screen(f'checklistItem1').ids.responsavel_item1.disabled = True
+            self.strng.get_screen(f'checklistItem1').ids.prazo_item1.disabled = True
+
+
+        ##Item 2
+        if self.strng.get_screen('checklistItem2').ids.radio_item2_nc.active == True:
+            self.strng.get_screen(f'checklistItem2').ids.acao_item2.disabled = False
+            self.strng.get_screen(f'checklistItem2').ids.responsavel_item2.disabled = False
+            self.strng.get_screen(f'checklistItem2').ids.prazo_item2.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem2').ids.acao_item2.disabled = True
+            self.strng.get_screen(f'checklistItem2').ids.responsavel_item2.disabled = True
+            self.strng.get_screen(f'checklistItem2').ids.prazo_item2.disabled = True
+
+
+        ##Item 3
+        if self.strng.get_screen('checklistItem3').ids.radio_item3_nc.active == True:
+            self.strng.get_screen(f'checklistItem3').ids.acao_item3.disabled = False
+            self.strng.get_screen(f'checklistItem3').ids.responsavel_item3.disabled = False
+            self.strng.get_screen(f'checklistItem3').ids.prazo_item3.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem3').ids.acao_item3.disabled = True
+            self.strng.get_screen(f'checklistItem3').ids.responsavel_item3.disabled = True
+            self.strng.get_screen(f'checklistItem3').ids.prazo_item3.disabled = True
+
+        ##Item 4
+        if self.strng.get_screen('checklistItem4').ids.radio_item4_nc.active == True:
+            self.strng.get_screen(f'checklistItem4').ids.acao_item4.disabled = False
+            self.strng.get_screen(f'checklistItem4').ids.responsavel_item4.disabled = False
+            self.strng.get_screen(f'checklistItem4').ids.prazo_item4.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem4').ids.acao_item4.disabled = True
+            self.strng.get_screen(f'checklistItem4').ids.responsavel_item4.disabled = True
+            self.strng.get_screen(f'checklistItem4').ids.prazo_item4.disabled = True
+
+        ##Item 5
+        if self.strng.get_screen('checklistItem5').ids.radio_item5_nc.active == True:
+            self.strng.get_screen(f'checklistItem5').ids.acao_item5.disabled = False
+            self.strng.get_screen(f'checklistItem5').ids.responsavel_item5.disabled = False
+            self.strng.get_screen(f'checklistItem5').ids.prazo_item5.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem5').ids.acao_item5.disabled = True
+            self.strng.get_screen(f'checklistItem5').ids.responsavel_item5.disabled = True
+            self.strng.get_screen(f'checklistItem5').ids.prazo_item5.disabled = True
+
+        ##Item 6
+        if self.strng.get_screen('checklistItem6').ids.radio_item6_nc.active == True:
+            self.strng.get_screen(f'checklistItem6').ids.acao_item6.disabled = False
+            self.strng.get_screen(f'checklistItem6').ids.responsavel_item6.disabled = False
+            self.strng.get_screen(f'checklistItem6').ids.prazo_item6.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem6').ids.acao_item6.disabled = True
+            self.strng.get_screen(f'checklistItem6').ids.responsavel_item6.disabled = True
+            self.strng.get_screen(f'checklistItem6').ids.prazo_item6.disabled = True
+
+        ##Item 7
+        if self.strng.get_screen('checklistItem7').ids.radio_item7_nc.active == True:
+            self.strng.get_screen(f'checklistItem7').ids.acao_item7.disabled = False
+            self.strng.get_screen(f'checklistItem7').ids.responsavel_item7.disabled = False
+            self.strng.get_screen(f'checklistItem7').ids.prazo_item7.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem7').ids.acao_item7.disabled = True
+            self.strng.get_screen(f'checklistItem7').ids.responsavel_item7.disabled = True
+            self.strng.get_screen(f'checklistItem7').ids.prazo_item7.disabled = True
+
+        ##Item 8
+        if self.strng.get_screen('checklistItem8').ids.radio_item8_nc.active == True:
+            self.strng.get_screen(f'checklistItem8').ids.acao_item8.disabled = False
+            self.strng.get_screen(f'checklistItem8').ids.responsavel_item8.disabled = False
+            self.strng.get_screen(f'checklistItem8').ids.prazo_item8.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem8').ids.acao_item8.disabled = True
+            self.strng.get_screen(f'checklistItem8').ids.responsavel_item8.disabled = True
+            self.strng.get_screen(f'checklistItem8').ids.prazo_item8.disabled = True
+
+        ##Item 9
+        if self.strng.get_screen('checklistItem9').ids.radio_item9_nc.active == True:
+            self.strng.get_screen(f'checklistItem9').ids.acao_item9.disabled = False
+            self.strng.get_screen(f'checklistItem9').ids.responsavel_item9.disabled = False
+            self.strng.get_screen(f'checklistItem9').ids.prazo_item9.disabled = False
+
+        else:
+            self.strng.get_screen(f'checklistItem9').ids.acao_item9.disabled = True
+            self.strng.get_screen(f'checklistItem9').ids.responsavel_item9.disabled = True
+            self.strng.get_screen(f'checklistItem9').ids.prazo_item9.disabled = True
+
+    def check_lv_items(self):
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_nc.active == True and self.strng.get_screen(f'checklistItem1').ids.acao_item1.text.split() != []:
+            print(self.strng.get_screen(f'checklistItem1').ids.acao_item1.text.split())
+
     ##################CONFIRMAÇAO DE SAIDA FUNÇAO################
     dialog = None
     def show_alert_dialog(self):
@@ -128,24 +236,20 @@ class PawareApp(MDApp):
         if self.strng.get_screen('screen3').ids.profile_name_input.disabled == True:
 
             self.strng.get_screen('screen3').ids.profile_name_input.disabled = False
-            self.strng.get_screen('screen3').ids.profile_name_input.disabled = False
             
             self.strng.get_screen('screen3').ids.profile_data_input.disabled = False
-            self.strng.get_screen('screen3').ids.profile_data_input.disabled = False
+
 
             self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = False
-            self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = False
+
 
             self.strng.get_screen('screen3').ids.save_checklist_button.disabled = False
 
         else:
             self.strng.get_screen('screen3').ids.profile_name_input.disabled = True
-            self.strng.get_screen('screen3').ids.profile_name_input.disabled = True
 
             self.strng.get_screen('screen3').ids.profile_data_input.disabled = True
-            self.strng.get_screen('screen3').ids.profile_data_input.disabled = True
 
-            self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = True
             self.strng.get_screen('screen3').ids.profile_responsavel_input.disabled = True
 
             self.strng.get_screen('screen3').ids.save_checklist_button.disabled = True
