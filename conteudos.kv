@@ -348,9 +348,9 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'Edit CheckList'
+            title: 'CheckList ' + app.list_name
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
-            right_action_items: [["account-edit", lambda x: app.enable_checklist_inputs()]]
+            right_action_items: [["file-document-edit-outline", lambda x: app.enable_checklist_inputs()]]
             size_hint_y: 0.11
             elevation:5
 
@@ -363,7 +363,7 @@ ScreenManager:
         pos_hint: {'center_x':0.50,'center_y':0.82}
         size_hint: (0.98,0.1)
         hint_text : 'Item'
-        icon_right: 'account'
+        icon_right: 'inbox'
         icon_right_color: app.theme_cls.primary_color
         disabled: 'true'
 
@@ -373,7 +373,7 @@ ScreenManager:
         pos_hint: {'center_x':0.50,'center_y':0.72}
         size_hint: (0.98,0.1)
         hint_text : 'Criado em'
-        icon_right: 'account'
+        icon_right: 'inbox'
         icon_right_color: app.theme_cls.primary_color
         disabled: 'true'
 
@@ -383,7 +383,7 @@ ScreenManager:
         pos_hint: {'center_x':0.50,'center_y':0.62}
         size_hint: (0.98,0.1)
         hint_text : 'Criado por'
-        icon_right: 'account'
+        icon_right: 'inbox'
         icon_right_color: app.theme_cls.primary_color
         disabled: 'true'
 
@@ -393,7 +393,7 @@ ScreenManager:
         pos_hint: {'center_x':0.50,'center_y':0.52}
         size_hint: (0.98,0.1)
         hint_text : 'Plano de acção'
-        icon_right: 'account'
+        icon_right: 'inbox'
         icon_right_color: app.theme_cls.primary_color
         disabled: 'true'
 
@@ -403,7 +403,7 @@ ScreenManager:
         pos_hint: {'center_x':0.50,'center_y':0.42}
         size_hint: (0.98,0.1)
         hint_text : 'Responsável'
-        icon_right: 'account'
+        icon_right: 'inbox'
         icon_right_color: app.theme_cls.primary_color
         disabled: 'true'
 
@@ -413,7 +413,7 @@ ScreenManager:
         pos_hint: {'center_x':0.50,'center_y':0.32}
         size_hint: (0.98,0.1)
         hint_text : 'Prazo'
-        icon_right: 'account'
+        icon_right: 'inbox'
         icon_right_color: app.theme_cls.primary_color
         disabled: 'true'
 
@@ -423,7 +423,7 @@ ScreenManager:
         pos_hint: {'center_x':0.50,'center_y':0.22}
         size_hint: (0.98,0.1)
         hint_text : 'Status'
-        icon_right: 'account'
+        icon_right: 'alert'
         icon_right_color: app.theme_cls.primary_color
         disabled: 'true'      
         
@@ -434,8 +434,24 @@ ScreenManager:
         disabled: 'true'
         icon: 'check'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.12}
+        pos_hint: {'center_x':0.9,'center_y':0.1}
         user_font_size : '45sp'
+        on_press:
+            app.save_in_data()
+
+
+    MDFloatingActionButton:
+        id:delete_checklist_button
+        disabled: 'true'
+        icon: 'delete'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.1,'center_y':0.1}
+        user_font_size : '45sp'
+        on_press:
+            app.show_alert__delete_dialog()
+            app.remove_checklist()
+            root.manager.current = 'screen1'
+            
 
 
     MDNavigationDrawer:
