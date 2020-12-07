@@ -74,11 +74,16 @@ class ChecklistItem9(Screen):     #####ITEM 1 NOVA LV#####
     pass
 
 
+class Profile(Screen):     #####PERFIL#####
+    pass
+
+
 #######INTEGRANDO TELAS NO GERENCIADOR DE SCREEN########
 sm = ScreenManager()
 sm.add_widget(WelcomeScreen(name = 'welcomescreen'))
 sm.add_widget(UsernameScreen(name = 'usernamescreen'))
 sm.add_widget(DOB(name = 'dob'))
+
 sm.add_widget(Screen1(name = 'screen1'))
 sm.add_widget(Screen2(name = 'screen2'))
 sm.add_widget(Screen3(name = 'screen3'))
@@ -95,9 +100,34 @@ sm.add_widget(ChecklistItem7(name = 'checklistItem7'))
 sm.add_widget(ChecklistItem8(name = 'checklistItem8'))
 sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 
+sm.add_widget(Profile(name = 'profile'))
+
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
+
+    def enable_profile_inputs(self):
+
+        if self.strng.get_screen('profile').ids.profile_email_input.disabled == True:
+
+            self.strng.get_screen('profile').ids.profile_email_input.disabled = False
+            self.strng.get_screen('profile').ids.profile_email_input.disabled = False
+
+            self.strng.get_screen('profile').ids.profile_name_input.disabled = False
+            self.strng.get_screen('profile').ids.profile_name_input.disabled = False
+
+            self.strng.get_screen('profile').ids.save_profile_button.disabled = False
+
+        else:
+            self.strng.get_screen('profile').ids.profile_email_input.disabled = True
+            self.strng.get_screen('profile').ids.profile_email_input.disabled = True
+
+            self.strng.get_screen('profile').ids.profile_name_input.disabled = True
+            self.strng.get_screen('profile').ids.profile_name_input.disabled = True
+
+            self.strng.get_screen('profile').ids.save_profile_button.disabled = True
+
+
     def get_date(self, date):
         '''
         :type date: <class 'datetime.date'>

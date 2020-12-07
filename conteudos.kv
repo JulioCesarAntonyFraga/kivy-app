@@ -16,6 +16,7 @@ ScreenManager:
     ChecklistItem7:
     ChecklistItem8:
     ChecklistItem9:
+    Profile:
 
 
 <WelcomeScreen>:
@@ -222,6 +223,7 @@ ScreenManager:
                     
                     OneLineIconListItem:
                         text: "Meu Perfil"
+                        on_release: root.manager.current = 'profile'
                     
                         IconLeftWidget:
                             icon: "account"
@@ -304,6 +306,7 @@ ScreenManager:
                         
                     OneLineIconListItem:
                         text: "Nova CheckList"
+                        on_release: root.manager.current = 'screen5'
                         
                     
                         IconLeftWidget:
@@ -312,6 +315,7 @@ ScreenManager:
                     
                     OneLineIconListItem:
                         text: "Meu Perfil"
+                        on_release: root.manager.current = 'profile'
                     
                         IconLeftWidget:
                             icon: "account"
@@ -402,6 +406,7 @@ ScreenManager:
                     
                     OneLineIconListItem:
                         text: "Meu Perfil"
+                        on_release: root.manager.current = 'profile'
                     
                         IconLeftWidget:
                             icon: "account"
@@ -411,6 +416,124 @@ ScreenManager:
                     
                         IconLeftWidget:
                             icon: "exit-to-app"
+
+
+<Profile>:
+    name : 'profile'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'Inicar Verificação'
+            left_action_items: [["menu",  lambda x: nav_drawer4.toggle_nav_drawer()]]
+            right_action_items: [["account-edit", lambda x: app.enable_profile_inputs()]]
+            elevation:5
+
+        Widget:
+
+    MDTextField:
+        id: profile_email_input
+        text: app.email_perfil
+        pos_hint: {'center_x':0.5,'center_y':0.5}
+        size_hint: (0.7,0.1)
+        hint_text : 'Email'
+        icon_right: 'account'
+        icon_right_color: app.theme_cls.primary_color
+        disabled: 'true'
+
+    MDTextField:
+        id: profile_name_input
+        text: app.nome_perfil
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: (0.7,0.1)
+        hint_text : 'Nome'
+        icon_right: 'account'
+        icon_right_color: app.theme_cls.primary_color
+        disabled: 'true'
+
+    MDFloatingActionButton:
+        id:save_profile_button
+        disabled: 'true'
+        icon: 'check'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.9,'center_y':0.1}
+        user_font_size : '45sp'
+
+
+    MDNavigationDrawer:
+        id: nav_drawer4
+
+        ContentNavigationDrawer:
+            orientation: 'vertical'
+            padding: "8dp"
+            spacing: "8dp"
+
+            Image:
+                id: avatar
+                size_hint: (1,1)
+                source: "mine.jpg"
+
+            MDLabel:
+                text: app.nome_perfil
+                font_style: "Subtitle1"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: app.email_perfil
+                size_hint_y: None
+                font_style: "Caption"
+                height: self.texture_size[1]
+
+
+            DrawerList:
+                id: md_list
+
+                MDList:
+                    OneLineIconListItem:
+                        text: "CheckLists"
+                        on_release: root.manager.current = 'screen1'
+
+                        IconLeftWidget:
+                            icon: "inbox"
+
+
+                    OneLineIconListItem:
+                        text: "Minhas CheckList"
+                        on_release: root.manager.current = 'screen2'
+
+                        IconLeftWidget:
+                            icon: "inbox"
+
+
+                    OneLineIconListItem:
+                        text: "Nova CheckList"
+                        on_release: root.manager.current = 'screen5'
+
+
+                        IconLeftWidget:
+                            icon: "inbox-arrow-up"
+
+
+                    OneLineIconListItem:
+                        text: "Meu Perfil"
+                        on_release: root.manager.current = 'profile'
+
+                        IconLeftWidget:
+                            icon: "account"
+
+                    OneLineIconListItem:
+                        text: "Sair"
+
+                        IconLeftWidget:
+                            icon: "exit-to-app"
+                            on_press: app.stop()
+
+
+
+
+
+
 
 
 <Screen5>:
@@ -482,6 +605,7 @@ ScreenManager:
                     
                     OneLineIconListItem:
                         text: "Meu Perfil"
+                        on_release: root.manager.current = 'profile'
                     
                         IconLeftWidget:
                             icon: "account"
