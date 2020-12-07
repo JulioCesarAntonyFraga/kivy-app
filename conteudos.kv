@@ -755,7 +755,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Iniciar Verificação'
-            right_action_items: [["exit-run", lambda x: nav_drawer.toggle_nav_drawer()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
             elevation:5
 
         Widget:

@@ -220,6 +220,7 @@ class PawareApp(MDApp):
     def show_alert_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
+                size_hint= (0.7,0.1),
                 text="Você deseja mesmo sair ?",
                 buttons=[
                     MDFlatButton(
@@ -235,6 +236,7 @@ class PawareApp(MDApp):
     def show_alert__delete_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
+                size_hint= (0.7,0.1),
                 text="Você deseja mesmo excluir ?",
                 buttons=[
                     MDFlatButton(
