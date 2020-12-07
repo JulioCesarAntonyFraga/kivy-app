@@ -34,7 +34,7 @@ ScreenManager:
     MDFloatingActionButton:
         icon:'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        user_font_size : '170sp'
+        user_font_size : '15sp'
         pos_hint: {'center_x':0.5,'center_y':0.47}
         on_press:
             root.manager.current = 'usernamescreen'
@@ -58,8 +58,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'welcomescreen'
             root.manager.transition.direction = 'right'
@@ -68,8 +68,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'dob'
             root.manager.transition.direction = 'left'
@@ -90,7 +90,7 @@ ScreenManager:
         icon:'account-plus'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.5,'center_y':0.35}
-        user_font_size: '50sp'
+        user_font_size: '15sp'
         on_press: app.check_username()
 <DOB>:
     name:'dob'
@@ -107,8 +107,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'usernamescreen'
             root.manager.transition.direction = 'right'
@@ -117,8 +117,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'screen1'
             root.manager.transition.direction = 'left'
@@ -139,7 +139,7 @@ ScreenManager:
         icon:'account-plus'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.5,'center_y':0.35}
-        user_font_size: '50sp'
+        user_font_size: '15sp'
         on_press: app.get_email()
     
 <Screen1>:
@@ -434,8 +434,8 @@ ScreenManager:
         disabled: 'true'
         icon: 'check'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             app.save_in_data()
 
@@ -445,10 +445,12 @@ ScreenManager:
         disabled: 'true'
         icon: 'delete'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             app.show_alert__delete_dialog()
+            app.remove_checklist()
+            root.manager.current = 'screen1'
             
 
 
@@ -565,8 +567,8 @@ ScreenManager:
         disabled: 'true'
         icon: 'check'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
 
 
     MDNavigationDrawer:
@@ -741,8 +743,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon:'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        user_font_size : '150sp'
-        pos_hint: {'center_x':0.5,'center_y':0.47}
+        user_font_size : '13sp'
+        pos_hint: {'center_x':0.85,'center_y':0.47}
         on_press:
             root.manager.current = 'checklistName'
             root.manager.transition.direction = 'left'
@@ -761,8 +763,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'screen5'
             root.manager.transition.direction = 'right'
@@ -771,8 +773,8 @@ ScreenManager:
         disabled: False
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem1'
             root.manager.transition.direction = 'left'
@@ -832,8 +834,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'screen5'
             root.manager.transition.direction = 'right'
@@ -842,8 +844,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem2'
             root.manager.transition.direction = 'left'
@@ -857,22 +859,22 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'Os locais adjacentes das caixas estão limpos e organizados?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '15sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
@@ -919,6 +921,7 @@ ScreenManager:
         icon_right: 'alert'
         icon_right_color: app.theme_cls.primary_color
         required : True
+        on_focus: app.check_lv_items()
 
     MDTextField:
         disabled: True
@@ -931,6 +934,7 @@ ScreenManager:
         icon_right: 'alert'
         icon_right_color: app.theme_cls.primary_color
         required : True
+        on_focus: app.check_lv_items()
 
     MDTextField:
         disabled: True
@@ -943,7 +947,8 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
+        on_focus:
+            app.check_lv_items()
 
 
 #Item 2
@@ -962,8 +967,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem1'
             root.manager.transition.direction = 'right'
@@ -972,8 +977,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem3'
             root.manager.transition.direction = 'left'
@@ -987,22 +992,22 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'As caixas estão com acúmulo excessivo de gordura?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '15sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1091,8 +1096,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem2'
             root.manager.transition.direction = 'right'
@@ -1101,8 +1106,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem4'
             root.manager.transition.direction = 'left'
@@ -1116,22 +1121,22 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'As caixas de gordura estão obstruídas?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '10sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1221,8 +1226,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem3'
             root.manager.transition.direction = 'right'
@@ -1231,8 +1236,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem5'
             root.manager.transition.direction = 'left'
@@ -1246,22 +1251,22 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'Há evidências de transbordo?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '15sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1352,8 +1357,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem4'
             root.manager.transition.direction = 'right'
@@ -1362,8 +1367,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem6'
             root.manager.transition.direction = 'left'
@@ -1377,22 +1382,22 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'Há evidência de odores?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '15sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1482,8 +1487,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem5'
             root.manager.transition.direction = 'right'
@@ -1493,8 +1498,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem7'
             root.manager.transition.direction = 'left'
@@ -1508,22 +1513,22 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'Há detritos de alimentos, sobras de embalagens, entre outros?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '15sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1613,8 +1618,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem6'
             root.manager.transition.direction = 'right'
@@ -1623,8 +1628,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem8'
             root.manager.transition.direction = 'left'
@@ -1638,23 +1643,23 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'Há telas (grade) de retenção nas áreas internas do refeitório cin objetivo de reter sobras de alimentos?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '15sp'
   
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1744,8 +1749,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem7'
             root.manager.transition.direction = 'right'
@@ -1754,8 +1759,8 @@ ScreenManager:
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem9'
             root.manager.transition.direction = 'left'
@@ -1769,23 +1774,23 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'As tampas das caixas estão encaixadas de acordo com a construção?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '15sp'
     
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1876,8 +1881,8 @@ ScreenManager:
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.15,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem8'
             root.manager.transition.direction = 'right'
@@ -1886,8 +1891,8 @@ ScreenManager:
         disabled: False
         icon: 'check'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
+        pos_hint: {'center_x':0.85,'center_y':0.1}
+        user_font_size : '13sp'
         on_press:
             root.manager.current = 'checklistItem9'
             root.manager.transition.direction = 'left'
@@ -1900,23 +1905,23 @@ ScreenManager:
         pos_hint: {'center_y':0.80}
         text: 'O efluente está sendo direcionado para a Estação de tratamento de Efluente - ETE?'
         font_style: 'Button'
-        font_size: '21sp'
+        font_size: '15sp'
       
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.62}
+        pos_hint: {'center_x': 0.38, 'center_y':0.62}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.62}
+        pos_hint: {'center_x': 0.58, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.62}
+        pos_hint: {'center_x': 0.78, 'center_y':0.62}
         text: 'NA'
 
 
