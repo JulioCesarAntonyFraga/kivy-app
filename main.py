@@ -51,6 +51,28 @@ class ChecklistName(Screen):     #####NOME CHECKLIST#####
 class ChecklistItem1(Screen):     #####ITEM 1 NOVA LV#####
     pass
 
+class ChecklistItem2(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+
+class ChecklistItem3(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+
+class ChecklistItem4(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+
+class ChecklistItem5(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+
+class ChecklistItem6(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+
+class ChecklistItem7(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+class ChecklistItem8(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+class ChecklistItem9(Screen):     #####ITEM 1 NOVA LV#####
+    pass
+
 
 #######INTEGRANDO TELAS NO GERENCIADOR DE SCREEN########
 sm = ScreenManager()
@@ -60,9 +82,19 @@ sm.add_widget(DOB(name = 'dob'))
 sm.add_widget(Screen1(name = 'screen1'))
 sm.add_widget(Screen2(name = 'screen2'))
 sm.add_widget(Screen3(name = 'screen3'))
+
 sm.add_widget(Screen5(name = 'screen5'))
 sm.add_widget(ChecklistName(name = 'checklistName'))
 sm.add_widget(ChecklistItem1(name = 'checklistItem1'))
+sm.add_widget(ChecklistItem2(name = 'checklistItem2'))
+sm.add_widget(ChecklistItem3(name = 'checklistItem3'))
+sm.add_widget(ChecklistItem4(name = 'checklistItem4'))
+sm.add_widget(ChecklistItem5(name = 'checklistItem5'))
+sm.add_widget(ChecklistItem6(name = 'checklistItem6'))
+sm.add_widget(ChecklistItem7(name = 'checklistItem7'))
+sm.add_widget(ChecklistItem8(name = 'checklistItem8'))
+sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
+
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
