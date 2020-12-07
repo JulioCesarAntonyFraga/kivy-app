@@ -211,15 +211,15 @@ class PawareApp(MDApp):
             self.strng.get_screen(f'checklistItem9').ids.prazo_item9.disabled = True
 
     def check_lv_items(self):
-        if self.strng.get_screen('checklistItem1').ids.radio_item1_nc.active == True and self.strng.get_screen(f'checklistItem1').ids.acao_item1.text.split() != []:
-            print(self.strng.get_screen(f'checklistItem1').ids.acao_item1.text.split())
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_nc.active == True and self.strng.get_screen(f'checklistItem1').ids.acao_item1.text.split() != [] and self.strng.get_screen(f'checklistItem1').ids.responsavel_item1.text.split() != [] and self.strng.get_screen(f'checklistItem1').ids.prazo_item1.text.split() != []:
+            self.strng.get_screen(f'checklistItem1').ids.next_button1.disabled = False
 
     ##################CONFIRMAÇAO DE SAIDA FUNÇAO################
     dialog = None
     def show_alert_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
-                text="Você deseja mesmo sair ?",
+                title="Você deseja mesmo sair ?",
                 buttons=[
                     MDFlatButton(
                         text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_app
