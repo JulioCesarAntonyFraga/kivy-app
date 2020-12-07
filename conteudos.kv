@@ -239,28 +239,12 @@ ScreenManager:
 
         Widget:
 
-    MDCard:
-        orientation: "vertical"
-        padding: "10dp"
-        size_hint: None, None
-        size: "280dp", "180dp"
-        pos_hint: {"center_x": .5, "center_y": .5}
+    ScrollView:
+        size_hint: (1.10, 0.90)
+        pos_hint: {'center_x': .55}
 
-        MDLabel:
-            text: "APR RESÍDUOS 01"
-            theme_text_color: "Secondary"
-            size_hint_y: None
-            height: self.texture_size[1]
-            ThreeLineListItem:
-                text: "Three-line item"
-                secondary_text: "This is a multi-line label where you can"
-                tertiary_text: "fit more text than usual"
-
-        MDSeparator:
-            height: "1dp"
-
-        MDLabel:
-            
+        MDList:
+            id: my_checklists
             
 
     MDNavigationDrawer:
@@ -427,7 +411,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Inicar Verificação'
             left_action_items: [["menu",  lambda x: nav_drawer4.toggle_nav_drawer()]]
             elevation:5
 
@@ -504,7 +488,7 @@ ScreenManager:
     MDFloatingActionButton:
         icon:'arrow-right'
         md_bg_color:app.theme_cls.primary_color
-        user_font_size : '130sp'
+        user_font_size : '170sp'
         pos_hint: {'center_x':0.5,'center_y':0.47}
         on_press:
             root.manager.current = 'checklistName'
@@ -569,16 +553,21 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item1
+        id:date_text_fied
         pos_hint: {'center_x':0.5,'center_y':0.8}
         size_hint: (0.7,0.1)
         hint_text : 'Data de inspeção'
         helper_text: 'Obrigatório'
         helper_text_mode: 'on_error'
-        icon_right: 'calendar'
+        icon_right: 'book'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.show_date_picker()
+
+    MDFloatingActionButton:
+        icon:'plus'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.5,'center_y':0.35}
+        user_font_size: '50sp'
 
 <ChecklistItem1>:
     name:'checklistItem1'
@@ -598,7 +587,7 @@ ScreenManager:
         pos_hint: {'center_x':0.1,'center_y':0.1}
         user_font_size : '45sp'
         on_press:
-            root.manager.current = 'checklistName'
+            root.manager.current = 'screen5'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
         id:disabled_button
@@ -618,23 +607,7 @@ ScreenManager:
         halign: "center"
         pos_hint: {'center_y':0.7}
         text: 'Os locais adjacentes das caixas estão limpos e organizados?'
-        font_size: '30sp'
 
-
-    MDLabel:
-        halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
-        text: 'C'
-
-    MDLabel:
-        halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
-        text: 'NC'
-
-    MDLabel:
-        halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
-        text: 'NA'
 
 
     FloatLayout:
@@ -661,36 +634,10 @@ ScreenManager:
             pos_hint: {'center_x': 0.7, 'center_y': 0.5}
 
 
-    MDTextField:
-        id: acao_item1
-        pos_hint: {'center_x':0.5,'center_y':0.4}
-        size_hint: (0.7,0.1)
-        hint_text : 'Ação'
-        helper_text: 'Obrigatório'
-        helper_text_mode: 'on_error'
-        icon_right: 'alert'
-        icon_right_color: app.theme_cls.primary_color
-        required : True
 
-    MDTextField:
-        id: responsavel_item1
-        pos_hint: {'center_x':0.5,'center_y':0.3}
-        size_hint: (0.7,0.1)
-        hint_text : 'Responsável'
-        helper_text: 'Obrigatório'
-        helper_text_mode: 'on_error'
-        icon_right: 'alert'
-        icon_right_color: app.theme_cls.primary_color
-        required : True
 
-    MDTextField:
-        id: prazo_item1
-        pos_hint: {'center_x':0.5,'center_y':0.2}
-        size_hint: (0.7,0.1)
-        hint_text : 'Prazo'
-        icon_right: 'calendar'
-        helper_text: 'Obrigatório'
-        helper_text_mode: 'on_error'
-        icon_right_color: app.theme_cls.primary_color
-        required : True
-        on_focus: app.show_date_picker()
+    MDFloatingActionButton:
+        icon:'plus'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint: {'center_x':0.5,'center_y':0.35}
+        user_font_size: '50sp'

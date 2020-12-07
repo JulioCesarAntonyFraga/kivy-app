@@ -97,7 +97,8 @@ class PawareApp(MDApp):
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
-                self.load_checklists_screen_main()
+                #self.load_checklists_screen_main()
+                self.load_checklists_my_checklists()
                 self.strng.get_screen('screen1').manager.current = 'screen1'
                 
         except KeyError:
@@ -141,31 +142,33 @@ class PawareApp(MDApp):
 
         ###############SALVANDO EM UM ARQUIVO OS DADOS LOGIN#################
         self.store.put('UserInfo',name = self.username_text, email = self.email_text)
-        self.load_checklists_screen_main()
+        
         
  
     ############CARREGANDO E CRIANDO CHECKLIST DO BANCO DE DADOS####################
-    def load_checklists_screen_main(self):
+   
+     
+
+    def load_checklists_my_checklists(self):
         ######BUSCANDO NO BANCO AS CHECKLIST############
-        checklists_data = ('APR 02', 'Julio', '11/03/2020')
+        checklists_data = ('APR 02', 'Gabriel', '11/03/2020')
         list_name = checklists_data[0]
         criado_por = checklists_data[1]
         criado_em = checklists_data[2]
-
 
         ########ADCIONANDO WIDGET CHECKLIST###########
         for i in range(6):
             my_check_list = ThreeLineIconListItem(
             text=list_name,
-            secondary_text='Criado por: ' + criado_por,
+            secondary_text='Responsável: ' + criado_por,
             tertiary_text='Data de emissão: ' + criado_em, on_release=self.change_screen)
-            my_check_list.add_widget(IconLeftWidget(icon='inbox'))
-            self.strng.get_screen('screen1').ids.checklists.add_widget(my_check_list)
-     
+            my_check_list.add_widget(IconLeftWidget(icon='check-box-outline'))
+            self.strng.get_screen('screen2').ids.my_checklists.add_widget(my_check_list)
 
     ##########DELETA CHECKLIST NA TELA SCREEN1######################
-    def remove_checklist (self, ThreeLineIconListItem ):
-        self.strng.get_screen('screen1').ids.checklists.remove_widget(ThreeLineIconListItem)
+    def remove_checklist (self, ThreeLineIconListItem):
+        self.strng.get_screen('screen2').ids.my_checklists.remove_widget(ThreeLineIconListItem)
+        self.strng.get_screen('screen2').ids.my_checklists.clear_widgets()
       
         
 
