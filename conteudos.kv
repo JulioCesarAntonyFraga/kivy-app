@@ -510,7 +510,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Iniciar Verificação'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -538,20 +538,11 @@ ScreenManager:
         value:60
         pos_hint: {'center_y':0.02}
 
-    MDTextField:
-        id:local_text_fied
-        pos_hint: {'center_x':0.5,'center_y':0.6}
-        size_hint: (0.7,0.1)
-        hint_text : 'Local de inspeção'
-        helper_text: 'Obrigatório'
-        helper_text_mode: 'on_error'
-        icon_right: 'book'
-        icon_right_color: app.theme_cls.primary_color
-        required : True
+
 
     MDTextField:
         id:name_text_fied
-        pos_hint: {'center_x':0.5,'center_y':0.7}
+        pos_hint: {'center_x':0.5,'center_y':0.70}
         size_hint: (0.7,0.1)
         hint_text : 'Nome da LV'
         helper_text: 'Obrigatório'
@@ -561,8 +552,19 @@ ScreenManager:
         required : True
 
     MDTextField:
+        id:local_text_fied
+        pos_hint: {'center_x':0.5,'center_y':0.60}
+        size_hint: (0.7,0.1)
+        hint_text : 'Local de inspeção'
+        helper_text: 'Obrigatório'
+        helper_text_mode: 'on_error'
+        icon_right: 'book'
+        icon_right_color: app.theme_cls.primary_color
+        required : True
+
+    MDTextField:
         id:date_text_fied
-        pos_hint: {'center_x':0.5,'center_y':0.8}
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Data de inspeção'
         helper_text: 'Obrigatório'
@@ -571,11 +573,6 @@ ScreenManager:
         icon_right_color: app.theme_cls.primary_color
         required : True
 
-    MDFloatingActionButton:
-        icon:'plus'
-        md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.5,'center_y':0.35}
-        user_font_size: '50sp'
 
 #Item 1
 <ChecklistItem1>:
@@ -584,7 +581,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 01'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -614,9 +611,10 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'Os locais adjacentes das caixas estão limpos e organizados?'
-
+        font_style: 'Button'
+        font_size: '21sp'
 
 
     FloatLayout:
@@ -628,30 +626,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
 
-
-    MDFloatingActionButton:
-        icon:'plus'
-        md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.5,'center_y':0.35}
-        user_font_size: '50sp'
 
     MDTextField:
         id: prazo_item1
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -669,7 +661,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 02'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -699,24 +691,25 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'As caixas estão com acúmulo excessivo de gordura?'
-        font_size: '30sp'
+        font_style: 'Button'
+        font_size: '21sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        pos_hint: {'center_x': 0.35, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        pos_hint: {'center_x': 0.55, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        pos_hint: {'center_x': 0.75, 'center_y':0.62}
         text: 'NA'
 
 
@@ -729,24 +722,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}   
 
 
     MDTextField:
         id: acao_item2
-        pos_hint: {'center_x':0.5,'center_y':0.4}
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório'
@@ -757,7 +750,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item2
-        pos_hint: {'center_x':0.5,'center_y':0.3}
+        pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório'
@@ -768,7 +761,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item2
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -785,7 +778,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 03'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -815,24 +808,25 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'As caixas de gordura estão obstruídas?'
-        font_size: '30sp'
+        font_style: 'Button'
+        font_size: '21sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        pos_hint: {'center_x': 0.35, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        pos_hint: {'center_x': 0.55, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        pos_hint: {'center_x': 0.75, 'center_y':0.62}
         text: 'NA'
 
 
@@ -845,24 +839,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
 
 
     MDTextField:
         id: acao_item3
-        pos_hint: {'center_x':0.5,'center_y':0.4}
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório'
@@ -873,7 +867,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item3
-        pos_hint: {'center_x':0.5,'center_y':0.3}
+        pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório'
@@ -884,7 +878,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item3
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -902,7 +896,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 04'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -932,24 +926,25 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'Há evidências de transbordo?'
-        font_size: '30sp'
+        font_style: 'Button'
+        font_size: '21sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        pos_hint: {'center_x': 0.35, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        pos_hint: {'center_x': 0.55, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        pos_hint: {'center_x': 0.75, 'center_y':0.62}
         text: 'NA'
 
 
@@ -962,24 +957,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
 
 
     MDTextField:
         id: acao_item4
-        pos_hint: {'center_x':0.5,'center_y':0.4}
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório'
@@ -990,7 +985,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item4
-        pos_hint: {'center_x':0.5,'center_y':0.3}
+        pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório'
@@ -1001,7 +996,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item4
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1010,124 +1005,6 @@ ScreenManager:
         icon_right_color: app.theme_cls.primary_color
         required : True
         on_focus: app.show_date_picker()
-
-
-#Item 6
-<ChecklistItem6>:
-    name:'checklistItem6'
-
-    BoxLayout:
-        orientation: 'vertical'
-        MDToolbar:
-            title: 'ADD Checklist'
-            left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
-            elevation:5
-
-        Widget:
-
-    MDFloatingActionButton:
-        icon: 'arrow-left'
-        md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.1,'center_y':0.1}
-        user_font_size : '45sp'
-        on_press:
-            root.manager.current = 'checklistItem5'
-            root.manager.transition.direction = 'right'
-    MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
-        icon: 'arrow-right'
-        md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.9,'center_y':0.1}
-        user_font_size : '45sp'
-        on_press:
-            root.manager.current = 'checklistItem7'
-            root.manager.transition.direction = 'left'
-    MDProgressBar:
-        value:60
-        pos_hint: {'center_y':0.02}
-
-    MDLabel:
-        halign: "center"
-        pos_hint: {'center_y':0.7}
-        text: 'Há detritos de alimentos, sobras de embalagens, entre outros?'
-        font_size: '30sp'
-
-
-    MDLabel:
-        halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
-        text: 'C'
-
-    MDLabel:
-        halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
-        text: 'NC'
-
-    MDLabel:
-        halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
-        text: 'NA'
-
-
-    FloatLayout:
-
-        orientation: 'vertical'
-
-        MDCheckbox:
-            group: 'group'
-            size_hint: None, None
-            size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
-
-        MDCheckbox:
-            group: 'group'
-            size_hint: None, None
-            size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-        MDCheckbox:
-            group: 'group'
-            size_hint: None, None
-            size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
-
-
-    MDTextField:
-        id: acao_item5
-        pos_hint: {'center_x':0.5,'center_y':0.4}
-        size_hint: (0.7,0.1)
-        hint_text : 'Ação'
-        helper_text: 'Obrigatório'
-        helper_text_mode: 'on_error'
-        icon_right: 'alert'
-        icon_right_color: app.theme_cls.primary_color
-        required : True
-
-    MDTextField:
-        id: responsavel_item5
-        pos_hint: {'center_x':0.5,'center_y':0.3}
-        size_hint: (0.7,0.1)
-        hint_text : 'Responsável'
-        helper_text: 'Obrigatório'
-        helper_text_mode: 'on_error'
-        icon_right: 'alert'
-        icon_right_color: app.theme_cls.primary_color
-        required : True
-
-    MDTextField:
-        id: prazo_item5
-        pos_hint: {'center_x':0.5,'center_y':0.2}
-        size_hint: (0.7,0.1)
-        hint_text : 'Prazo'
-        icon_right: 'calendar'
-        helper_text: 'Obrigatório'
-        helper_text_mode: 'on_error'
-        icon_right_color: app.theme_cls.primary_color
-        required : True
-        on_focus: app.show_date_picker()
-
 
 
 #Item 5
@@ -1137,7 +1014,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 05'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -1167,24 +1044,25 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'Há evidência de odores?'
-        font_size: '30sp'
+        font_style: 'Button'
+        font_size: '21sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        pos_hint: {'center_x': 0.35, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        pos_hint: {'center_x': 0.55, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        pos_hint: {'center_x': 0.75, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1197,24 +1075,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
 
 
     MDTextField:
-        id: acao_item5
-        pos_hint: {'center_x':0.5,'center_y':0.4}
+        id: acao_item6
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório'
@@ -1224,8 +1102,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item5
-        pos_hint: {'center_x':0.5,'center_y':0.3}
+        id: responsavel_item6
+        pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório'
@@ -1235,8 +1113,8 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item5
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        id: prazo_item6
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1246,6 +1124,7 @@ ScreenManager:
         required : True
         on_focus: app.show_date_picker()
 
+
 #Item 6
 <ChecklistItem6>:
     name:'checklistItem6'
@@ -1253,7 +1132,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 06'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -1283,24 +1162,25 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'Há detritos de alimentos, sobras de embalagens, entre outros?'
-        font_size: '30sp'
+        font_style: 'Button'
+        font_size: '21sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        pos_hint: {'center_x': 0.35, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        pos_hint: {'center_x': 0.55, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        pos_hint: {'center_x': 0.75, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1313,24 +1193,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
 
 
     MDTextField:
         id: acao_item6
-        pos_hint: {'center_x':0.5,'center_y':0.4}
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório'
@@ -1341,7 +1221,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item6
-        pos_hint: {'center_x':0.5,'center_y':0.3}
+        pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório'
@@ -1352,7 +1232,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item6
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1371,7 +1251,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 07'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -1401,24 +1281,26 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'Há telas (grade) de retenção nas áreas internas do refeitório cin objetivo de reter sobras de alimentos?'
-        font_size: '30sp'
+        font_style: 'Button'
+        font_size: '21sp'
+  
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        pos_hint: {'center_x': 0.35, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        pos_hint: {'center_x': 0.55, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        pos_hint: {'center_x': 0.75, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1431,24 +1313,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
 
 
     MDTextField:
         id: acao_item7
-        pos_hint: {'center_x':0.5,'center_y':0.4}
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório'
@@ -1459,7 +1341,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item7
-        pos_hint: {'center_x':0.5,'center_y':0.3}
+        pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório'
@@ -1470,7 +1352,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item7
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1488,7 +1370,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 08'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -1518,24 +1400,26 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'As tampas das caixas estão encaixadas de acordo com a construção?'
-        font_size: '30sp'
+        font_style: 'Button'
+        font_size: '21sp'
+    
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        pos_hint: {'center_x': 0.35, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        pos_hint: {'center_x': 0.55, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        pos_hint: {'center_x': 0.75, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1548,24 +1432,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
 
 
     MDTextField:
         id: acao_item8
-        pos_hint: {'center_x':0.5,'center_y':0.4}
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório'
@@ -1576,7 +1460,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item8
-        pos_hint: {'center_x':0.5,'center_y':0.3}
+        pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório'
@@ -1587,7 +1471,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item8
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1606,7 +1490,7 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'ADD Checklist'
+            title: 'Item 09'
             left_action_items: [["menu",  lambda x: nav_drawer3.toggle_nav_drawer()]]
             elevation:5
 
@@ -1636,24 +1520,26 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.80}
         text: 'O efluente está sendo direcionado para a Estação de tratamento de Efluente - ETE?'
-        font_size: '30sp'
+        font_style: 'Button'
+        font_size: '21sp'
+      
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.35, 'center_y':0.5}
+        pos_hint: {'center_x': 0.35, 'center_y':0.62}
         text: 'C'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.55, 'center_y':0.5}
+        pos_hint: {'center_x': 0.55, 'center_y':0.62}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.75, 'center_y':0.5}
+        pos_hint: {'center_x': 0.75, 'center_y':0.62}
         text: 'NA'
 
 
@@ -1666,24 +1552,24 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
         MDCheckbox:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
 
 
     MDTextField:
         id: acao_item9
-        pos_hint: {'center_x':0.5,'center_y':0.4}
+        pos_hint: {'center_x':0.5,'center_y':0.50}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório'
@@ -1694,7 +1580,7 @@ ScreenManager:
 
     MDTextField:
         id: responsavel_item9
-        pos_hint: {'center_x':0.5,'center_y':0.3}
+        pos_hint: {'center_x':0.5,'center_y':0.40}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório'
@@ -1705,7 +1591,7 @@ ScreenManager:
 
     MDTextField:
         id: prazo_item9
-        pos_hint: {'center_x':0.5,'center_y':0.2}
+        pos_hint: {'center_x':0.5,'center_y':0.30}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
