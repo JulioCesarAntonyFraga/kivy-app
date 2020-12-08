@@ -1,3 +1,4 @@
+#:kivy 1.11.1
 ScreenManager:
     WelcomeScreen:
     UsernameScreen:
@@ -169,7 +170,7 @@ ScreenManager:
 
     MDNavigationDrawer:
         id: nav_drawer
-        type: "standard"
+        
 
         ContentNavigationDrawer:
             orientation: 'vertical'
@@ -210,6 +211,7 @@ ScreenManager:
                     OneLineIconListItem:
                         text: "Minhas CheckList"
                         on_release: root.manager.current = 'screen2'
+                        
                     
                         IconLeftWidget:
                             icon: "inbox"
@@ -957,11 +959,11 @@ ScreenManager:
 
     MDRectangleFlatIconButton:
         id:check1
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
 
 #Item 2
@@ -979,11 +981,11 @@ ScreenManager:
 
     MDRectangleFlatIconButton:
         id:check2
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1122,11 +1124,11 @@ ScreenManager:
 
     MDRectangleFlatIconButton:
         id:check3
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1266,11 +1268,11 @@ ScreenManager:
 
     MDRectangleFlatIconButton:
         id:check4
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1410,12 +1412,11 @@ ScreenManager:
         Widget:
 
     MDRectangleFlatIconButton:
-        id:check5
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1555,11 +1556,11 @@ ScreenManager:
 
     MDRectangleFlatIconButton:
         id:check6
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1700,11 +1701,11 @@ ScreenManager:
 
     MDRectangleFlatIconButton:
         id:check7
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1845,11 +1846,11 @@ ScreenManager:
 
     MDRectangleFlatIconButton:
         id:check8
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1991,11 +1992,11 @@ ScreenManager:
 
     MDRectangleFlatIconButton:
         id:check9
-        text: 'CHECAR'
-        icon: 'check'
-        pos_hint: {'center_x':0.5,'center_y':0.10}
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: app.check_lv_items()
-        size: sp(120), sp(40)
+        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'

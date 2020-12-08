@@ -134,7 +134,7 @@ class PawareApp(MDApp):
             self.strng.get_screen('checklistItem6').ids.prazo_item6.text = ''
 
     class ContentNavigationDrawer(BoxLayout):  #######PERFIL########
-        print('hi')
+        pass
 
     class DrawerList(ThemableBehavior, MDList): ######lISTAS DE AÇÕES DO PERFIL######
         pass
