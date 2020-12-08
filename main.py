@@ -192,9 +192,13 @@ class PawareApp(MDApp):
     def change_screen(self, ThreeLineIconListItem):
         self.strng.get_screen('screen3').manager.current = 'screen3'
 
-    ###############MUDANDO A TELA PARA INICIAR A VERIFICACAO###########
+    ###############MUDANDO A TELA PARA O MENU DAS CHECKLISTS###########
     def change_screen_to_checklists(self):
         self.strng.get_screen('screen1').manager.current = 'screen1'
+
+    ####################MUDANDO A TELA PARA A TELA INICIAR UM NOVA VERIFICAÇAO#############
+    def start_checklist(self):
+        self.strng.get_screen('checklistName').manager.current = 'checklistName'
 
     ##################FUNCAO PARA JANELHINHA DE DATA#########################
     def get_date(self, date):
