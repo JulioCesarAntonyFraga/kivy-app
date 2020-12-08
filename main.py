@@ -46,7 +46,7 @@ class ChecklistName(Screen):     #####NOME CHECKLIST#####
     pass
 class ChecklistItem1(Screen):     #####ITEM 1 NOVA LV#####
     pass
-class ChecklistItem2(Screen):     #####ITEM 1 NOVA LV#####
+class ChecklistItem2(Screen):    #####ITEM 1 NOVA LV#####
     pass
 class ChecklistItem3(Screen):     #####ITEM 1 NOVA LV#####
     pass
@@ -103,7 +103,7 @@ class PawareApp(MDApp):
             self.strng.get_screen('welcomescreen').manager.current = 'welcomescreen' 
 
     class ContentNavigationDrawer(BoxLayout):  #######PERFIL########
-        pass
+        print('hi')
 
     class DrawerList(ThemableBehavior, MDList): ######lISTAS DE AÇÕES DO PERFIL######
         pass
