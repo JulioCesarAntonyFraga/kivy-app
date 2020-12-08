@@ -437,7 +437,7 @@ ScreenManager:
         pos_hint: {'center_x':0.85,'center_y':0.1}
         user_font_size : '13sp'
         on_press:
-            app.save_in_data()
+            app.enable_checklist_inputs()
 
 
     MDFloatingActionButton:
@@ -448,9 +448,8 @@ ScreenManager:
         pos_hint: {'center_x':0.15,'center_y':0.1}
         user_font_size : '13sp'
         on_press:
+            app.enable_checklist_inputs()
             app.show_alert__delete_dialog()
-            app.remove_checklist()
-            root.manager.current = 'screen1'
             
 
 
@@ -569,6 +568,8 @@ ScreenManager:
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.85,'center_y':0.1}
         user_font_size : '13sp'
+        on_press:
+            app.enable_profile_inputs()
 
 
     MDNavigationDrawer:
