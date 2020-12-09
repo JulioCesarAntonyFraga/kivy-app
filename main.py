@@ -557,77 +557,74 @@ class PawareApp(MDApp):
         db = myclient["kivyapp"]
         col_lv = db["lvs"]
 
-        get_ids = col_lv.find()
+        soma_altura = 0.83
+        for item in col_lv.find():
+            print(item)
+            list_name = item["nome_lv"]
+            descricao_lv = item["descricao_lv"]
+            criado_por = item["nome_usuario"]
+            email_usuario = item["email_usuario"]
+            criado_em = item["Data_emissao"]
+            porcentagem_c = item["porcentagem_c"]
+            quantidade_nc = item["quantidade_nc"]
+            quantidade_na = item["quantidade_na"]
+            status = item["lv_status"]
 
-        for i in range(1,col_lv.count_documents({}) - 1):
-            soma_altura = 0.83
-            for item in col_lv.find({},{ "_id": i - 1}):
-                print(item)
-                list_name = item["nome_lv"]
-                descricao_lv = item["descricao_lv"]
-                criado_por = item["nome_usuario"]
-                email_usuario = item["email_usuario"]
-                criado_em = item["Data_emissao"]
-                porcentagem_c = item["porcentagem_c"]
-                quantidade_nc = item["quantidade_nc"]
-                quantidade_na = item["quantidade_na"]
-                status = item["lv_status"]
+            item1_resultaldo = item['item1_resultado']
+            acao = item['item1_acao']
+            reponsavel_relizar = item['item1_responsavel']
+            prazo = item['item1_prazo']
 
-                item1_resultaldo = item['item1_resultado']
-                acao = item['item1_acao']
-                reponsavel_relizar = item['item1_responsavel']
-                prazo = item['item1_prazo']
+            item2_resultaldo = item['item2_resultado']
+            item2_acao = item['item2_acao']
+            item2_responsavel = item['item2_responsavel']
+            item2_prazo = item['item2_prazo']
 
-                item2_resultaldo = item['item2_resultado']
-                item2_acao = item['item2_acao']
-                item2_responsavel = item['item2_responsavel']
-                item2_prazo = item['item2_prazo']
+            item3_resultaldo = item['item3_resultado']
+            item3_acao = item['item3_acao']
+            item3_responsavel = item['item3_responsavel']
+            item3_prazo = item['item3_prazo']
 
-                item3_resultaldo = item['item3_resultado']
-                item3_acao = item['item3_acao']
-                item3_responsavel = item['item3_responsavel']
-                item3_prazo = item['item3_prazo']
+            item4_resultaldo = item['item4_resultado']
+            item4_acao = item['item4_acao']
+            item4_responsavel = item['item4_responsavel']
+            item4_prazo = item['item4_prazo']
 
-                item4_resultaldo = item['item4_resultado']
-                item4_acao = item['item4_acao']
-                item4_responsavel = item['item4_responsavel']
-                item4_prazo = item['item4_prazo']
+            item5_resultaldo = item['item5_resultado']
+            item5_acao = item['item5_acao']
+            item5_responsavel = item['item5_responsavel']
+            item5_prazo = item['item5_prazo']
 
-                item5_resultaldo = item['item5_resultado']
-                item5_acao = item['item5_acao']
-                item5_responsavel = item['item5_responsavel']
-                item5_prazo = item['item5_prazo']
+            item6_resultaldo = item['item6_resultado']
+            item6_acao = item['item6_acao']
+            item6_responsavel = item['item6_responsavel']
+            item6_prazo = item['item6_prazo']
 
-                item6_resultaldo = item['item6_resultado']
-                item6_acao = item['item6_acao']
-                item6_responsavel = item['item6_responsavel']
-                item6_prazo = item['item6_prazo']
+            item7_resultaldo = item['item7_resultado']
+            item7_acao = item['item7_acao']
+            item7_responsavel = item['item7_responsavel']
+            item7_prazo = item['item7_prazo']
 
-                item7_resultaldo = item['item7_resultado']
-                item7_acao = item['item7_acao']
-                item7_responsavel = item['item7_responsavel']
-                item7_prazo = item['item7_prazo']
+            item8_resultaldo = item['item8_resultado']
+            item8_acao = item['item8_acao']
+            item8_responsavel = item['item8_responsavel']
+            item8_prazo = item['item8_prazo']
 
-                item8_resultaldo = item['item8_resultado']
-                item8_acao = item['item8_acao']
-                item8_responsavel = item['item8_responsavel']
-                item8_prazo = item['item8_prazo']
+            item9_resultaldo = item['item9_resultado']
+            item9_acao = item['item9_acao']
+            item9_responsavel = item['item9_responsavel']
+            item9_prazo = item['item9_prazo']
 
-                item9_resultaldo = item['item9_resultado']
-                item9_acao = item['item9_acao']
-                item9_responsavel = item['item9_responsavel']
-                item9_prazo = item['item9_prazo']
+            self.id_nome = list_name
+            self.id_nome = ThreeLineIconListItem(
+            text=list_name,
+            secondary_text='Responsável: ' + criado_por,
+            tertiary_text='Data de emissão: ' + criado_em,pos_hint={'center_x':0.50,'center_y':soma_altura}, on_release=self.change_screen)
+            self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
+            self.strng.get_screen('screen2').add_widget(self.id_nome)
+            self.strng.get_screen('screen1').manager.current = 'screen1'
 
-                self.id_nome = list_name
-                self.id_nome = ThreeLineIconListItem(
-                text=list_name,
-                secondary_text='Responsável: ' + criado_por,
-                tertiary_text='Data de emissão: ' + criado_em,pos_hint={'center_x':0.50,'center_y':soma_altura}, on_release=self.change_screen)
-                self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
-                self.strng.get_screen('screen2').add_widget(self.id_nome)
-                self.strng.get_screen('screen1').manager.current = 'screen1'
-
-                soma_altura -= 0.16
+            soma_altura -= 0.16
 
     
     
