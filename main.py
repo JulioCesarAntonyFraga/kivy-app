@@ -22,6 +22,12 @@ from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.clock import Clock
 
+import pymongo
+client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+db = client["kivyapp"]
+col_profile = db["profile"]
+
+get_profile_data= col_profile.find_one()
 
 ##################TELAS APP####################
 class WelcomeScreen(Screen):
@@ -90,6 +96,29 @@ sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
+
+    name_perfil_toolbar = get_profile_data['nome']
+    email_perfil_toolbar = get_profile_data['email']
+
+    def update_screen(self):
+        name_perfil_toolbar = get_profile_data['nome']
+        email_perfil_toolbar = get_profile_data['email']
+
+    loop = Clock.schedule_interval(update_screen, 1 / 30.)
+
+
+    def update_profile(self):
+        nome = {"nome": get_profile_data['nome']}
+        novo_nome = {"$set": {"nome": self.strng.get_screen('profile').ids.profile_name_input.text }}
+
+        email = {"email": get_profile_data['email']}
+        novo_email = {"$set": {"email": self.strng.get_screen('profile').ids.profile_email_input.text}}
+
+        col_profile.update_one(nome, novo_nome)
+        col_profile.update_one(email, novo_email)
+
+
+
     #######################CARREGAMENTO E CONTRUCAO AO INICIAR O APP##############
     def build(self):
         self.strng = Builder.load_file('conteudos.kv')
