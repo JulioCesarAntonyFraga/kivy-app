@@ -22,6 +22,7 @@ from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.clock import Clock
 
+
 import pymongo
 client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
 db = client["kivyapp"]
@@ -100,12 +101,22 @@ class PawareApp(MDApp):
     name_perfil_toolbar = get_profile_data['nome']
     email_perfil_toolbar = get_profile_data['email']
 
-    def update_screen(self):
-        name_perfil_toolbar = get_profile_data['nome']
-        email_perfil_toolbar = get_profile_data['email']
+    def set_refresh(self):
+        async def set_refresh():
+            for i in range(1):
+                await asynckivy.sleep(1)
+                try:
+                    client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+                    db = client["kivyapp"]
+                    col_profile = db["profile"]
+                    get_profile_data= col_profile.find_one()
 
-    loop = Clock.schedule_interval(update_screen, 1 / 30.)
-
+                    await asynckivy.sleep(1)
+                    self.strng.get_screen('profile').ids.name_perfil_toolbar.text = get_profile_data['nome']
+                    self.strng.get_screen('profile').ids.email_perfil_toolbar.text = get_profile_data['email']
+                except Exception as erro:
+                    print(erro)
+        asynckivy.start(set_refresh())
 
     def update_profile(self):
         nome = {"nome": get_profile_data['nome']}
@@ -116,6 +127,8 @@ class PawareApp(MDApp):
 
         col_profile.update_one(nome, novo_nome)
         col_profile.update_one(email, novo_email)
+        self.set_refresh()     
+
 
 
 
@@ -163,12 +176,13 @@ class PawareApp(MDApp):
             self.strng.get_screen('checklistItem6').ids.responsavel_item6.text = ''
             self.strng.get_screen('checklistItem6').ids.prazo_item6.text = ''
 
+
     class ContentNavigationDrawer(BoxLayout):  #######PERFIL########
         pass
 
     class DrawerList(ThemableBehavior, MDList): ######lISTAS DE AÇÕES DO PERFIL######
         pass
-
+        
     ##################CONFIRMAÇAO DE SAIDA FUNÇAO################
     dialog = None
     def show_alert_dialog(self):
