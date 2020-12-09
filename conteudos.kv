@@ -1,4 +1,5 @@
 #:kivy 1.11.1
+#:import Snackbar kivymd.uix.snackbar.Snackbar
 ScreenManager:
     WelcomeScreen:
     UsernameScreen:
@@ -565,13 +566,6 @@ ScreenManager:
         icon_right_color: app.theme_cls.primary_color
         disabled: 'true'
 
-    MDTextField:
-        id: profile_id_input
-        text: app.id_nome
-        pos_hint: {'center_x':0.5,'center_y':0.9}
-        size_hint: (0.0,0.1)
-        icon_right_color: app.theme_cls.primary_color
-        disabled: 'true'
 
     MDFloatingActionButton:
         id:save_profile_button
@@ -581,9 +575,8 @@ ScreenManager:
         pos_hint: {'center_x':0.85,'center_y':0.1}
         user_font_size : '13sp'
         on_press:
-            app.save_edits_profile()
             app.enable_profile_inputs()
-            app.set_refresh_screen1()
+            Snackbar(text="Salvo com sucesso!").show()
 
 
     MDNavigationDrawer:

@@ -1,7 +1,4 @@
-import sqlite3 as sql
-import sqlite3
-import random
-from sqlite3 import Error
+from kivymd.uix.snackbar import Snackbar
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen,ScreenManager
@@ -98,8 +95,7 @@ class PawareApp(MDApp):
         self.strng = Builder.load_file('conteudos.kv')
         return self.strng
     #############FUNCAO AO INICIAR O APP ELE VAI CARREGAR ISSO ANTES DE MOSTRAR TELA#################
-    def on_start(self):
-        self.load_all_checklists()        
+    def on_start(self):       
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
@@ -183,6 +179,7 @@ class PawareApp(MDApp):
     #############FUNCAO PARA BLOCO DE AVISO PARA SAIR DO APP################
     def close_username_dialogue_app(self,obj):
         quit()
+
     #####################BLOCO DE AVISO ECLUIR CHECKLIST FECHANDO##############
     def close_username_dialogue_excluir(self, obj): 
         self.dialog.dismiss()
@@ -216,58 +213,11 @@ class PawareApp(MDApp):
         date_dialog = MDDatePicker(callback=self.get_date)
         date_dialog.open()
 
-    ###############CARREGANDO OS VALORES DO PERFIL##############
-    def save_edits_profile(self,):
-        nome = self.strng.get_screen('profile').ids.profile_name_input.text
-        email = self.strng.get_screen('profile').ids.profile_email_input.text
-        id_name = self.strng.get_screen('profile').ids.profile_id_input.text
-        try:
-            con = sql.connect('database.db')
-            cur = con.cursor()
-            cur.execute("UPDATE profile SET Name=?, Email=?  WHERE Name_id =?", (nome, email,id_name))
-            con.commit()
-            con.close()
-        except Error as erro:
-            print(erro)
-
-
-    try:
-        con = sql.connect('database.db')
-        cur = con.cursor()
-        cur.execute("SELECT Name_id, Name, Email from profile")
-        for row in cur:
-            id_nome = str(row[0])
-            name_perfil_toolbar = row[1]
-            email_perfil_toolbar = row[2]
-        con.commit()
-        con.close()
-    except:
-        pass
-
-    id_nome = 'str(row[0])'
-    name_perfil_toolbar = 'row[1]'
-    email_perfil_toolbar = 'row[2]'
 
     
 
     #########FUNCAO RECARREGAR OS DELETALHES DO PEFIL APOS MUDANÇA##############
-    def set_refresh_screen1(self):
-        async def set_refresh_screen1():
-            for i in range(1):
-                await asynckivy.sleep(1)
-                try:
-                    con = sql.connect('database.db')
-                    cur = con.cursor()
-                    cur.execute("SELECT Name_id, Name, Email from profile")
-                    for row in cur:
-                        self.strng.get_screen('screen1').ids.name_perfil_toolbar.text = row[1]
-                        self.strng.get_screen('screen1').ids.email_perfil_toolbar.text = row[2]
-                        print('teste')
-                    con.commit()
-                    con.close()
-                except:
-                    pass
-        asynckivy.start(set_refresh_screen1())
+   
 
         
     ###############CARREGANDO OS VALORES DA CHECKLIST##############
@@ -342,22 +292,9 @@ class PawareApp(MDApp):
             self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
             self.strng.get_screen('screen2').ids.my_checklists.add_widget(self.id_nome)
             self.strng.get_screen('screen1').manager.current = 'screen1'
-            con = sql.connect('database.db')
-            cur = con.cursor() 
-            cur.execute("INSERT INTO checklist (Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",(Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status))
         except Exception as erro:
             print(erro)
 
-    def load_all_checklists(self):
-        try:
-            con = sql.connect('database.db')
-            cur = con.cursor()
-            detalhes = cur.execute("SELECT * FROM profile")
-            print(detalhes)
-            con.commit()
-            con.close()
-        except Exception as erro:
-            print(erro)
             
 
     
