@@ -112,16 +112,24 @@ class PawareApp(MDApp):
                 await asynckivy.sleep(1)
                 self.strng.get_screen('profile').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('profile').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('screen1').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('screen1').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('screen2').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('screen2').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('screen3').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('screen3').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('screen5').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('screen5').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('checklistName').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('checklistName').ids.email_perfil_toolbar.text = email
+
+                self.strng.get_screen('profile').ids.profile_name_input.text = nome
+                self.strng.get_screen('profile').ids.profile_email_input.text = email
                 
             except Exception as erro:
                 print(erro)
