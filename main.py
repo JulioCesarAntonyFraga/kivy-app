@@ -23,7 +23,7 @@ from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.clock import Clock
 from bson import ObjectId
-
+from datetime import date
 
 
 ##################TELAS APP####################
@@ -197,6 +197,8 @@ class PawareApp(MDApp):
         db = myclient["kivyapp"]
         col_lv = db["lvs"]
 
+        today = str(date.today())
+
         self.store = JsonStore("userProfile.json")
         nome = self.store.get('UserInfo')['name']
         email = self.store.get('UserInfo')['email']
@@ -241,13 +243,15 @@ class PawareApp(MDApp):
         item9_prazo = self.strng.get_screen(f'checklistItem9').ids.prazo_item9.text
 
 
+        ##radio inputs
+
 
         lv = {
             "nome_lv": lv_name,
             "descricao_lv": lv_descricao,
             "nome_usuario": nome,
             "email_usuario": email,
-            "Data_emissao": "Data de emissão",
+            "Data_emissao": today.replace('-','/'),
             "porcentagem_c": "tantos % de C",
             "quantidade_nc": "Quantidade de NC",
             "quantidade_na": "Quantidade de NA",

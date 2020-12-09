@@ -1,9 +1,5 @@
-import pymongo
-from bson import ObjectId
+from datetime import date
 
-myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
-db = myclient["kivyapp"]
-col_lv = db["lvs"]
+today = str(date.today())
 
-for id in col_lv.find():
-
+print(today.replace('-','/'))
