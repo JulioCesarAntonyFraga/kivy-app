@@ -147,10 +147,14 @@ class PawareApp(MDApp):
     def on_start(self):
         self.load_all_checklists()       
         self.store = JsonStore("userProfile.json")
-        try:
-            if self.store.get('UserInfo')['name'] != "":
-                self.strng.get_screen('screen1').manager.current = 'screen1'
-        except KeyError:
+        print(self.store.get('UserInfo')['name'])
+        print(self.store.get('UserInfo')['name'])
+
+        if self.store.get('UserInfo')['name'] != "":
+            print(self.store.get('UserInfo')['name'])
+            self.strng.get_screen('screen1').manager.current = 'screen1'
+        else:
+            print(self.store.get('UserInfo')['name'])
             self.strng.get_screen('welcomescreen').manager.current = 'welcomescreen' 
 
     def clear_items_inputs(self):
