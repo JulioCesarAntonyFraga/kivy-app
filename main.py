@@ -91,7 +91,6 @@ sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
-    
     try:
         store = JsonStore("userProfile.json")
         name_perfil_toolbar = store.get('UserInfo')['name']
@@ -106,8 +105,6 @@ class PawareApp(MDApp):
                 self.store = JsonStore("userProfile.json")
                 nome = self.store.get('UserInfo')['name']
                 email = self.store.get('UserInfo')['email']
-                print(nome)
-                print(email)
 
                 await asynckivy.sleep(1)
                 self.strng.get_screen('profile').ids.name_perfil_toolbar.text = nome
@@ -140,8 +137,6 @@ class PawareApp(MDApp):
         email = self.strng.get_screen('profile').ids.profile_email_input.text
         self.store.put('UserInfo',name = name, email= email)
         self.set_refresh()     
-
-
 
     #######################CARREGAMENTO E CONTRUCAO AO INICIAR O APP##############
     def build(self):
@@ -187,7 +182,6 @@ class PawareApp(MDApp):
             self.strng.get_screen('checklistItem6').ids.acao_item6.text = ''
             self.strng.get_screen('checklistItem6').ids.responsavel_item6.text = ''
             self.strng.get_screen('checklistItem6').ids.prazo_item6.text = ''
-
 
     class ContentNavigationDrawer(BoxLayout):  #######PERFIL########
         pass
