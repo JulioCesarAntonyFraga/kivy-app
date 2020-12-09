@@ -5,7 +5,6 @@ myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb
 db = myclient["kivyapp"]
 col_lv = db["lvs"]
 
-get_ids = col_lv.find()
+get_ids = col_lv.count_documents({})
 
-for id in get_ids:
-    print(id['_id'])
+print(get_ids)

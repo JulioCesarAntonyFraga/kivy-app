@@ -559,9 +559,9 @@ class PawareApp(MDApp):
 
         get_ids = col_lv.find()
 
-        for i in range(0,col_lv.count_documents({}) - 1):
+        for i in range(1,col_lv.count_documents({}) - 1):
             soma_altura = 0.83
-            for item in col_lv.find({},{ "_id": i}):
+            for item in col_lv.find({},{ "_id": i - 1}):
                 print(item)
                 list_name = item["nome_lv"]
                 descricao_lv = item["descricao_lv"]
