@@ -1,5 +1,3 @@
-from datetime import date
+a = 2.43254235
 
-today = str(date.today())
-
-print(today.replace('-','/'))
+print(round(a, 2))

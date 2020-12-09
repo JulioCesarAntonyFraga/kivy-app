@@ -190,8 +190,19 @@ class PawareApp(MDApp):
     class DrawerList(ThemableBehavior, MDList): ######lISTAS DE AÇÕES DO PERFIL######
         pass
 
+    def check_lv_name_and_description(self):
+        print(self.strng.get_screen('checklistName').ids.name_text_field_lv.text)
+        print(self.strng.get_screen('checklistName').ids.descricao_text_field_lv.text)
+        if self.strng.get_screen('checklistName').ids.name_text_field_lv.text != '' and self.strng.get_screen('checklistName').ids.descricao_text_field_lv.text != '':
+            self.strng.get_screen('checklistName').ids.lv_name_button.disabled = False
+        
+        else:
+            self.strng.get_screen('checklistName').ids.lv_name_button.disabled = True
 
     def add_new_lv(self):
+        conformes = 0
+        nao_conformes = 0
+        nao_aplicaveis = 0
         myclient = pymongo.MongoClient(
             "mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
         db = myclient["kivyapp"]
@@ -242,78 +253,207 @@ class PawareApp(MDApp):
         item9_responsavel = self.strng.get_screen(f'checklistItem9').ids.responsavel_item9.text
         item9_prazo = self.strng.get_screen(f'checklistItem9').ids.prazo_item9.text
 
+        item1_resultado = ''
+        item2_resultado = ''
+        item3_resultado = ''
+        item4_resultado = ''
+        item5_resultado = ''
+        item6_resultado = ''
+        item7_resultado = ''
+        item8_resultado = ''
+        item9_resultado = ''
 
-        ##radio inputs
+        #################conformes#################
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_c.active == True:
+            item1_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem2').ids.radio_item2_c.active == True:
+            item2_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem3').ids.radio_item3_c.active == True:
+            item3_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem4').ids.radio_item4_c.active == True:
+            item4_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem5').ids.radio_item5_c.active == True:
+            item5_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem6').ids.radio_item6_c.active == True:
+            item6_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem7').ids.radio_item7_c.active == True:
+            item7_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem8').ids.radio_item8_c.active == True:
+            item8_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem9').ids.radio_item9_c.active == True:
+            item9_resultado = 'Conforme'
+            conformes += 1
+
+
+
+
+
+        #################Não conformes#################
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_nc.active == True:
+            item1_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem2').ids.radio_item2_nc.active == True:
+            item2_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem3').ids.radio_item3_nc.active == True:
+            item3_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem4').ids.radio_item4_nc.active == True:
+            item4_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem5').ids.radio_item5_nc.active == True:
+            item5_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem6').ids.radio_item6_nc.active == True:
+            item6_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem7').ids.radio_item7_nc.active == True:
+            item7_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem8').ids.radio_item8_nc.active == True:
+            item8_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem9').ids.radio_item9_nc.active == True:
+            item9_resultado = 'Não conforme'
+            nao_conformes += 1
+
+
+
+
+
+
+        #################Não aplicáveis#################
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_na.active == True:
+            item1_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem2').ids.radio_item2_na.active == True:
+            item2_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem3').ids.radio_item3_na.active == True:
+            item3_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem4').ids.radio_item4_na.active == True:
+            item4_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem5').ids.radio_item5_na.active == True:
+            item5_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem6').ids.radio_item6_na.active == True:
+            item6_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem7').ids.radio_item7_na.active == True:
+            item7_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem8').ids.radio_item8_na.active == True:
+            item8_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem9').ids.radio_item9_na.active == True:
+            item9_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        porcentagem_conformes = conformes * 100 / 9
 
 
         lv = {
-            "nome_lv": lv_name,
-            "descricao_lv": lv_descricao,
-            "nome_usuario": nome,
-            "email_usuario": email,
-            "Data_emissao": today.replace('-','/'),
-            "porcentagem_c": "tantos % de C",
-            "quantidade_nc": "Quantidade de NC",
-            "quantidade_na": "Quantidade de NA",
-            "lv_status": "Status da lista",
+                "nome_lv": lv_name,
+                "descricao_lv": lv_descricao,
+                "nome_usuario": nome,
+                "email_usuario": email,
+                "Data_emissao": today.replace('-','/'),
+                "porcentagem_c": round(porcentagem_conformes, 2),
+                "quantidade_nc": nao_conformes,
+                "quantidade_na": nao_aplicaveis,
+                "lv_status": "Status da lista",
 
-            "item1_nome": "Os locais adjacentes das caixas estão limpos e organizados?",
-            "item1_resultado": "Status item 1 (C, NC, NA)",
-            "item1_acao": item1_acao,
-            "item1_prazo": item1_prazo,
-            "item1_responsavel": item1_responsavel,
+                "item1_nome": "Os locais adjacentes das caixas estão limpos e organizados?",
+                "item1_resultado": item1_resultado,
+                "item1_acao": item1_acao,
+                "item1_prazo": item1_prazo,
+                "item1_responsavel": item1_responsavel,
 
-            "item2_nome": "As caixas estão com acúmulo excessivo de gordura?",
-            "item2_resultado": "Status item 2 (C, NC, NA)",
-            "item2_acao": item2_acao,
-            "item2_prazo": item2_prazo,
-            "item2_responsavel": item2_responsavel,
+                "item2_nome": "As caixas estão com acúmulo excessivo de gordura?",
+                "item2_resultado": item2_resultado,
+                "item2_acao": item2_acao,
+                "item2_prazo": item2_prazo,
+                "item2_responsavel": item2_responsavel,
 
-            "item3_nome": "As caixas de gordura estão obstruídas?",
-            "item3_resultado": "Status item 3 (C, NC, NA)",
-            "item3_acao": item3_acao,
-            "item3_prazo": item3_prazo,
-            "item3_responsavel": item3_responsavel,
+                "item3_nome": "As caixas de gordura estão obstruídas?",
+                "item3_resultado": item3_resultado,
+                "item3_acao": item3_acao,
+                "item3_prazo": item3_prazo,
+                "item3_responsavel": item3_responsavel,
 
-            "item4_nome": "Há evidências de transbordo?",
-            "item4_resultado": "Status item 4 (C, NC, NA)",
-            "item4_acao": item4_acao,
-            "item4_prazo": item4_prazo,
-            "item4_responsavel": item4_responsavel,
+                "item4_nome": "Há evidências de transbordo?",
+                "item4_resultado": item4_resultado,
+                "item4_acao": item4_acao,
+                "item4_prazo": item4_prazo,
+                "item4_responsavel": item4_responsavel,
 
-            "item5_nome": "Há evidência de odores?",
-            "item5_resultado": "Status item 5 (C, NC, NA)",
-            "item5_acao": item5_acao,
-            "item5_prazo": item5_prazo,
-            "item5_responsavel": item5_responsavel,
+                "item5_nome": "Há evidência de odores?",
+                "item5_resultado": item5_resultado,
+                "item5_acao": item5_acao,
+                "item5_prazo": item5_prazo,
+                "item5_responsavel": item5_responsavel,
 
-            "item6_nome": "Há detritos de alimentos, sobras de embalagens, entre outros?",
-            "item6_resultado": "Status item 6 (C, NC, NA)",
-            "item6_acao": item6_acao,
-            "item6_prazo": item6_prazo,
-            "item6_responsavel": item6_responsavel,
+                "item6_nome": "Há detritos de alimentos, sobras de embalagens, entre outros?",
+                "item6_resultado": item6_resultado,
+                "item6_acao": item6_acao,
+                "item6_prazo": item6_prazo,
+                "item6_responsavel": item6_responsavel,
 
-            "item7_nome": "Há telas (grade) de retenção nas áreas internas do refeitório cin objetivo de reter sobras de alimentos?",
-            "item7_resultado": "Status item 7 (C, NC, NA)",
-            "item7_acao": item7_acao,
-            "item7_prazo": item7_prazo,
-            "item7_responsavel": item7_responsavel,
+                "item7_nome": "Há telas (grade) de retenção nas áreas internas do refeitório cin objetivo de reter sobras de alimentos?",
+                "item7_resultado": item7_resultado,
+                "item7_acao": item7_acao,
+                "item7_prazo": item7_prazo,
+                "item7_responsavel": item7_responsavel,
 
-            "item8_nome": "As tampas das caixas estão encaixadas de acordo com a construção?",
-            "item8_resultado": "Status item 8 (C, NC, NA)",
-            "item8_acao": item8_acao,
-            "item8_prazo": item8_prazo,
-            "item8_responsavel": item8_responsavel,
+                "item8_nome": "As tampas das caixas estão encaixadas de acordo com a construção?",
+                "item8_resultado": item8_resultado,
+                "item8_acao": item8_acao,
+                "item8_prazo": item8_prazo,
+                "item8_responsavel": item8_responsavel,
 
-            "item9_nome": "O efluente está sendo direcionado para a Estação de tratamento de Efluente - ETE?",
-            "item9_resultado": "Status item 9 (C, NC, NA)",
-            "item9_acao": item9_acao,
-            "item9_prazo": item9_prazo,
-            "item9_responsavel": item9_responsavel,
+                "item9_nome": "O efluente está sendo direcionado para a Estação de tratamento de Efluente - ETE?",
+                "item9_resultado": item9_resultado,
+                "item9_acao": item9_acao,
+                "item9_prazo": item9_prazo,
+                "item9_responsavel": item9_responsavel,
 
         }
 
-        x = col_lv.insert_one(lv)
+        insert = col_lv.insert_one(lv)
 
     ##################CONFIRMAÇAO DE SAIDA APP################
     dialog = None  

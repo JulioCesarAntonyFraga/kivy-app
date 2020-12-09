@@ -679,6 +679,11 @@ ScreenManager:
 
         Widget:
 
+    Image:
+        source: 'ilustration1.png'
+        size: self.texture_size
+        pos_hint: {'center_x':0.5,'center_y':0.5}
+
 
     MDNavigationDrawer:
         type: "standard"
@@ -777,6 +782,14 @@ ScreenManager:
 
         Widget:
 
+    MDFillRoundFlatIconButton:
+        id:check1
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_name_and_description()
+
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
@@ -786,8 +799,8 @@ ScreenManager:
             root.manager.current = 'screen5'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:lv_name_button
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.85,'center_y':0.1}
@@ -843,7 +856,7 @@ ScreenManager:
         pos_hint: {'center_x':0.15,'center_y':0.1}
         user_font_size : '13sp'
         on_press:
-            root.manager.current = 'screen5'
+            root.manager.current = 'checklistName'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
         id:next_button1
