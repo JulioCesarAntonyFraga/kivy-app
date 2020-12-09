@@ -89,59 +89,49 @@ sm.add_widget(ChecklistItem7(name = 'checklistItem7'))
 sm.add_widget(ChecklistItem8(name = 'checklistItem8'))
 sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 
-try:
-    client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
-    db = client["kivyapp"]
-    col_profile = db["profile"]
-    get_profile_data= col_profile.find_one()
-except Exception as erro:
-    name_perfil_toolbar = 'OFFILINE'
-    email_perfil_toolbar = 'OFFILINE'
-
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
-
-    name_perfil_toolbar = get_profile_data['nome']
-    email_perfil_toolbar = get_profile_data['email']
+    
+    try:
+        store = JsonStore("userProfile.json")
+        name_perfil_toolbar = store.get('UserInfo')['name']
+        email_perfil_toolbar = store.get('UserInfo')['email']
+    except:
+        pass
 
     def set_refresh(self):
         async def set_refresh():
             await asynckivy.sleep(1)
             try:
-                client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
-                db = client["kivyapp"]
-                col_profile = db["profile"]
-                get_profile_data= col_profile.find_one()
+                self.store = JsonStore("userProfile.json")
+                nome = self.store.get('UserInfo')['name']
+                email = self.store.get('UserInfo')['email']
+                print(nome)
+                print(email)
 
                 await asynckivy.sleep(1)
-                self.strng.get_screen('profile').ids.name_perfil_toolbar.text = get_profile_data['nome']
-                self.strng.get_screen('profile').ids.email_perfil_toolbar.text = get_profile_data['email']
-                self.strng.get_screen('screen1').ids.name_perfil_toolbar.text = get_profile_data['nome']
-                self.strng.get_screen('screen1').ids.email_perfil_toolbar.text = get_profile_data['email']
-                self.strng.get_screen('screen2').ids.name_perfil_toolbar.text = get_profile_data['nome']
-                self.strng.get_screen('screen2').ids.email_perfil_toolbar.text = get_profile_data['email']
-                self.strng.get_screen('screen3').ids.name_perfil_toolbar.text = get_profile_data['nome']
-                self.strng.get_screen('screen3').ids.email_perfil_toolbar.text = get_profile_data['email']
-                self.strng.get_screen('screen5').ids.name_perfil_toolbar.text = get_profile_data['nome']
-                self.strng.get_screen('screen5').ids.email_perfil_toolbar.text = get_profile_data['email']
-                self.strng.get_screen('checklistName').ids.name_perfil_toolbar.text = get_profile_data['nome']
-                self.strng.get_screen('checklistName').ids.email_perfil_toolbar.text = get_profile_data['email']
+                self.strng.get_screen('profile').ids.name_perfil_toolbar.text = nome
+                self.strng.get_screen('profile').ids.email_perfil_toolbar.text = email
+                self.strng.get_screen('screen1').ids.name_perfil_toolbar.text = nome
+                self.strng.get_screen('screen1').ids.email_perfil_toolbar.text = email
+                self.strng.get_screen('screen2').ids.name_perfil_toolbar.text = nome
+                self.strng.get_screen('screen2').ids.email_perfil_toolbar.text = email
+                self.strng.get_screen('screen3').ids.name_perfil_toolbar.text = nome
+                self.strng.get_screen('screen3').ids.email_perfil_toolbar.text = email
+                self.strng.get_screen('screen5').ids.name_perfil_toolbar.text = nome
+                self.strng.get_screen('screen5').ids.email_perfil_toolbar.text = email
+                self.strng.get_screen('checklistName').ids.name_perfil_toolbar.text = nome
+                self.strng.get_screen('checklistName').ids.email_perfil_toolbar.text = email
                 
             except Exception as erro:
                 print(erro)
         asynckivy.start(set_refresh())
 
     def update_profile(self):
-        nome = {"nome": get_profile_data['nome']}
-        novo_nome = {"$set": {"nome": self.strng.get_screen('profile').ids.profile_name_input.text }}
-
-        email = {"email": get_profile_data['email']}
-        novo_email = {"$set": {"email": self.strng.get_screen('profile').ids.profile_email_input.text}}
-
-        col_profile.update_one(nome, novo_nome)
-        col_profile.update_one(email, novo_email)
+        name = self.strng.get_screen('profile').ids.profile_name_input.text
+        email = self.strng.get_screen('profile').ids.profile_email_input.text
+        self.store.put('UserInfo',name = name, email= email)
         self.set_refresh()     
-
 
 
 
@@ -317,6 +307,13 @@ class PawareApp(MDApp):
                 cancel_btn_username_dialogue = MDFlatButton(text='OK',on_release = self.close_username_dialogue)
                 self.dialog = MDDialog(title = 'Email inválido',text = "Por favor preencha um email válido",size_hint = (0.7,0.2),buttons = [cancel_btn_username_dialogue])
                 self.dialog.open()
+        else:
+            name = self.strng.get_screen('usernamescreen').ids.username_text_fied.text
+            email = self.strng.get_screen('dob').ids.email_text_fied.text
+            self.store.put('UserInfo',name = name, email= email)
+            self.strng.get_screen('dob').ids.disabled_button2.disabled = False
+            self.set_refresh()
+
 
     ######BUSCANDO VALORES DEPOIS DE PREENCHER A LV############
     def get_details_lv(self):
