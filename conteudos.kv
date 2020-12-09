@@ -263,12 +263,10 @@ ScreenManager:
 
         Widget:
 
-    ScrollView:
-        size_hint: (1.10, 0.90)
-        pos_hint: {'center_x': .55}
+    
 
-        MDList:
-            id: my_checklists
+    MDList:
+        id: my_checklists
             
 
     MDNavigationDrawer:
@@ -363,7 +361,7 @@ ScreenManager:
 
         Widget:
 
-
+    
     MDTextField:
         id: profile_name_input
         text: app.list_name
@@ -487,7 +485,7 @@ ScreenManager:
                 font_style: "Caption"
                 height: self.texture_size[1]
 
-
+        
             DrawerList:
                 id: md_list
                 
