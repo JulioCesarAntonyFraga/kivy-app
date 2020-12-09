@@ -352,8 +352,8 @@ class PawareApp(MDApp):
         try:
             con = sql.connect('database.db')
             cur = con.cursor()
-            detalhes = cur.execute("SELECT * FROM checklist")
-            print(detalhes[0][0])
+            detalhes = cur.execute("SELECT * FROM profile")
+            print(detalhes)
             con.commit()
             con.close()
         except Exception as erro:

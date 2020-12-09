@@ -862,7 +862,7 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'Os locais adjacentes das caixas estão limpos e organizados?'
         font_style: 'Button'
         font_size: '15sp'
@@ -870,17 +870,17 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -898,7 +898,7 @@ ScreenManager:
             size_hint: None, None
             size: dp(90), dp(90)
             active: False
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
 
         MDCheckbox:
             on_press:
@@ -909,7 +909,7 @@ ScreenManager:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
 
         MDCheckbox:
             on_press:
@@ -921,13 +921,13 @@ ScreenManager:
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item1
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -939,7 +939,7 @@ ScreenManager:
     MDTextField:
         disabled: True
         id: responsavel_item1
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -951,7 +951,7 @@ ScreenManager:
     MDTextField:
         disabled: True
         id: prazo_item1
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -960,15 +960,14 @@ ScreenManager:
         icon_right_color: app.theme_cls.primary_color
         required : True
 
-    MDRectangleFlatIconButton:
+    MDFillRoundFlatIconButton:
         id:check1
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
+        pos_hint: {'center_x':0.5,'center_y':0.27}
         size: sp(140), sp(40)
         on_press: 
             app.check_lv_items()
-            app.get_details_lv()
 
 
 #Item 2
@@ -984,13 +983,6 @@ ScreenManager:
 
         Widget:
 
-    MDRectangleFlatIconButton:
-        id:check2
-        text: 'CONFIRMAR'
-        icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press: app.check_lv_items()
-        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1017,7 +1009,7 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'As caixas estão com acúmulo excessivo de gordura?'
         font_style: 'Button'
         font_size: '15sp'
@@ -1025,17 +1017,17 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -1049,37 +1041,40 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             id: radio_item2_c
-            group: 'group2'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
+            active: False
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
 
         MDCheckbox:
+            on_press:
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
             id: radio_item2_nc
-            on_press: app.enable_items_inputs()
-            group: 'group2'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
 
         MDCheckbox:
-            id: radio_item2_na
             on_press:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            group: 'group2'
+            active: False
+            id: radio_item2_na
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item2
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1089,10 +1084,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item2
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        id: responsavel_item2
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1102,9 +1096,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item2
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        id: prazo_item2
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1112,7 +1106,15 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.check_lv_items()
+
+    MDFillRoundFlatIconButton:
+        id:check2
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.27}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_items()
+            
 
 #Item 3
 <ChecklistItem3>:
@@ -1126,14 +1128,6 @@ ScreenManager:
             elevation:5
 
         Widget:
-
-    MDRectangleFlatIconButton:
-        id:check3
-        text: 'CONFIRMAR'
-        icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press: app.check_lv_items()
-        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1160,25 +1154,25 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'As caixas de gordura estão obstruídas?'
         font_style: 'Button'
-        font_size: '10sp'
+        font_size: '15sp'
 
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -1187,42 +1181,45 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press:
+                app.clear_items_inputs()
+                app.enable_items_inputs()
+                app.disable_nextButton()
             id: radio_item3_c
-            on_press:
-                app.clear_items_inputs()
-                app.enable_items_inputs()
-                app.disable_nextButton()
-            group: 'group3'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
+            active: False
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
 
         MDCheckbox:
+            on_press:
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
             id: radio_item3_nc
-            on_press: app.enable_items_inputs()
-            group: 'group3'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
 
         MDCheckbox:
-            id: radio_item3_na
             on_press:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            group: 'group3'
+            active: False
+            id: radio_item3_na
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item3
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1232,10 +1229,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item3
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        id: responsavel_item3
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1245,9 +1241,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item3
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        id: prazo_item3
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1255,7 +1251,14 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.check_lv_items()
+
+    MDFillRoundFlatIconButton:
+        id:check3
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.27}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_items()
 
 
 #Item 4
@@ -1271,13 +1274,6 @@ ScreenManager:
 
         Widget:
 
-    MDRectangleFlatIconButton:
-        id:check4
-        text: 'CONFIRMAR'
-        icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press: app.check_lv_items()
-        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1304,7 +1300,7 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'Há evidências de transbordo?'
         font_style: 'Button'
         font_size: '15sp'
@@ -1312,17 +1308,17 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -1331,42 +1327,45 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press:
+                app.clear_items_inputs()
+                app.enable_items_inputs()
+                app.disable_nextButton()
             id: radio_item4_c
-            on_press:
-                app.clear_items_inputs()
-                app.enable_items_inputs()
-                app.disable_nextButton()
-            group: 'group4'
-            size_hint: None, None
-            size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
-
-        MDCheckbox:
-            id: radio_item4_nc
-            on_press: app.enable_items_inputs()
-            group: 'group4'
-            size_hint: None, None
-            size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
-
-        MDCheckbox:
-            id: radio_item4_na
-            on_press:
-                app.clear_items_inputs()
-                app.enable_items_inputs()
-                app.disable_nextButton()
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            active: False
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
+
+        MDCheckbox:
+            on_press:
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
+            id: radio_item4_nc
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
+
+        MDCheckbox:
+            on_press:
+                app.clear_items_inputs()
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
+            id: radio_item4_na
+            group: 'group'
+            size_hint: None, None
+            size: dp(90), dp(90)
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item4
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1376,10 +1375,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item4
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        id: responsavel_item4
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1389,9 +1387,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item4
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        id: prazo_item4
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1399,7 +1397,14 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.check_lv_items()
+
+    MDFillRoundFlatIconButton:
+        id:check4
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.27}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_items()
 
 
 
@@ -1416,12 +1421,6 @@ ScreenManager:
 
         Widget:
 
-    MDRectangleFlatIconButton:
-        text: 'CONFIRMAR'
-        icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press: app.check_lv_items()
-        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1448,7 +1447,7 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'Há evidência de odores?'
         font_style: 'Button'
         font_size: '15sp'
@@ -1456,17 +1455,17 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
-
+        
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -1475,42 +1474,45 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press:
+                app.clear_items_inputs()
+                app.enable_items_inputs()
+                app.disable_nextButton()
             id: radio_item5_c
-            on_press:
-                app.clear_items_inputs()
-                app.enable_items_inputs()
-                app.disable_nextButton()
-            group: 'group5'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
+            active: False
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
 
         MDCheckbox:
-            group: 'group5'
-            on_press: app.enable_items_inputs()
+            on_press:
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
             id: radio_item5_nc
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
 
         MDCheckbox:
-            id: radio_item5_na
             on_press:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            group: 'group5'
+            active: False
+            id: radio_item5_na
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item5
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1520,10 +1522,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item5
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        id: responsavel_item5
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1533,9 +1534,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item5
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        id: prazo_item5
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1543,7 +1544,14 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.check_lv_items()
+
+    MDFillRoundFlatIconButton:
+        id:check5
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.27}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_items()
 
 
 #Item 6
@@ -1559,13 +1567,6 @@ ScreenManager:
 
         Widget:
 
-    MDRectangleFlatIconButton:
-        id:check6
-        text: 'CONFIRMAR'
-        icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press: app.check_lv_items()
-        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1593,7 +1594,7 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'Há detritos de alimentos, sobras de embalagens, entre outros?'
         font_style: 'Button'
         font_size: '15sp'
@@ -1601,17 +1602,17 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -1620,42 +1621,45 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press:
+                app.clear_items_inputs()
+                app.enable_items_inputs()
+                app.disable_nextButton()
             id: radio_item6_c
-            on_press:
-                app.clear_items_inputs()
-                app.enable_items_inputs()
-                app.disable_nextButton()
-            group: 'group6'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
+            active: False
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
 
         MDCheckbox:
+            on_press:
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
             id: radio_item6_nc
-            on_press: app.enable_items_inputs()
-            group: 'group6'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
 
         MDCheckbox:
-            id: radio_item6_na
             on_press:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            group: 'group6'
+            active: False
+            id: radio_item6_na
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item6
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1665,10 +1669,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item6
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        id: responsavel_item6
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1678,9 +1681,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item6
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        id: prazo_item6
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1688,7 +1691,14 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.check_lv_items()
+
+    MDFillRoundFlatIconButton:
+        id:check6
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.27}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_items()
 
 
 #Item 7
@@ -1704,13 +1714,6 @@ ScreenManager:
 
         Widget:
 
-    MDRectangleFlatIconButton:
-        id:check7
-        text: 'CONFIRMAR'
-        icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press: app.check_lv_items()
-        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1737,7 +1740,7 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'Há telas (grade) de retenção nas áreas internas do refeitório cin objetivo de reter sobras de alimentos?'
         font_style: 'Button'
         font_size: '15sp'
@@ -1746,17 +1749,17 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -1765,42 +1768,45 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press:
+                app.clear_items_inputs()
+                app.enable_items_inputs()
+                app.disable_nextButton()
             id: radio_item7_c
-            on_press:
-                app.clear_items_inputs()
-                app.enable_items_inputs()
-                app.disable_nextButton()
-            group: 'group7'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
+            active: False
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
 
         MDCheckbox:
+            on_press:
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
             id: radio_item7_nc
-            on_press: app.enable_items_inputs()
-            group: 'group7'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
 
         MDCheckbox:
-            id: radio_item7_na
             on_press:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            group: 'group7'
+            active: False
+            id: radio_item7_na
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item7
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1810,10 +1816,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item7
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        id: responsavel_item7
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1823,10 +1828,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item7
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        id: prazo_item7
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1834,6 +1838,14 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
+
+    MDFillRoundFlatIconButton:
+        id:check7
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.27}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_items()
 
 
 #Item 8
@@ -1848,14 +1860,6 @@ ScreenManager:
             elevation:5
 
         Widget:
-
-    MDRectangleFlatIconButton:
-        id:check8
-        text: 'CONFIRMAR'
-        icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press: app.check_lv_items()
-        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -1882,7 +1886,7 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'As tampas das caixas estão encaixadas de acordo com a construção?'
         font_style: 'Button'
         font_size: '15sp'
@@ -1891,17 +1895,17 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -1910,42 +1914,45 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press:
+                app.clear_items_inputs()
+                app.enable_items_inputs()
+                app.disable_nextButton()
             id: radio_item8_c
-            on_press:
-                app.clear_items_inputs()
-                app.enable_items_inputs()
-                app.disable_nextButton()
-            group: 'group8'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
+            active: False
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
 
         MDCheckbox:
+            on_press:
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
             id: radio_item8_nc
-            on_press: app.enable_items_inputs()
-            group: 'group8'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
 
         MDCheckbox:
-            id: radio_item8_na
             on_press:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            group: 'group8'
+            active: False
+            id: radio_item8_na
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item8
         disabled: True
-        on_focus: app.check_lv_items()
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1955,10 +1962,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: responsavel_item8
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        id: responsavel_item8
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -1968,10 +1974,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item8
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        id: prazo_item8
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -1979,6 +1984,14 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
+
+    MDFillRoundFlatIconButton:
+        id:check8
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.27}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_items()
 
 
 
@@ -1995,13 +2008,6 @@ ScreenManager:
 
         Widget:
 
-    MDRectangleFlatIconButton:
-        id:check9
-        text: 'CONFIRMAR'
-        icon: 'alert-circle-outline'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press: app.check_lv_items()
-        size: sp(140), sp(40)
 
     MDFloatingActionButton:
         icon: 'arrow-left'
@@ -2027,26 +2033,25 @@ ScreenManager:
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_y':0.80}
+        pos_hint: {'center_y':0.81}
         text: 'O efluente está sendo direcionado para a Estação de tratamento de Efluente - ETE?'
         font_style: 'Button'
         font_size: '15sp'
       
 
-
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.38, 'center_y':0.62}
+        pos_hint: {'center_x': 0.27, 'center_y':0.66}
         text: 'C'
         
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.58, 'center_y':0.62}
+        pos_hint: {'center_x': 0.53, 'center_y':0.66}
         text: 'NC'
 
     MDLabel:
         halign: "center"
-        pos_hint: {'center_x': 0.78, 'center_y':0.62}
+        pos_hint: {'center_x': 0.79, 'center_y':0.66}
         text: 'NA'
 
 
@@ -2055,41 +2060,45 @@ ScreenManager:
         orientation: 'vertical'
 
         MDCheckbox:
+            on_press:
+                app.clear_items_inputs()
+                app.enable_items_inputs()
+                app.disable_nextButton()
             id: radio_item9_c
-            on_press:
-                app.clear_items_inputs()
-                app.enable_items_inputs()
-                app.disable_nextButton()
-            group: 'group9'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            active: True
-            pos_hint: {'center_x': 0.3, 'center_y': 0.62}
+            active: False
+            pos_hint: {'center_x': 0.18, 'center_y': 0.66}
 
         MDCheckbox:
+            on_press:
+                app.enable_items_inputs()
+                app.disable_nextButton()
+            active: False
             id: radio_item9_nc
-            on_press: app.enable_items_inputs()
-            group: 'group9'
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.43, 'center_y': 0.66}
 
         MDCheckbox:
-            id: radio_item9_na
             on_press:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            group: 'group9'
+            active: False
+            id: radio_item9_na
+            group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
-            pos_hint: {'center_x': 0.7, 'center_y': 0.62}
+            pos_hint: {'center_x': 0.69, 'center_y': 0.66}
 
 
     MDTextField:
         id: acao_item9
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.50}
+        pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
         hint_text : 'Ação'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -2097,13 +2106,11 @@ ScreenManager:
         icon_right: 'alert'
         icon_right_color: app.theme_cls.primary_color
         required : True
-        on_focus: app.check_lv_items()
 
     MDTextField:
-        id: responsavel_item9
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.40}
+        id: responsavel_item9
+        pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
         helper_text: 'Obrigatório para uma não conformidade'
@@ -2113,10 +2120,9 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: prazo_item9
-        on_focus: app.check_lv_items()
         disabled: True
-        pos_hint: {'center_x':0.5,'center_y':0.30}
+        id: prazo_item9
+        pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
         icon_right: 'calendar'
@@ -2124,4 +2130,12 @@ ScreenManager:
         helper_text_mode: 'on_error'
         icon_right_color: app.theme_cls.primary_color
         required : True
+
+    MDFillRoundFlatIconButton:
+        id:check9
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.27}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_items()
 
