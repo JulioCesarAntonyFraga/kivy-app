@@ -98,7 +98,8 @@ class PawareApp(MDApp):
         self.strng = Builder.load_file('conteudos.kv')
         return self.strng
     #############FUNCAO AO INICIAR O APP ELE VAI CARREGAR ISSO ANTES DE MOSTRAR TELA#################
-    def on_start(self):         
+    def on_start(self):
+        self.load_all_checklists()        
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
@@ -242,7 +243,7 @@ class PawareApp(MDApp):
         con.close()
     except:
         pass
-    
+
     id_nome = 'str(row[0])'
     name_perfil_toolbar = 'row[1]'
     email_perfil_toolbar = 'row[2]'
@@ -313,7 +314,6 @@ class PawareApp(MDApp):
 
     ######BUSCANDO VALORES DEPOIS DE PREENCHER A LV############
     def get_details_lv(self):
-        Id_checklist = 1
         Name_checklist = self.strng.get_screen('checklistName').ids.name_text_fied_lv.text
         Descricao = self.strng.get_screen('checklistName').ids.descricao_text_fied.text
 
@@ -330,12 +330,11 @@ class PawareApp(MDApp):
         data_atual = date.today()
         Data_criada = str('{}/{}/{}'.format(data_atual.day, data_atual.month,data_atual.year))
 
-        self.save_new_checklist_screen(Id_checklist, Name_checklist, Criado_por, Data_criada,Acao,Responsavel_realizar,Prazo,Conformes,Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status)
+        self.save_new_checklist_screen(Name_checklist, Criado_por, Data_criada,Acao,Responsavel_realizar,Prazo,Conformes,Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status)
 
-
-    def save_new_checklist_screen(self,Id_checklist,Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status):
+    def save_new_checklist_screen(self,Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status):
         try:
-            self.id_nome = str(Id_checklist)
+            self.id_nome = str(Name_checklist)
             self.id_nome = ThreeLineIconListItem(
             text=Name_checklist,
             secondary_text='Responsável: ' + Criado_por,
@@ -345,13 +344,21 @@ class PawareApp(MDApp):
             self.strng.get_screen('screen1').manager.current = 'screen1'
             con = sql.connect('database.db')
             cur = con.cursor() 
-            cur.execute("INSERT INTO checklist VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",(Id_checklist,Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status))
+            cur.execute("INSERT INTO checklist (Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",(Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status))
         except Exception as erro:
             print(erro)
 
-        
-           
-    
+    def load_all_checklists(self):
+        try:
+            con = sql.connect('database.db')
+            cur = con.cursor()
+            detalhes = cur.execute("SELECT * FROM checklist")
+            print(detalhes[0][0])
+            con.commit()
+            con.close()
+        except Exception as erro:
+            print(erro)
+            
 
     
     ####################FUNCAO DE BLOQUEI DOS BOTAO CASO NAO SEJA SELECIONADO AS OPCOES DA VERIFICAÇAO############

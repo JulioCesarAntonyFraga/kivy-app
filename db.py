@@ -27,7 +27,7 @@ def setup():
     cursor = conn.cursor()
     create_perfil_table = """
         CREATE TABLE IF NOT EXISTS profile (
-            "Name_id"   INT NOT NULL,
+            "Name_id"  INT NOT NULL,
 			"Name"	TEXT NOT NULL,
 			"Email"	TEXT NOT NULL,
 			PRIMARY KEY("Name_Id") 
@@ -35,7 +35,7 @@ def setup():
     """
     create_checklist_table = """
         CREATE TABLE IF NOT EXISTS checklist (
-            "Id_checklist"	INT NOT NULL,
+            "Id_checklist"	INTEGER PRIMARY KEY AUTOINCREMENT,
 			"Name_checklist" TEXT NOT NULL,
 			"Criado_por" TEXT NOT NULL,
             "Data_criada" TEXT NOT NULL,
@@ -48,7 +48,6 @@ def setup():
             "Total_resultado" FLOAT,
             "Descricao" TEXT,
 			"Status" TEXT NOT NULL,
-			PRIMARY KEY("Id_checklist"),
 			FOREIGN KEY("ID_checklist") REFERENCES "profile"("Name_id")
         );
     """
