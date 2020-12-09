@@ -112,16 +112,24 @@ class PawareApp(MDApp):
                 await asynckivy.sleep(1)
                 self.strng.get_screen('profile').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('profile').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('screen1').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('screen1').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('screen2').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('screen2').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('screen3').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('screen3').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('screen5').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('screen5').ids.email_perfil_toolbar.text = email
+
                 self.strng.get_screen('checklistName').ids.name_perfil_toolbar.text = nome
                 self.strng.get_screen('checklistName').ids.email_perfil_toolbar.text = email
+
+                self.strng.get_screen('profile').ids.profile_name_input.text = nome
+                self.strng.get_screen('profile').ids.profile_email_input.text = email
                 
             except Exception as erro:
                 print(erro)
@@ -140,7 +148,8 @@ class PawareApp(MDApp):
         self.strng = Builder.load_file('conteudos.kv')
         return self.strng
     #############FUNCAO AO INICIAR O APP ELE VAI CARREGAR ISSO ANTES DE MOSTRAR TELA#################
-    def on_start(self):       
+    def on_start(self):
+        self.load_all_checklists()       
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
@@ -186,8 +195,8 @@ class PawareApp(MDApp):
     class DrawerList(ThemableBehavior, MDList): ######lISTAS DE AÇÕES DO PERFIL######
         pass
         
-    ##################CONFIRMAÇAO DE SAIDA FUNÇAO################
-    dialog = None
+    ##################CONFIRMAÇAO DE SAIDA APP################
+    dialog = None  
     def show_alert_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
@@ -195,14 +204,31 @@ class PawareApp(MDApp):
                 text="Você deseja mesmo sair ?",
                 buttons=[
                     MDFlatButton(
-                        text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_app
+                        text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue
+                    ),
+                    MDFlatButton(
+                        text="Não", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_app
+                    ),
+                ],
+            )
+        self.dialog.open()
+        
+    def show_alert_checklist_exit_operation(self):
+        if not self.dialog:
+            self.dialog = MDDialog(
+
+                text="Você deseja mesmo cancelar a verificação ?",
+                buttons=[
+                    MDFlatButton(
+                        text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue1
                     ),
                     MDFlatButton(
                         text="Não", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue
                     ),
                 ],
             )
-        self.dialog.open()  
+        self.dialog.open() 
+
     ####################TELE DE REALMENTE QUER CONFIRMAR EXCLUIR CHECKLIST######################
     def show_alert__delete_dialog(self):
         if not self.dialog:
@@ -219,8 +245,14 @@ class PawareApp(MDApp):
             )
         self.dialog.open()  
     #################BLOCO DE AVISO NOME INVALIDO FECHANDO##################
-    def close_username_dialogue(self,obj):
+    def close_username_dialogue1(self,obj):
+        self.change_screen_to_checklists()
         self.dialog.dismiss()
+
+    def close_username_dialogue(self,obj):
+        self.change_screen_to_checklistname()
+        self.dialog.dismiss()
+
 
     #############FUNCAO PARA BLOCO DE AVISO PARA SAIR DO APP################
     def close_username_dialogue_app(self,obj):
@@ -244,6 +276,9 @@ class PawareApp(MDApp):
     ###############MUDANDO A TELA PARA O MENU DAS CHECKLISTS###########
     def change_screen_to_checklists(self):
         self.strng.get_screen('screen1').manager.current = 'screen1'
+
+    def change_screen_to_checklistname(self):
+        self.strng.get_screen('checklistName').manager.current = 'checklistName'
 
     ####################MUDANDO A TELA PARA A TELA INICIAR UM NOVA VERIFICAÇAO#############
     def start_checklist(self):
@@ -335,13 +370,13 @@ class PawareApp(MDApp):
 
         self.save_new_checklist_screen(Name_checklist, Criado_por, Data_criada,Acao,Responsavel_realizar,Prazo,Conformes,Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status)
 
-    def save_new_checklist_screen(self,Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status):
+    def load_all_checklists(self):
         try:
-            self.id_nome = str(Name_checklist)
+            self.id_nome = 'id checklist 01'
             self.id_nome = ThreeLineIconListItem(
-            text=Name_checklist,
-            secondary_text='Responsável: ' + Criado_por,
-            tertiary_text='Data de emissão: ' + Data_criada, on_release=self.change_screen)
+            text="APR 01",
+            secondary_text='Responsável: ' + "Gabriel",
+            tertiary_text='Data de emissão: ' + "12/20/2020", on_release=self.change_screen)
             self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
             self.strng.get_screen('screen2').ids.my_checklists.add_widget(self.id_nome)
             self.strng.get_screen('screen1').manager.current = 'screen1'

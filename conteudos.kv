@@ -576,8 +576,8 @@ ScreenManager:
         disabled: 'true'
         icon: 'check'
         md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.85,'center_y':0.1}
-        user_font_size : '13sp'
+        pos_hint: {'center_x':0.50,'center_y':0.26}
+        user_font_size : '15sp'
         on_press:
             app.enable_profile_inputs()
             app.update_profile()
@@ -774,7 +774,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Iniciar Verificação'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
@@ -834,7 +834,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Item 01'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
@@ -980,7 +980,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Item 02'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
@@ -1126,7 +1126,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Item 03'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
@@ -1271,7 +1271,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Item 04'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
@@ -1418,7 +1418,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Item 05'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
@@ -1564,7 +1564,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Item 06'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
@@ -1711,7 +1711,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Item 07'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
@@ -1858,7 +1858,7 @@ ScreenManager:
         orientation: 'vertical'
         MDToolbar:
             title: 'Item 08'
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["exit-run", lambda x: app.show_alert_checklist_exit_operation()]]
             elevation:5
 
         Widget:
