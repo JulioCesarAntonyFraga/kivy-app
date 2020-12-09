@@ -22,6 +22,7 @@ from kivymd.uix.list import OneLineListItem, MDList, TwoLineListItem, ThreeLineL
 from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.clock import Clock
+from bson import ObjectId
 
 
 
@@ -91,7 +92,6 @@ sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
-    
     try:
         store = JsonStore("userProfile.json")
         name_perfil_toolbar = store.get('UserInfo')['name']
@@ -106,8 +106,6 @@ class PawareApp(MDApp):
                 self.store = JsonStore("userProfile.json")
                 nome = self.store.get('UserInfo')['name']
                 email = self.store.get('UserInfo')['email']
-                print(nome)
-                print(email)
 
                 await asynckivy.sleep(1)
                 self.strng.get_screen('profile').ids.name_perfil_toolbar.text = nome
@@ -141,14 +139,13 @@ class PawareApp(MDApp):
         self.store.put('UserInfo',name = name, email= email)
         self.set_refresh()     
 
-
-
     #######################CARREGAMENTO E CONTRUCAO AO INICIAR O APP##############
     def build(self):
         self.strng = Builder.load_file('conteudos.kv')
         return self.strng
     #############FUNCAO AO INICIAR O APP ELE VAI CARREGAR ISSO ANTES DE MOSTRAR TELA#################
-    def on_start(self):       
+    def on_start(self):
+        self.load_all_checklists()       
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
@@ -187,15 +184,135 @@ class PawareApp(MDApp):
             self.strng.get_screen('checklistItem6').ids.responsavel_item6.text = ''
             self.strng.get_screen('checklistItem6').ids.prazo_item6.text = ''
 
-
     class ContentNavigationDrawer(BoxLayout):  #######PERFIL########
         pass
 
     class DrawerList(ThemableBehavior, MDList): ######lISTAS DE AÇÕES DO PERFIL######
         pass
-        
-    ##################CONFIRMAÇAO DE SAIDA FUNÇAO################
-    dialog = None
+
+
+    def add_new_lv(self):
+        myclient = pymongo.MongoClient(
+            "mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+        db = myclient["kivyapp"]
+        col_lv = db["lvs"]
+
+        self.store = JsonStore("userProfile.json")
+        nome = self.store.get('UserInfo')['name']
+        email = self.store.get('UserInfo')['email']
+
+        lv_name = self.strng.get_screen(f'checklistName').ids.name_text_field_lv.text
+        lv_descricao = self.strng.get_screen(f'checklistName').ids.descricao_text_field_lv.text
+
+        item1_acao = self.strng.get_screen(f'checklistItem1').ids.acao_item1.text
+        item1_responsavel = self.strng.get_screen(f'checklistItem1').ids.responsavel_item1.text
+        item1_prazo = self.strng.get_screen(f'checklistItem1').ids.prazo_item1.text
+
+        item2_acao = self.strng.get_screen(f'checklistItem2').ids.acao_item2.text
+        item2_responsavel = self.strng.get_screen(f'checklistItem2').ids.responsavel_item2.text
+        item2_prazo = self.strng.get_screen(f'checklistItem2').ids.prazo_item2.text
+
+        item3_acao = self.strng.get_screen(f'checklistItem3').ids.acao_item3.text
+        item3_responsavel = self.strng.get_screen(f'checklistItem3').ids.responsavel_item3.text
+        item3_prazo = self.strng.get_screen(f'checklistItem3').ids.prazo_item3.text
+
+        item4_acao = self.strng.get_screen(f'checklistItem4').ids.acao_item4.text
+        item4_responsavel = self.strng.get_screen(f'checklistItem4').ids.responsavel_item4.text
+        item4_prazo = self.strng.get_screen(f'checklistItem4').ids.prazo_item4.text
+
+        item5_acao = self.strng.get_screen(f'checklistItem5').ids.acao_item5.text
+        item5_responsavel = self.strng.get_screen(f'checklistItem5').ids.responsavel_item5.text
+        item5_prazo = self.strng.get_screen(f'checklistItem5').ids.prazo_item5.text
+
+        item6_acao = self.strng.get_screen(f'checklistItem6').ids.acao_item6.text
+        item6_responsavel = self.strng.get_screen(f'checklistItem6').ids.responsavel_item6.text
+        item6_prazo = self.strng.get_screen(f'checklistItem6').ids.prazo_item6.text
+
+        item7_acao = self.strng.get_screen(f'checklistItem7').ids.acao_item7.text
+        item7_responsavel = self.strng.get_screen(f'checklistItem7').ids.responsavel_item7.text
+        item7_prazo = self.strng.get_screen(f'checklistItem7').ids.prazo_item7.text
+
+        item8_acao = self.strng.get_screen(f'checklistItem8').ids.acao_item8.text
+        item8_responsavel = self.strng.get_screen(f'checklistItem8').ids.responsavel_item8.text
+        item8_prazo = self.strng.get_screen(f'checklistItem8').ids.prazo_item8.text
+
+        item9_acao = self.strng.get_screen(f'checklistItem9').ids.acao_item9.text
+        item9_responsavel = self.strng.get_screen(f'checklistItem9').ids.responsavel_item9.text
+        item9_prazo = self.strng.get_screen(f'checklistItem9').ids.prazo_item9.text
+
+
+
+        lv = {
+            "nome_lv": lv_name,
+            "descricao_lv": lv_descricao,
+            "nome_usuario": nome,
+            "email_usuario": email,
+            "Data_emissao": "Data de emissão",
+            "porcentagem_c": "tantos % de C",
+            "quantidade_nc": "Quantidade de NC",
+            "quantidade_na": "Quantidade de NA",
+            "lv_status": "Status da lista",
+
+            "item1_nome": "Os locais adjacentes das caixas estão limpos e organizados?",
+            "item1_resultado": "Status item 1 (C, NC, NA)",
+            "item1_acao": item1_acao,
+            "item1_prazo": item1_prazo,
+            "item1_responsavel": item1_responsavel,
+
+            "item2_nome": "As caixas estão com acúmulo excessivo de gordura?",
+            "item2_resultado": "Status item 2 (C, NC, NA)",
+            "item2_acao": item2_acao,
+            "item2_prazo": item2_prazo,
+            "item2_responsavel": item2_responsavel,
+
+            "item3_nome": "As caixas de gordura estão obstruídas?",
+            "item3_resultado": "Status item 3 (C, NC, NA)",
+            "item3_acao": item3_acao,
+            "item3_prazo": item3_prazo,
+            "item3_responsavel": item3_responsavel,
+
+            "item4_nome": "Há evidências de transbordo?",
+            "item4_resultado": "Status item 4 (C, NC, NA)",
+            "item4_acao": item4_acao,
+            "item4_prazo": item4_prazo,
+            "item4_responsavel": item4_responsavel,
+
+            "item5_nome": "Há evidência de odores?",
+            "item5_resultado": "Status item 5 (C, NC, NA)",
+            "item5_acao": item5_acao,
+            "item5_prazo": item5_prazo,
+            "item5_responsavel": item5_responsavel,
+
+            "item6_nome": "Há detritos de alimentos, sobras de embalagens, entre outros?",
+            "item6_resultado": "Status item 6 (C, NC, NA)",
+            "item6_acao": item6_acao,
+            "item6_prazo": item6_prazo,
+            "item6_responsavel": item6_responsavel,
+
+            "item7_nome": "Há telas (grade) de retenção nas áreas internas do refeitório cin objetivo de reter sobras de alimentos?",
+            "item7_resultado": "Status item 7 (C, NC, NA)",
+            "item7_acao": item7_acao,
+            "item7_prazo": item7_prazo,
+            "item7_responsavel": item7_responsavel,
+
+            "item8_nome": "As tampas das caixas estão encaixadas de acordo com a construção?",
+            "item8_resultado": "Status item 8 (C, NC, NA)",
+            "item8_acao": item8_acao,
+            "item8_prazo": item8_prazo,
+            "item8_responsavel": item8_responsavel,
+
+            "item9_nome": "O efluente está sendo direcionado para a Estação de tratamento de Efluente - ETE?",
+            "item9_resultado": "Status item 9 (C, NC, NA)",
+            "item9_acao": item9_acao,
+            "item9_prazo": item9_prazo,
+            "item9_responsavel": item9_responsavel,
+
+        }
+
+        x = col_lv.insert_one(lv)
+
+    ##################CONFIRMAÇAO DE SAIDA APP################
+    dialog = None  
     def show_alert_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
@@ -203,14 +320,31 @@ class PawareApp(MDApp):
                 text="Você deseja mesmo sair ?",
                 buttons=[
                     MDFlatButton(
-                        text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_app
+                        text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue
+                    ),
+                    MDFlatButton(
+                        text="Não", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue_app
+                    ),
+                ],
+            )
+        self.dialog.open()
+        
+    def show_alert_checklist_exit_operation(self):
+        if not self.dialog:
+            self.dialog = MDDialog(
+
+                text="Você deseja mesmo cancelar a verificação ?",
+                buttons=[
+                    MDFlatButton(
+                        text="Sim", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue1
                     ),
                     MDFlatButton(
                         text="Não", text_color=self.theme_cls.primary_color, on_release=self.close_username_dialogue
                     ),
                 ],
             )
-        self.dialog.open()  
+        self.dialog.open() 
+
     ####################TELE DE REALMENTE QUER CONFIRMAR EXCLUIR CHECKLIST######################
     def show_alert__delete_dialog(self):
         if not self.dialog:
@@ -227,8 +361,14 @@ class PawareApp(MDApp):
             )
         self.dialog.open()  
     #################BLOCO DE AVISO NOME INVALIDO FECHANDO##################
-    def close_username_dialogue(self,obj):
+    def close_username_dialogue1(self,obj):
+        self.change_screen_to_checklists()
         self.dialog.dismiss()
+
+    def close_username_dialogue(self,obj):
+        self.change_screen_to_checklistname()
+        self.dialog.dismiss()
+
 
     #############FUNCAO PARA BLOCO DE AVISO PARA SAIR DO APP################
     def close_username_dialogue_app(self,obj):
@@ -241,8 +381,19 @@ class PawareApp(MDApp):
         self.change_screen_to_checklists()
     #################REMOVE WIDGET CHECKLIST##################
     def remove_checklist(self):
-        self.strng.get_screen('screen2').ids.my_checklists.remove_widget(self.id_nome)
-        print(self.id_nome)
+        try:
+            myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+            db = myclient["kivyapp"]
+            col_lv = db["lvs"]
+
+            col_lv = col_lv.delete_one(
+                {
+                    "_id": ObjectId("id do bagulho")
+                }
+            )
+        except Exception as erro:
+            print(erro)
+    
 
     
     ############MUDANDO A TELA PARA CHECKLIST INFORMAÇOES##########
@@ -252,6 +403,9 @@ class PawareApp(MDApp):
     ###############MUDANDO A TELA PARA O MENU DAS CHECKLISTS###########
     def change_screen_to_checklists(self):
         self.strng.get_screen('screen1').manager.current = 'screen1'
+
+    def change_screen_to_checklistname(self):
+        self.strng.get_screen('checklistName').manager.current = 'checklistName'
 
     ####################MUDANDO A TELA PARA A TELA INICIAR UM NOVA VERIFICAÇAO#############
     def start_checklist(self):
@@ -271,21 +425,76 @@ class PawareApp(MDApp):
     
 
     #########FUNCAO RECARREGAR OS DELETALHES DO PEFIL APOS MUDANÇA##############
-   
+    
 
         
     ###############CARREGANDO OS VALORES DA CHECKLIST##############
     try:
-        store = JsonStore("dataChecklist.json")
-        list_name = store.get('UserInfo')['name']
-        criado_em = store.get('UserInfo')['data']
-        criado_por = store.get('UserInfo')['responsavel']
-        reponsavel_relizar = store.get('UserInfo')['reponsavel_relizar']
-        acao = store.get('UserInfo')['acao']
-        prazo = store.get('UserInfo')['prazo']
-        status = store.get('UserInfo')['status']
+        myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+        db = myclient["kivyapp"]
+        col_lv = db["lvs"]
+
+        for item in col_lv.find({},{ "_id": 0}):
+            list_name = item["nome_lv"]
+            descricao_lv = item["descricao_lv"]
+            criado_por = item["nome_usuario"]
+            email_usuario = item["email_usuario"]
+            criado_em = item["Data_emissao"]
+            porcentagem_c = item["porcentagem_c"]
+            quantidade_nc = item["quantidade_nc"]
+            quantidade_na = item["quantidade_na"]
+            status = item["lv_status"]
+
+            item1_resultaldo = item['item1_resultado']
+            acao = item['item1_acao']
+            reponsavel_relizar = item['item1_responsavel']
+            prazo = item['item1_prazo']
+
+
+            item2_resultaldo = item['item2_resultado']
+            item2_acao = item['item2_acao']
+            item2_responsavel = item['item2_responsavel']
+            item2_prazo = item['item2_prazo']
+
+            item3_resultaldo = item['item3_resultado']
+            item3_acao = item['item3_acao']
+            item3_responsavel = item['item3_responsavel']
+            item3_prazo = item['item3_prazo']
+
+            item4_resultaldo = item['item4_resultado']
+            item4_acao = item['item4_acao']
+            item4_responsavel = item['item4_responsavel']
+            item4_prazo = item['item4_prazo']
+
+            item5_resultaldo = item['item5_resultado']
+            item5_acao = item['item5_acao']
+            item5_responsavel = item['item5_responsavel']
+            item5_prazo = item['item5_prazo']
+
+            item6_resultaldo = item['item6_resultado']
+            item6_acao = item['item6_acao']
+            item6_responsavel = item['item6_responsavel']
+            item6_prazo = item['item6_prazo']
+
+            item7_resultaldo = item['item7_resultado']
+            item7_acao = item['item7_acao']
+            item7_responsavel = item['item7_responsavel']
+            item7_prazo = item['item7_prazo']
+
+            item8_resultaldo = item['item8_resultado']
+            item8_acao = item['item8_acao']
+            item8_responsavel = item['item8_responsavel']
+            item8_prazo = item['item8_prazo']
+
+            item9_resultaldo = item['item9_resultado']
+            item9_acao = item['item9_acao']
+            item9_responsavel = item['item9_responsavel']
+            item9_prazo = item['item9_prazo']
     except:
         pass
+
+
+
 
 
     #########PREENCHIMENTOD DO NOME NA TELA DE LOGIN OBRIGATORIO FUNCAO############
@@ -343,21 +552,84 @@ class PawareApp(MDApp):
 
         self.save_new_checklist_screen(Name_checklist, Criado_por, Data_criada,Acao,Responsavel_realizar,Prazo,Conformes,Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status)
 
-    def save_new_checklist_screen(self,Name_checklist,Criado_por,Data_criada,Acao,Responsavel_realizar,Prazo,Conformes, Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status):
-        try:
-            self.id_nome = str(Name_checklist)
-            self.id_nome = ThreeLineIconListItem(
-            text=Name_checklist,
-            secondary_text='Responsável: ' + Criado_por,
-            tertiary_text='Data de emissão: ' + Data_criada, on_release=self.change_screen)
-            self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
-            self.strng.get_screen('screen2').ids.my_checklists.add_widget(self.id_nome)
-            self.strng.get_screen('screen1').manager.current = 'screen1'
-        except Exception as erro:
-            print(erro)
+    def load_all_checklists(self):
+        myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+        db = myclient["kivyapp"]
+        col_lv = db["lvs"]
 
-            
+        get_ids = col_lv.find()
 
+        for i in range(0,col_lv.count_documents({}) - 1):
+            soma_altura = 0.83
+            for item in col_lv.find({},{ "_id": i}):
+                print(item)
+                list_name = item["nome_lv"]
+                descricao_lv = item["descricao_lv"]
+                criado_por = item["nome_usuario"]
+                email_usuario = item["email_usuario"]
+                criado_em = item["Data_emissao"]
+                porcentagem_c = item["porcentagem_c"]
+                quantidade_nc = item["quantidade_nc"]
+                quantidade_na = item["quantidade_na"]
+                status = item["lv_status"]
+
+                item1_resultaldo = item['item1_resultado']
+                acao = item['item1_acao']
+                reponsavel_relizar = item['item1_responsavel']
+                prazo = item['item1_prazo']
+
+                item2_resultaldo = item['item2_resultado']
+                item2_acao = item['item2_acao']
+                item2_responsavel = item['item2_responsavel']
+                item2_prazo = item['item2_prazo']
+
+                item3_resultaldo = item['item3_resultado']
+                item3_acao = item['item3_acao']
+                item3_responsavel = item['item3_responsavel']
+                item3_prazo = item['item3_prazo']
+
+                item4_resultaldo = item['item4_resultado']
+                item4_acao = item['item4_acao']
+                item4_responsavel = item['item4_responsavel']
+                item4_prazo = item['item4_prazo']
+
+                item5_resultaldo = item['item5_resultado']
+                item5_acao = item['item5_acao']
+                item5_responsavel = item['item5_responsavel']
+                item5_prazo = item['item5_prazo']
+
+                item6_resultaldo = item['item6_resultado']
+                item6_acao = item['item6_acao']
+                item6_responsavel = item['item6_responsavel']
+                item6_prazo = item['item6_prazo']
+
+                item7_resultaldo = item['item7_resultado']
+                item7_acao = item['item7_acao']
+                item7_responsavel = item['item7_responsavel']
+                item7_prazo = item['item7_prazo']
+
+                item8_resultaldo = item['item8_resultado']
+                item8_acao = item['item8_acao']
+                item8_responsavel = item['item8_responsavel']
+                item8_prazo = item['item8_prazo']
+
+                item9_resultaldo = item['item9_resultado']
+                item9_acao = item['item9_acao']
+                item9_responsavel = item['item9_responsavel']
+                item9_prazo = item['item9_prazo']
+
+                self.id_nome = list_name
+                self.id_nome = ThreeLineIconListItem(
+                text=list_name,
+                secondary_text='Responsável: ' + criado_por,
+                tertiary_text='Data de emissão: ' + criado_em,pos_hint={'center_x':0.50,'center_y':soma_altura}, on_release=self.change_screen)
+                self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
+                self.strng.get_screen('screen2').add_widget(self.id_nome)
+                self.strng.get_screen('screen1').manager.current = 'screen1'
+
+                soma_altura -= 0.16
+
+    
     
     ####################FUNCAO DE BLOQUEI DOS BOTAO CASO NAO SEJA SELECIONADO AS OPCOES DA VERIFICAÇAO############
     def enable_items_inputs(self):
