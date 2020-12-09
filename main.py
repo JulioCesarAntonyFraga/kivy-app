@@ -1,3 +1,4 @@
+import pymongo
 from kivymd.uix.snackbar import Snackbar
 from kivy.lang import Builder
 from kivymd.app import MDApp
@@ -23,12 +24,6 @@ from kivy.uix.scrollview import ScrollView
 from kivy.clock import Clock
 
 
-import pymongo
-client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
-db = client["kivyapp"]
-col_profile = db["profile"]
-
-get_profile_data= col_profile.find_one()
 
 ##################TELAS APP####################
 class WelcomeScreen(Screen):
@@ -94,6 +89,14 @@ sm.add_widget(ChecklistItem7(name = 'checklistItem7'))
 sm.add_widget(ChecklistItem8(name = 'checklistItem8'))
 sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 
+try:
+    client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+    db = client["kivyapp"]
+    col_profile = db["profile"]
+    get_profile_data= col_profile.find_one()
+except Exception as erro:
+    name_perfil_toolbar = 'OFFILINE'
+    email_perfil_toolbar = 'OFFILINE'
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
@@ -103,19 +106,29 @@ class PawareApp(MDApp):
 
     def set_refresh(self):
         async def set_refresh():
-            for i in range(1):
-                await asynckivy.sleep(1)
-                try:
-                    client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
-                    db = client["kivyapp"]
-                    col_profile = db["profile"]
-                    get_profile_data= col_profile.find_one()
+            await asynckivy.sleep(1)
+            try:
+                client = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+                db = client["kivyapp"]
+                col_profile = db["profile"]
+                get_profile_data= col_profile.find_one()
 
-                    await asynckivy.sleep(1)
-                    self.strng.get_screen('profile').ids.name_perfil_toolbar.text = get_profile_data['nome']
-                    self.strng.get_screen('profile').ids.email_perfil_toolbar.text = get_profile_data['email']
-                except Exception as erro:
-                    print(erro)
+                await asynckivy.sleep(1)
+                self.strng.get_screen('profile').ids.name_perfil_toolbar.text = get_profile_data['nome']
+                self.strng.get_screen('profile').ids.email_perfil_toolbar.text = get_profile_data['email']
+                self.strng.get_screen('screen1').ids.name_perfil_toolbar.text = get_profile_data['nome']
+                self.strng.get_screen('screen1').ids.email_perfil_toolbar.text = get_profile_data['email']
+                self.strng.get_screen('screen2').ids.name_perfil_toolbar.text = get_profile_data['nome']
+                self.strng.get_screen('screen2').ids.email_perfil_toolbar.text = get_profile_data['email']
+                self.strng.get_screen('screen3').ids.name_perfil_toolbar.text = get_profile_data['nome']
+                self.strng.get_screen('screen3').ids.email_perfil_toolbar.text = get_profile_data['email']
+                self.strng.get_screen('screen5').ids.name_perfil_toolbar.text = get_profile_data['nome']
+                self.strng.get_screen('screen5').ids.email_perfil_toolbar.text = get_profile_data['email']
+                self.strng.get_screen('checklistName').ids.name_perfil_toolbar.text = get_profile_data['nome']
+                self.strng.get_screen('checklistName').ids.email_perfil_toolbar.text = get_profile_data['email']
+                
+            except Exception as erro:
+                print(erro)
         asynckivy.start(set_refresh())
 
     def update_profile(self):
