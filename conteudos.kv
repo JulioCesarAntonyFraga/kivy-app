@@ -1,5 +1,7 @@
 #:kivy 1.11.1
 #:import Snackbar kivymd.uix.snackbar.Snackbar
+#:import Clock kivy.clock.Clock
+#:import partial functools.partial
 ScreenManager:
     WelcomeScreen:
     UsernameScreen:
@@ -19,6 +21,35 @@ ScreenManager:
     ChecklistItem8:
     ChecklistItem9:
     Profile:
+
+
+<Content>:
+    orientation: "vertical"
+    padding: dp(10)
+    spacing: dp(10)
+    size_hint_y: None
+    height: self.minimum_height
+
+            
+    OneLineAvatarIconListItem:
+        IconLeftWidget:
+            icon: "check"
+
+        IconLeftWidget:
+            icon: "file-pdf"
+
+        IconLeftWidget:
+            icon: "share-variant"
+
+        IconRightWidget:
+            icon: "delete"
+            on_press:
+                app.delete_item(self)
+
+
+       
+
+
 
 
 <WelcomeScreen>:
@@ -158,15 +189,14 @@ ScreenManager:
 
         Widget:
 
-
-
     ScrollView:
-        size_hint: (1.10, 0.90)
-        pos_hint: {'center_x': .55}
-
-        
+        size_hint: (0.97, 0.89)
+        pos_hint: {'center_x': .51, 'y': 0.001}
         MDList:
-            id: checklist
+            id: box
+            
+
+
         
 
     MDNavigationDrawer:
@@ -360,97 +390,6 @@ ScreenManager:
             elevation:5
 
         Widget:
-
-    ScrollView:
-        size_hint: (1.10, 0.90)
-        pos_hint: {'center_x': .55}
-
-        
-        MDList:
-            id: my_checklists
-
-    
-    MDTextField:
-        id: profile_name_input
-        text: app.list_name
-        pos_hint: {'center_x':0.50,'center_y':0.82}
-        size_hint: (0.98,0.1)
-        hint_text : 'Item'
-        icon_right: 'inbox'
-        icon_right_color: app.theme_cls.primary_color
-        disabled: 'true'
-
-    MDTextField:
-        id: profile_data_input
-        text: app.criado_em
-        pos_hint: {'center_x':0.50,'center_y':0.72}
-        size_hint: (0.98,0.1)
-        hint_text : 'Criado em'
-        icon_right: 'inbox'
-        icon_right_color: app.theme_cls.primary_color
-        disabled: 'true'
-
-    MDTextField:
-        id: profile_responsavel_input
-        text: app.criado_por
-        pos_hint: {'center_x':0.50,'center_y':0.62}
-        size_hint: (0.98,0.1)
-        hint_text : 'Criado por'
-        icon_right: 'inbox'
-        icon_right_color: app.theme_cls.primary_color
-        disabled: 'true'
-
-    MDTextField:
-        id: profile_acao_input
-        text: app.acao
-        pos_hint: {'center_x':0.50,'center_y':0.52}
-        size_hint: (0.98,0.1)
-        hint_text : 'Plano de acção'
-        icon_right: 'inbox'
-        icon_right_color: app.theme_cls.primary_color
-        disabled: 'true'
-
-    MDTextField:
-        id: profile_responsavel_realizar_input
-        text: app.reponsavel_relizar
-        pos_hint: {'center_x':0.50,'center_y':0.42}
-        size_hint: (0.98,0.1)
-        hint_text : 'Responsável'
-        icon_right: 'inbox'
-        icon_right_color: app.theme_cls.primary_color
-        disabled: 'true'
-
-    MDTextField:
-        id: profile_prazo_input
-        text: app.prazo
-        pos_hint: {'center_x':0.50,'center_y':0.32}
-        size_hint: (0.98,0.1)
-        hint_text : 'Prazo'
-        icon_right: 'inbox'
-        icon_right_color: app.theme_cls.primary_color
-        disabled: 'true'
-
-    MDTextField:
-        id: profile_status_input
-        text: app.status
-        pos_hint: {'center_x':0.50,'center_y':0.22}
-        size_hint: (0.98,0.1)
-        hint_text : 'Status'
-        icon_right: 'alert'
-        icon_right_color: app.theme_cls.primary_color
-        disabled: 'true'      
-        
-
-
-    MDFloatingActionButton:
-        id:save_checklist_button
-        disabled: 'true'
-        icon: 'check'
-        md_bg_color:app.theme_cls.primary_color
-        pos_hint: {'center_x':0.85,'center_y':0.1}
-        user_font_size : '13sp'
-        on_press:
-            app.enable_checklist_inputs()
 
 
     MDFloatingActionButton:

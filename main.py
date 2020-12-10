@@ -4,7 +4,7 @@ from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen,ScreenManager
 from kivymd.uix.dialog import MDDialog
-from kivymd.uix.button import MDFlatButton, MDRaisedButton
+from kivymd.uix.button import MDFlatButton, MDRaisedButton, MDFloatingActionButton
 from kivy.storage.jsonstore import JsonStore
 from kivymd.uix.picker import MDDatePicker
 from datetime import date
@@ -14,8 +14,9 @@ from kivymd.theming import ThemableBehavior
 from kivymd.uix.card import MDCardSwipe
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.list import IRightBodyTouch
+from kivymd.uix.list import StringProperty, TwoLineAvatarIconListItem
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.expansionpanel import MDExpansionPanel, MDExpansionPanelThreeLine
+from kivymd.uix.expansionpanel import MDExpansionPanel, MDExpansionPanelThreeLine, MDExpansionPanelOneLine
 from kivymd import images_path
 from kivy.uix.widget import Widget
 from kivymd.uix.list import OneLineListItem, MDList, TwoLineListItem, ThreeLineListItem, ThreeLineIconListItem
@@ -24,6 +25,12 @@ from kivy.uix.scrollview import ScrollView
 from kivy.clock import Clock
 from bson import ObjectId
 from datetime import date
+from kivy.animation import Animation
+
+
+
+class Content(BoxLayout):
+    pass
 
 
 ##################TELAS APP####################
@@ -69,6 +76,9 @@ class ChecklistItem9(Screen):     #####ITEM 1 NOVA LV#####
     pass
 
 
+class CustomItem(TwoLineAvatarIconListItem):
+    icon = StringProperty('')
+
 #######INTEGRANDO TELAS NO GERENCIADOR DE SCREEN########
 sm = ScreenManager()
 sm.add_widget(WelcomeScreen(name = 'welcomescreen'))
@@ -92,11 +102,28 @@ sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
+    panel_is_open = False
+
     try:
         name_perfil_toolbar = "Desconhecido"
         email_perfil_toolbar = "Desconhecido"
     except:
         pass
+
+
+    def panel_open(self, *args):
+        self.panel_is_open = True
+
+    def panel_close(self, *args):
+        self.panel_is_open = False
+
+    def delete_item(self, item):
+        self.panel.content.remove_widget(item)
+        self.panel.height -= item.height
+        for index, val in enumerate(self.panel.content.children[::-1]):
+            val.secondary_text = str(index + 1)
+
+
 
     def update(self):
         async def update():
@@ -159,7 +186,9 @@ class PawareApp(MDApp):
         return self.strng
     #############FUNCAO AO INICIAR O APP ELE VAI CARREGAR ISSO ANTES DE MOSTRAR TELA#################
     def on_start(self):
-        self.load_all_checklists()       
+        self.load_checklist()
+        self.set_refresh()
+        self.update()      
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
@@ -716,81 +745,6 @@ class PawareApp(MDApp):
 
         self.save_new_checklist_screen(Name_checklist, Criado_por, Data_criada,Acao,Responsavel_realizar,Prazo,Conformes,Nao_conformes, Nao_aplicaveis, Total_resultado,Descricao, Status)
 
-    def load_all_checklists(self):
-        myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
-        db = myclient["kivyapp"]
-        col_lv = db["lvs"]
-
-        soma_altura = 0.83
-        for item in col_lv.find():
-            print(item)
-            list_name = item["nome_lv"]
-            descricao_lv = item["descricao_lv"]
-            criado_por = item["nome_usuario"]
-            email_usuario = item["email_usuario"]
-            criado_em = item["Data_emissao"]
-            porcentagem_c = item["porcentagem_c"]
-            quantidade_nc = item["quantidade_nc"]
-            quantidade_na = item["quantidade_na"]
-            status = item["lv_status"]
-
-            item1_resultaldo = item['item1_resultado']
-            acao = item['item1_acao']
-            reponsavel_relizar = item['item1_responsavel']
-            prazo = item['item1_prazo']
-
-            item2_resultaldo = item['item2_resultado']
-            item2_acao = item['item2_acao']
-            item2_responsavel = item['item2_responsavel']
-            item2_prazo = item['item2_prazo']
-
-            item3_resultaldo = item['item3_resultado']
-            item3_acao = item['item3_acao']
-            item3_responsavel = item['item3_responsavel']
-            item3_prazo = item['item3_prazo']
-
-            item4_resultaldo = item['item4_resultado']
-            item4_acao = item['item4_acao']
-            item4_responsavel = item['item4_responsavel']
-            item4_prazo = item['item4_prazo']
-
-            item5_resultaldo = item['item5_resultado']
-            item5_acao = item['item5_acao']
-            item5_responsavel = item['item5_responsavel']
-            item5_prazo = item['item5_prazo']
-
-            item6_resultaldo = item['item6_resultado']
-            item6_acao = item['item6_acao']
-            item6_responsavel = item['item6_responsavel']
-            item6_prazo = item['item6_prazo']
-
-            item7_resultaldo = item['item7_resultado']
-            item7_acao = item['item7_acao']
-            item7_responsavel = item['item7_responsavel']
-            item7_prazo = item['item7_prazo']
-
-            item8_resultaldo = item['item8_resultado']
-            item8_acao = item['item8_acao']
-            item8_responsavel = item['item8_responsavel']
-            item8_prazo = item['item8_prazo']
-
-            item9_resultaldo = item['item9_resultado']
-            item9_acao = item['item9_acao']
-            item9_responsavel = item['item9_responsavel']
-            item9_prazo = item['item9_prazo']
-
-            self.id_nome = list_name
-            self.id_nome = ThreeLineIconListItem(
-            text=list_name,
-            secondary_text='Responsável: ' + criado_por,
-            tertiary_text='Data de emissão: ' + criado_em,pos_hint={'center_x':0.50,'center_y':soma_altura}, on_release=self.change_screen)
-            self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
-            self.strng.get_screen('screen1').ids.checklist.add_widget(self.id_nome)
-            self.strng.get_screen('screen1').manager.current = 'screen1'
-
-            soma_altura -= 0.16
-
-    
     
     ####################FUNCAO DE BLOQUEI DOS BOTAO CASO NAO SEJA SELECIONADO AS OPCOES DA VERIFICAÇAO############
     def enable_items_inputs(self):
@@ -1035,6 +989,7 @@ class PawareApp(MDApp):
 
     #######################BLOQUEIO DOS BOTAO PARA EDITAR PERFIL################
     def enable_profile_inputs(self):
+
         if self.strng.get_screen('profile').ids.profile_email_input.disabled == True:
 
             self.strng.get_screen('profile').ids.profile_email_input.disabled = False
@@ -1048,5 +1003,120 @@ class PawareApp(MDApp):
             self.strng.get_screen('profile').ids.profile_name_input.disabled = True
 
             self.strng.get_screen('profile').ids.save_profile_button.disabled = True
+
+    def load_checklist(self):
+        myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+        db = myclient["kivyapp"]
+        col_lv = db["lvs"]
+
+        for item in col_lv.find():
+            list_name = item["nome_lv"]
+            descricao_lv = item["descricao_lv"]
+            criado_por = item["nome_usuario"]
+            email_usuario = item["email_usuario"]
+            criado_em = item["Data_emissao"]
+            porcentagem_c = item["porcentagem_c"]
+            quantidade_nc = item["quantidade_nc"]
+            quantidade_na = item["quantidade_na"]
+            status = item["lv_status"]
+
+            item1_resultaldo = item['item1_resultado']
+            acao = item['item1_acao']
+            reponsavel_relizar = item['item1_responsavel']
+            prazo = item['item1_prazo']
+
+            item2_resultaldo = item['item2_resultado']
+            item2_acao = item['item2_acao']
+            item2_responsavel = item['item2_responsavel']
+            item2_prazo = item['item2_prazo']
+
+            item3_resultaldo = item['item3_resultado']
+            item3_acao = item['item3_acao']
+            item3_responsavel = item['item3_responsavel']
+            item3_prazo = item['item3_prazo']
+
+            item4_resultaldo = item['item4_resultado']
+            item4_acao = item['item4_acao']
+            item4_responsavel = item['item4_responsavel']
+            item4_prazo = item['item4_prazo']
+
+            item5_resultaldo = item['item5_resultado']
+            item5_acao = item['item5_acao']
+            item5_responsavel = item['item5_responsavel']
+            item5_prazo = item['item5_prazo']
+
+            item6_resultaldo = item['item6_resultado']
+            item6_acao = item['item6_acao']
+            item6_responsavel = item['item6_responsavel']
+            item6_prazo = item['item6_prazo']
+
+            item7_resultaldo = item['item7_resultado']
+            item7_acao = item['item7_acao']
+            item7_responsavel = item['item7_responsavel']
+            item7_prazo = item['item7_prazo']
+
+            item8_resultaldo = item['item8_resultado']
+            item8_acao = item['item8_acao']
+            item8_responsavel = item['item8_responsavel']
+            item8_prazo = item['item8_prazo']
+
+            item9_resultaldo = item['item9_resultado']
+            item9_acao = item['item9_acao']
+            item9_responsavel = item['item9_responsavel']
+            item9_prazo = item['item9_prazo']
+
+            
+            self.panel = MDExpansionPanel(
+                icon=f"kivymd.png",
+                content=Content(),
+                panel_cls=MDExpansionPanelThreeLine(
+                    text=list_name,
+                    secondary_text=criado_por,
+                    tertiary_text=criado_em + descricao_lv,
+                )
+            )
+
+            self.strng.get_screen('screen1').ids.box.add_widget(self.panel)
+            self.panel.bind(on_open=self.panel_open, on_close=self.panel_close)
+
+            self.panel.content.add_widget(MDTextField(text=criado_em,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=str(porcentagem_c),pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Porcentagens de conformes !',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=status,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+
+            self.panel.content.add_widget(MDTextField(text=acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=reponsavel_relizar,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            
+            self.panel.content.add_widget(MDTextField(text=item2_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item2_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item2_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+
+            self.panel.content.add_widget(MDTextField(text=item3_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item3_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item3_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+
+            self.panel.content.add_widget(MDTextField(text=item4_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item4_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item4_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+
+            self.panel.content.add_widget(MDTextField(text=item5_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item5_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item5_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+
+            self.panel.content.add_widget(MDTextField(text=item6_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item6_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item6_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+
+            self.panel.content.add_widget(MDTextField(text=item7_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item7_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item7_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+
+            self.panel.content.add_widget(MDTextField(text=item8_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item8_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item8_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+
+            self.panel.content.add_widget(MDTextField(text=item9_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item9_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+            self.panel.content.add_widget(MDTextField(text=item9_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
 
 PawareApp().run()
