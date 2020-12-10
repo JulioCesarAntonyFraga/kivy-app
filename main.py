@@ -1163,6 +1163,11 @@ class PawareApp(MDApp):
                         MDTextField(text=item1_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
                                     hint_text='Data de emissão.', icon_right='alert'))
 
+                    self.panel.content.add_widget(
+                        MDTextField(text=item1_responsavel, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1),
+                                    hint_text='Responsável', icon_right='alert'))
+
 
 
 
@@ -1197,6 +1202,11 @@ class PawareApp(MDApp):
                         MDTextField(text=item2_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
                                     hint_text='Data de emissão.', icon_right='alert'))
 
+                    self.panel.content.add_widget(
+                        MDTextField(text=item2_responsavel, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1),
+                                    hint_text='Responsável', icon_right='alert'))
+
 
 
                 ########################
@@ -1228,6 +1238,11 @@ class PawareApp(MDApp):
                         MDTextField(text=item3_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
                                     hint_text='Data de emissão.', icon_right='alert'))
 
+                    self.panel.content.add_widget(
+                        MDTextField(text=item3_responsavel, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1),
+                                    hint_text='Responsável', icon_right='alert'))
+
 
                 ########################
 
@@ -1256,6 +1271,11 @@ class PawareApp(MDApp):
                     self.panel.content.add_widget(
                         MDTextField(text=item4_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
                                     hint_text='Data de emissão.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item4_responsavel, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1),
+                                    hint_text='Responsável', icon_right='alert'))
 
 
 
@@ -1289,6 +1309,11 @@ class PawareApp(MDApp):
                         MDTextField(text=item5_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
                                     hint_text='Data de emissão.', icon_right='alert'))
 
+                    self.panel.content.add_widget(
+                        MDTextField(text=item5_responsavel, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1),
+                                    hint_text='Responsável', icon_right='alert'))
+
 
 
                 ########################
@@ -1319,6 +1344,10 @@ class PawareApp(MDApp):
                     self.panel.content.add_widget(
                         MDTextField(text=item6_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
                                     hint_text='Data de emissão.', icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item6_responsavel, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1),
+                                    hint_text='Responsável', icon_right='alert'))
 
 
 
@@ -1384,6 +1413,10 @@ class PawareApp(MDApp):
                     self.panel.content.add_widget(
                         MDTextField(text=item8_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
                                     hint_text='Data de emissão.', icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item8_responsavel, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1),
+                                    hint_text='Responsável', icon_right='alert'))
 
 
 
@@ -1414,6 +1447,11 @@ class PawareApp(MDApp):
                     self.panel.content.add_widget(
                         MDTextField(text=item9_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
                                     hint_text='Data de emissão.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item9_responsavel, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1),
+                                    hint_text='Responsável', icon_right='alert'))
 
         except:
             pass
