@@ -1103,14 +1103,20 @@ class PawareApp(MDApp):
 
                 self.panel.content.add_widget(
                     MDTextField(text=criado_em, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
-                                hint_text='Data de emissão.', icon_right='alert'))
+                                hint_text='Data de emissão.', icon_right='calendar'))
                 self.panel.content.add_widget(
                     MDTextField(text=str(porcentagem_c), pos_hint={'center_x': 0.5, 'center_y': 0.05},
-                                size_hint=(0.98, 0.1), hint_text='Porcentagens de conformes !', icon_right='alert'))
-                self.panel.content.add_widget(
-                    MDTextField(text=status, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
-                                hint_text='Status da checklist.', icon_right='alert'))
+                                size_hint=(0.98, 0.1), hint_text='Porcentagens de conformes !', icon_right='percent'))
 
+                if status == 'Pendente':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=status, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Status da checklist.', icon_right='alert'))
+                else:
+                    self.panel.content.add_widget(
+                        MDTextField(text=status, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Status da checklist.', icon_right='check-all'))
 
 
                 ########################
