@@ -1,95 +1,73 @@
-from kivy.lang import Builder
-from kivy.properties import StringProperty
-from kivy.uix.screenmanager import Screen
+import pymongo
+myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+db = myclient["kivyapp"]
+col_lv = db["lvs"]
 
-from kivymd.icon_definitions import md_icons
-from kivymd.app import MDApp
-from kivymd.uix.list import OneLineIconListItem
+lv = {
+        "nome_lv": "EBR001",
+        "descricao_lv": "A descrição da LV",
+        "nome_usuario": "Nome do usuario",
+        "email_usuario": "Email do usuario",
+        "Data_emissao": "Data de emissão",
+        "porcentagem_c": "tantos % de C",
+        "quantidade_nc": "Quantidade de NC",
+        "quantidade_na": "Quantidade de NA",
+        "lv_status": "Status da lista",
 
+        "item1_nome": "Nome do item 1",
+        "item1_resultado": "Status item 1 (C, NC, NA)",
+        "item1_acao": "Ação item 1",
+        "item1_prazo": "Prazo do item 1",
+        "item1_responsavel": "Responsável pelo item 1",
 
-Builder.load_string(
-    '''
-#:import images_path kivymd.images_path
+        "item2_nome": "Nome do item 2",
+        "item2_resultado": "Status item 2 (C, NC, NA)",
+        "item2_acao": "Ação item 2",
+        "item2_prazo": "Prazo do item 2",
+        "item2_responsavel": "Responsável pelo item 2",
 
+        "item3_nome": "Nome do item 3",
+        "item3_resultado": "Status item 3 (C, NC, NA)",
+        "item3_acao": "Ação item 3",
+        "item3_prazo": "Prazo do item 3",
+        "item3_responsavel": "Responsável pelo item 3",
 
-<CustomOneLineIconListItem>:
+        "item4_nome": "Nome do item 4",
+        "item4_resultado": "Status item 4 (C, NC, NA)",
+        "item4_acao": "Ação item 4",
+        "item4_prazo": "Prazo do item 4",
+        "item4_responsavel": "Responsável pelo item 4",
 
-    IconLeftWidget:
-        icon: root.icon
+        "item5_nome": "Nome do item 5",
+        "item5_resultado": "Status item 5 (C, NC, NA)",
+        "item5_acao": "Ação item 5",
+        "item5_prazo": "Prazo do item 5",
+        "item5_responsavel": "Responsável pelo item 5",
 
+        "item6_nome": "Nome do item 6",
+        "item6_resultado": "Status item 6 (C, NC, NA)",
+        "item6_acao": "Ação item 6",
+        "item6_prazo": "Prazo do item 6",
+        "item6_responsavel": "Responsável pelo item 6",
 
-<PreviousMDIcons>:
+        "item7_nome": "Nome do item 7",
+        "item7_resultado": "Status item 7 (C, NC, NA)",
+        "item7_acao": "Ação item 7",
+        "item7_prazo": "Prazo do item 7",
+        "item7_responsavel": "Responsável pelo item 7",
 
-    MDBoxLayout:
-        orientation: 'vertical'
-        spacing: dp(10)
-        padding: dp(20)
+        "item8_nome": "Nome do item 8",
+        "item8_resultado": "Status item 8 (C, NC, NA)",
+        "item8_acao": "Ação item 8",
+        "item8_prazo": "Prazo do item 8",
+        "item8_responsavel": "Responsável pelo item 8",
 
-        MDBoxLayout:
-            adaptive_height: True
+        "item9_nome": "Nome do item 9",
+        "item9_resultado": "Status item 9 (C, NC, NA)",
+        "item9_acao": "Ação item 9",
+        "item9_prazo": "Prazo do item 9",
+        "item9_responsavel": "Responsável pelo item 9",
 
-            MDIconButton:
-                icon: 'magnify'
+    }
 
-            MDTextField:
-                id: search_field
-                hint_text: 'Search icon'
-                on_text: root.set_list_md_icons(self.text, True)
-
-        RecycleView:
-            id: rv
-            key_viewclass: 'viewclass'
-            key_size: 'height'
-
-            RecycleBoxLayout:
-                padding: dp(10)
-                default_size: None, dp(48)
-                default_size_hint: 1, None
-                size_hint_y: None
-                height: self.minimum_height
-                orientation: 'vertical'
-'''
-)
-
-
-class CustomOneLineIconListItem(OneLineIconListItem):
-    icon = StringProperty()
-
-
-class PreviousMDIcons(Screen):
-
-    def set_list_md_icons(self, text="", search=False):
-        '''Builds a list of icons for the screen MDIcons.'''
-
-        def add_icon_item(name_icon):
-            self.ids.rv.data.append(
-                {
-                    "viewclass": "CustomOneLineIconListItem",
-                    "icon": name_icon,
-                    "text": name_icon,
-                    "callback": lambda x: x,
-                }
-            )
-
-        self.ids.rv.data = []
-        for name_icon in md_icons.keys():
-            if search:
-                if text in name_icon:
-                    add_icon_item(name_icon)
-            else:
-                add_icon_item(name_icon)
-
-
-class MainApp(MDApp):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.screen = PreviousMDIcons()
-
-    def build(self):
-        return self.screen
-
-    def on_start(self):
-        self.screen.set_list_md_icons()
-
-
-MainApp().run()
+col_lv.insert_one(lv)

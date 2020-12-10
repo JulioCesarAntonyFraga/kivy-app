@@ -1029,115 +1029,373 @@ class PawareApp(MDApp):
         db = myclient["kivyapp"]
         col_lv = db["lvs"]
 
-        for item in col_lv.find():
-            list_name = item["nome_lv"]
-            descricao_lv = item["descricao_lv"]
-            criado_por = item["nome_usuario"]
-            email_usuario = item["email_usuario"]
-            criado_em = item["Data_emissao"]
-            porcentagem_c = item["porcentagem_c"]
-            quantidade_nc = item["quantidade_nc"]
-            quantidade_na = item["quantidade_na"]
-            status = item["lv_status"]
+        try:
 
-            item1_resultaldo = item['item1_resultado']
-            acao = item['item1_acao']
-            reponsavel_relizar = item['item1_responsavel']
-            prazo = item['item1_prazo']
+            for item in col_lv.find():
+                list_name = item["nome_lv"]
+                descricao_lv = item["descricao_lv"]
+                criado_por = item["nome_usuario"]
+                email_usuario = item["email_usuario"]
+                criado_em = item["Data_emissao"]
+                porcentagem_c = item["porcentagem_c"]
+                quantidade_nc = item["quantidade_nc"]
+                quantidade_na = item["quantidade_na"]
+                status = item["lv_status"]
 
-            item2_resultaldo = item['item2_resultado']
-            item2_acao = item['item2_acao']
-            item2_responsavel = item['item2_responsavel']
-            item2_prazo = item['item2_prazo']
+                item1_resultaldo = item['item1_resultado']
+                item1_acao = item['item1_acao']
+                item1_responsavel = item['item1_responsavel']
+                item1_prazo = item['item1_prazo']
 
-            item3_resultaldo = item['item3_resultado']
-            item3_acao = item['item3_acao']
-            item3_responsavel = item['item3_responsavel']
-            item3_prazo = item['item3_prazo']
+                item2_resultaldo = item['item2_resultado']
+                item2_acao = item['item2_acao']
+                item2_responsavel = item['item2_responsavel']
+                item2_prazo = item['item2_prazo']
 
-            item4_resultaldo = item['item4_resultado']
-            item4_acao = item['item4_acao']
-            item4_responsavel = item['item4_responsavel']
-            item4_prazo = item['item4_prazo']
+                item3_resultaldo = item['item3_resultado']
+                item3_acao = item['item3_acao']
+                item3_responsavel = item['item3_responsavel']
+                item3_prazo = item['item3_prazo']
 
-            item5_resultaldo = item['item5_resultado']
-            item5_acao = item['item5_acao']
-            item5_responsavel = item['item5_responsavel']
-            item5_prazo = item['item5_prazo']
+                item4_resultaldo = item['item4_resultado']
+                item4_acao = item['item4_acao']
+                item4_responsavel = item['item4_responsavel']
+                item4_prazo = item['item4_prazo']
 
-            item6_resultaldo = item['item6_resultado']
-            item6_acao = item['item6_acao']
-            item6_responsavel = item['item6_responsavel']
-            item6_prazo = item['item6_prazo']
+                item5_resultaldo = item['item5_resultado']
+                item5_acao = item['item5_acao']
+                item5_responsavel = item['item5_responsavel']
+                item5_prazo = item['item5_prazo']
 
-            item7_resultaldo = item['item7_resultado']
-            item7_acao = item['item7_acao']
-            item7_responsavel = item['item7_responsavel']
-            item7_prazo = item['item7_prazo']
+                item6_resultaldo = item['item6_resultado']
+                item6_acao = item['item6_acao']
+                item6_responsavel = item['item6_responsavel']
+                item6_prazo = item['item6_prazo']
 
-            item8_resultaldo = item['item8_resultado']
-            item8_acao = item['item8_acao']
-            item8_responsavel = item['item8_responsavel']
-            item8_prazo = item['item8_prazo']
+                item7_resultaldo = item['item7_resultado']
+                item7_acao = item['item7_acao']
+                item7_responsavel = item['item7_responsavel']
+                item7_prazo = item['item7_prazo']
 
-            item9_resultaldo = item['item9_resultado']
-            item9_acao = item['item9_acao']
-            item9_responsavel = item['item9_responsavel']
-            item9_prazo = item['item9_prazo']
+                item8_resultaldo = item['item8_resultado']
+                item8_acao = item['item8_acao']
+                item8_responsavel = item['item8_responsavel']
+                item8_prazo = item['item8_prazo']
 
-            
-            self.panel = MDExpansionPanel(
-                icon=f"kivymd.png",
-                content=Content(),
-                panel_cls=MDExpansionPanelThreeLine(
-                    text=list_name,
-                    secondary_text=criado_por,
-                    tertiary_text=criado_em + descricao_lv,
+                item9_resultaldo = item['item9_resultado']
+                item9_acao = item['item9_acao']
+                item9_responsavel = item['item9_responsavel']
+                item9_prazo = item['item9_prazo']
+
+
+                self.panel = MDExpansionPanel(
+                    icon=f"kivymd.png",
+                    content=Content(),
+                    panel_cls=MDExpansionPanelThreeLine(
+                        text=list_name,
+                        secondary_text=criado_por,
+                        tertiary_text=criado_em + descricao_lv,
+                    )
                 )
-            )
 
-            self.strng.get_screen('screen1').ids.box.add_widget(self.panel)
-            self.panel.bind(on_open=self.panel_open, on_close=self.panel_close)
+                self.strng.get_screen('screen1').ids.box.add_widget(self.panel)
+                self.panel.bind(on_open=self.panel_open, on_close=self.panel_close)
 
-            self.panel.content.add_widget(MDTextField(text=criado_em,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=str(porcentagem_c),pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Porcentagens de conformes !',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=status,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
+                self.panel.content.add_widget(
+                    MDTextField(text=criado_em, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                hint_text='Data de emissão.', icon_right='alert'))
+                self.panel.content.add_widget(
+                    MDTextField(text=str(porcentagem_c), pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                size_hint=(0.98, 0.1), hint_text='Porcentagens de conformes !', icon_right='alert'))
+                self.panel.content.add_widget(
+                    MDTextField(text=status, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                hint_text='Status da checklist.', icon_right='alert'))
 
-            self.panel.content.add_widget(MDTextField(text=acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=reponsavel_relizar,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            
-            self.panel.content.add_widget(MDTextField(text=item2_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item2_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item2_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
 
-            self.panel.content.add_widget(MDTextField(text=item3_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item3_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item3_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
 
-            self.panel.content.add_widget(MDTextField(text=item4_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item4_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item4_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+                ########################
 
-            self.panel.content.add_widget(MDTextField(text=item5_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item5_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item5_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+                if item1_resultaldo == 'Conforme':
 
-            self.panel.content.add_widget(MDTextField(text=item6_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item6_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item6_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item1_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
 
-            self.panel.content.add_widget(MDTextField(text=item7_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item7_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item7_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+                if item1_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item1_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
 
-            self.panel.content.add_widget(MDTextField(text=item8_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item8_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item8_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
+                ########################
 
-            self.panel.content.add_widget(MDTextField(text=item9_acao,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item9_resultaldo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Status da checklist.',icon_right='alert'))
-            self.panel.content.add_widget(MDTextField(text=item9_prazo,pos_hint= {'center_x':0.5,'center_y':0.05},size_hint= (0.98,0.1),hint_text='Data de emissão.',icon_right='alert'))
 
+
+                if item1_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item1_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item1_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item1_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+
+
+
+                ########################
+
+                if item2_resultaldo == 'Conforme':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item2_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
+
+                if item2_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item2_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
+
+                ########################
+
+
+
+
+
+                if item2_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item2_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item2_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item2_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+
+
+                ########################
+
+                if item3_resultaldo == 'Conforme':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item3_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
+
+                if item3_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item3_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
+
+                ########################
+
+
+
+                if item3_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item3_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item3_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item3_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+
+                ########################
+
+                if item4_resultaldo == 'Conforme':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item4_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
+
+                if item4_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item4_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
+
+                ########################
+
+                if item4_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item4_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item4_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item4_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+
+
+                ########################
+
+                if item5_resultaldo == 'Conforme':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item5_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
+
+                if item5_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item5_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
+
+
+                ########################
+
+
+                if item5_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item5_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item5_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item5_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+
+
+                ########################
+
+                if item6_resultaldo == 'Conforme':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item6_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
+
+                if item6_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item6_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
+
+                ########################
+
+
+
+                if item6_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item6_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item6_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item6_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+
+
+
+                ########################
+
+                if item7_resultaldo == 'Conforme':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item7_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
+
+                if item7_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item7_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
+
+                ########################
+
+
+
+
+                if item7_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item7_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item7_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item7_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+
+
+                ########################
+
+                if item8_resultaldo == 'Conforme':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item8_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
+
+                if item8_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item8_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
+
+                ########################
+
+
+
+                if item8_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item8_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item8_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item8_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+
+
+                ########################
+
+                if item9_resultaldo == 'Conforme':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item9_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='check'))
+
+                if item9_resultaldo == 'Não aplicável':
+                    self.panel.content.add_widget(
+                        MDTextField(text=item9_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='close'))
+
+                ########################
+
+
+                if item9_resultaldo == 'Não conforme':
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item9_resultaldo, pos_hint={'center_x': 0.5, 'center_y': 0.05},
+                                    size_hint=(0.98, 0.1), hint_text='Status da checklist.', icon_right='alert'))
+
+                    self.panel.content.add_widget(
+                        MDTextField(text=item9_acao, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+                    self.panel.content.add_widget(
+                        MDTextField(text=item9_prazo, pos_hint={'center_x': 0.5, 'center_y': 0.05}, size_hint=(0.98, 0.1),
+                                    hint_text='Data de emissão.', icon_right='alert'))
+
+        except:
+            pass
 
 PawareApp().run()
