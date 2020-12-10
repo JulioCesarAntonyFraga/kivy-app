@@ -765,8 +765,9 @@ class PawareApp(MDApp):
         col_lv = db["lvs"]
 
         soma_altura = 0.83
+        c = 0
+
         for item in col_lv.find():
-            print(item)
             list_name = item["nome_lv"]
             descricao_lv = item["descricao_lv"]
             criado_por = item["nome_usuario"]
@@ -826,13 +827,16 @@ class PawareApp(MDApp):
             self.id_nome = ThreeLineIconListItem(
                 text=list_name,
                 secondary_text='Responsável: ' + criado_por,
-                tertiary_text='Data de emissão: ' + criado_em, pos_hint={'center_x': 0.50, 'center_y': soma_altura},
-                on_release=self.change_screen)
+                tertiary_text='Data de emissão: ' + criado_em, pos_hint={'center_x': 0.50, 'center_y': soma_altura}
+            )
             self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
             self.strng.get_screen('screen1').ids.checklist.add_widget(self.id_nome)
             self.strng.get_screen('screen1').manager.current = 'screen1'
 
             soma_altura -= 0.16
+            c += 1
+
+
 
     ####################FUNCAO DE BLOQUEI DOS BOTAO CASO NAO SEJA SELECIONADO AS OPCOES DA VERIFICAÇAO############
     def enable_items_inputs(self):
@@ -935,6 +939,10 @@ class PawareApp(MDApp):
             self.strng.get_screen(f'checklistItem9').ids.responsavel_item9.disabled = True
             self.strng.get_screen(f'checklistItem9').ids.prazo_item9.disabled = True
 
+    def callback(self, nome):
+        print(nome)
+
+
     def disable_nextButton(self):
         self.strng.get_screen(f'checklistItem1').ids.next_button1.disabled = True
         self.strng.get_screen(f'checklistItem2').ids.next_button2.disabled = True
@@ -945,6 +953,9 @@ class PawareApp(MDApp):
         self.strng.get_screen(f'checklistItem7').ids.next_button7.disabled = True
         self.strng.get_screen(f'checklistItem8').ids.next_button8.disabled = True
         self.strng.get_screen(f'checklistItem9').ids.next_button9.disabled = True
+
+    def teste(self):
+        print('olá mundo')
 
     ####################FUNCAO PARA LIBERAR OS BOTAO CASO SEJA SELECIONADO AS OPCOES DA VERIFICAÇAO############
 
