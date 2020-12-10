@@ -1042,6 +1042,20 @@ class PawareApp(MDApp):
                 quantidade_na = item["quantidade_na"]
                 status = item["lv_status"]
 
+
+
+                #####NOMES DOS ITENS#####
+                item1_nome = item['item1_nome']
+                item2_nome = item['item2_nome']
+                item3_nome = item['item3_nome']
+                item4_nome = item['item4_nome']
+                item5_nome = item['item5_nome']
+                item6_nome = item['item6_nome']
+                item7_nome = item['item7_nome']
+                item8_nome = item['item8_nome']
+                item9_nome = item['item9_nome']
+
+
                 item1_resultaldo = item['item1_resultado']
                 item1_acao = item['item1_acao']
                 item1_responsavel = item['item1_responsavel']
