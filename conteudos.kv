@@ -166,7 +166,7 @@ ScreenManager:
 
         
         MDList:
-            id: my_checklists
+            id: checklist
         
 
     MDNavigationDrawer:
@@ -360,6 +360,14 @@ ScreenManager:
             elevation:5
 
         Widget:
+
+    ScrollView:
+        size_hint: (1.10, 0.90)
+        pos_hint: {'center_x': .55}
+
+        
+        MDList:
+            id: my_checklists
 
     
     MDTextField:
@@ -679,6 +687,11 @@ ScreenManager:
 
         Widget:
 
+    Image:
+        source: 'ilustration1.png'
+        size: self.texture_size
+        pos_hint: {'center_x':0.5,'center_y':0.5}
+
 
     MDNavigationDrawer:
         type: "standard"
@@ -777,6 +790,14 @@ ScreenManager:
 
         Widget:
 
+    MDFillRoundFlatIconButton:
+        id:check1
+        text: 'CONFIRMAR'
+        icon: 'alert-circle-outline'
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size: sp(140), sp(40)
+        on_press: app.check_lv_name_and_description()
+
     MDFloatingActionButton:
         icon: 'arrow-left'
         md_bg_color:app.theme_cls.primary_color
@@ -786,8 +807,8 @@ ScreenManager:
             root.manager.current = 'screen5'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:disabled_button
-        disabled: False
+        id:lv_name_button
+        disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
         pos_hint: {'center_x':0.85,'center_y':0.1}
@@ -802,7 +823,7 @@ ScreenManager:
 
 
     MDTextField:
-        id:name_text_fied_lv
+        id:name_text_field_lv
         pos_hint: {'center_x':0.5,'center_y':0.70}
         size_hint: (0.7,0.1)
         hint_text : 'Nome da LV'
@@ -813,7 +834,7 @@ ScreenManager:
         required : True
 
     MDTextField:
-        id: descricao_text_fied
+        id: descricao_text_field_lv
         pos_hint: {'center_x':0.5,'center_y':0.60}
         size_hint: (0.7,0.1)
         hint_text : 'Descrição'
@@ -843,7 +864,7 @@ ScreenManager:
         pos_hint: {'center_x':0.15,'center_y':0.1}
         user_font_size : '13sp'
         on_press:
-            root.manager.current = 'screen5'
+            root.manager.current = 'checklistName'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
         id:next_button1
@@ -2027,6 +2048,7 @@ ScreenManager:
         on_press:
             root.manager.current = 'checklistItem9'
             root.manager.transition.direction = 'left'
+            app.add_new_lv()
     MDProgressBar:
         value:100
         pos_hint: {'center_y':0.02}

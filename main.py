@@ -22,7 +22,8 @@ from kivymd.uix.list import OneLineListItem, MDList, TwoLineListItem, ThreeLineL
 from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.clock import Clock
-
+from bson import ObjectId
+from datetime import date
 
 
 ##################TELAS APP####################
@@ -92,11 +93,25 @@ sm.add_widget(ChecklistItem9(name = 'checklistItem9'))
 ############MAQUINARIO APP########################
 class PawareApp(MDApp):
     try:
-        store = JsonStore("userProfile.json")
-        name_perfil_toolbar = store.get('UserInfo')['name']
-        email_perfil_toolbar = store.get('UserInfo')['email']
+        name_perfil_toolbar = "Desconhecido"
+        email_perfil_toolbar = "Desconhecido"
     except:
         pass
+
+    def update(self):
+        async def update():
+            await asynckivy.sleep(1)
+            try:
+                self.store = JsonStore("userProfile.json")
+                nome = self.store.get('UserInfo')['name']
+                email = self.store.get('UserInfo')['email']
+
+                self.strng.get_screen('profile').ids.profile_name_input.text = nome
+                self.strng.get_screen('profile').ids.profile_email_input.text = email
+                
+            except Exception as erro:
+                print(erro)
+        asynckivy.start(update())
 
     def set_refresh(self):
         async def set_refresh():
@@ -148,8 +163,12 @@ class PawareApp(MDApp):
         self.store = JsonStore("userProfile.json")
         try:
             if self.store.get('UserInfo')['name'] != "":
+                print(self.store.get('UserInfo')['name'])
                 self.strng.get_screen('screen1').manager.current = 'screen1'
-        except KeyError:
+            else:
+                print(self.store.get('UserInfo')['name'])
+                self.strng.get_screen('welcomescreen').manager.current = 'welcomescreen' 
+        except:
             self.strng.get_screen('welcomescreen').manager.current = 'welcomescreen' 
 
     def clear_items_inputs(self):
@@ -188,7 +207,272 @@ class PawareApp(MDApp):
 
     class DrawerList(ThemableBehavior, MDList): ######lISTAS DE AÇÕES DO PERFIL######
         pass
+
+    def check_lv_name_and_description(self):
+        print(self.strng.get_screen('checklistName').ids.name_text_field_lv.text)
+        print(self.strng.get_screen('checklistName').ids.descricao_text_field_lv.text)
+        if self.strng.get_screen('checklistName').ids.name_text_field_lv.text != '' and self.strng.get_screen('checklistName').ids.descricao_text_field_lv.text != '':
+            self.strng.get_screen('checklistName').ids.lv_name_button.disabled = False
         
+        else:
+            self.strng.get_screen('checklistName').ids.lv_name_button.disabled = True
+
+    def add_new_lv(self):
+        conformes = 0
+        nao_conformes = 0
+        nao_aplicaveis = 0
+        myclient = pymongo.MongoClient(
+            "mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
+        db = myclient["kivyapp"]
+        col_lv = db["lvs"]
+
+        today = str(date.today())
+
+        self.store = JsonStore("userProfile.json")
+        nome = self.store.get('UserInfo')['name']
+        email = self.store.get('UserInfo')['email']
+
+        lv_name = self.strng.get_screen(f'checklistName').ids.name_text_field_lv.text
+        lv_descricao = self.strng.get_screen(f'checklistName').ids.descricao_text_field_lv.text
+
+        item1_acao = self.strng.get_screen(f'checklistItem1').ids.acao_item1.text
+        item1_responsavel = self.strng.get_screen(f'checklistItem1').ids.responsavel_item1.text
+        item1_prazo = self.strng.get_screen(f'checklistItem1').ids.prazo_item1.text
+
+        item2_acao = self.strng.get_screen(f'checklistItem2').ids.acao_item2.text
+        item2_responsavel = self.strng.get_screen(f'checklistItem2').ids.responsavel_item2.text
+        item2_prazo = self.strng.get_screen(f'checklistItem2').ids.prazo_item2.text
+
+        item3_acao = self.strng.get_screen(f'checklistItem3').ids.acao_item3.text
+        item3_responsavel = self.strng.get_screen(f'checklistItem3').ids.responsavel_item3.text
+        item3_prazo = self.strng.get_screen(f'checklistItem3').ids.prazo_item3.text
+
+        item4_acao = self.strng.get_screen(f'checklistItem4').ids.acao_item4.text
+        item4_responsavel = self.strng.get_screen(f'checklistItem4').ids.responsavel_item4.text
+        item4_prazo = self.strng.get_screen(f'checklistItem4').ids.prazo_item4.text
+
+        item5_acao = self.strng.get_screen(f'checklistItem5').ids.acao_item5.text
+        item5_responsavel = self.strng.get_screen(f'checklistItem5').ids.responsavel_item5.text
+        item5_prazo = self.strng.get_screen(f'checklistItem5').ids.prazo_item5.text
+
+        item6_acao = self.strng.get_screen(f'checklistItem6').ids.acao_item6.text
+        item6_responsavel = self.strng.get_screen(f'checklistItem6').ids.responsavel_item6.text
+        item6_prazo = self.strng.get_screen(f'checklistItem6').ids.prazo_item6.text
+
+        item7_acao = self.strng.get_screen(f'checklistItem7').ids.acao_item7.text
+        item7_responsavel = self.strng.get_screen(f'checklistItem7').ids.responsavel_item7.text
+        item7_prazo = self.strng.get_screen(f'checklistItem7').ids.prazo_item7.text
+
+        item8_acao = self.strng.get_screen(f'checklistItem8').ids.acao_item8.text
+        item8_responsavel = self.strng.get_screen(f'checklistItem8').ids.responsavel_item8.text
+        item8_prazo = self.strng.get_screen(f'checklistItem8').ids.prazo_item8.text
+
+        item9_acao = self.strng.get_screen(f'checklistItem9').ids.acao_item9.text
+        item9_responsavel = self.strng.get_screen(f'checklistItem9').ids.responsavel_item9.text
+        item9_prazo = self.strng.get_screen(f'checklistItem9').ids.prazo_item9.text
+
+        item1_resultado = ''
+        item2_resultado = ''
+        item3_resultado = ''
+        item4_resultado = ''
+        item5_resultado = ''
+        item6_resultado = ''
+        item7_resultado = ''
+        item8_resultado = ''
+        item9_resultado = ''
+
+        #################conformes#################
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_c.active == True:
+            item1_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem2').ids.radio_item2_c.active == True:
+            item2_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem3').ids.radio_item3_c.active == True:
+            item3_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem4').ids.radio_item4_c.active == True:
+            item4_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem5').ids.radio_item5_c.active == True:
+            item5_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem6').ids.radio_item6_c.active == True:
+            item6_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem7').ids.radio_item7_c.active == True:
+            item7_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem8').ids.radio_item8_c.active == True:
+            item8_resultado = 'Conforme'
+            conformes += 1
+
+        if self.strng.get_screen('checklistItem9').ids.radio_item9_c.active == True:
+            item9_resultado = 'Conforme'
+            conformes += 1
+
+
+
+
+
+        #################Não conformes#################
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_nc.active == True:
+            item1_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem2').ids.radio_item2_nc.active == True:
+            item2_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem3').ids.radio_item3_nc.active == True:
+            item3_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem4').ids.radio_item4_nc.active == True:
+            item4_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem5').ids.radio_item5_nc.active == True:
+            item5_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem6').ids.radio_item6_nc.active == True:
+            item6_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem7').ids.radio_item7_nc.active == True:
+            item7_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem8').ids.radio_item8_nc.active == True:
+            item8_resultado = 'Não conforme'
+            nao_conformes += 1
+
+        if self.strng.get_screen('checklistItem9').ids.radio_item9_nc.active == True:
+            item9_resultado = 'Não conforme'
+            nao_conformes += 1
+
+
+
+
+
+
+        #################Não aplicáveis#################
+        if self.strng.get_screen('checklistItem1').ids.radio_item1_na.active == True:
+            item1_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem2').ids.radio_item2_na.active == True:
+            item2_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem3').ids.radio_item3_na.active == True:
+            item3_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem4').ids.radio_item4_na.active == True:
+            item4_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem5').ids.radio_item5_na.active == True:
+            item5_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem6').ids.radio_item6_na.active == True:
+            item6_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem7').ids.radio_item7_na.active == True:
+            item7_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem8').ids.radio_item8_na.active == True:
+            item8_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        if self.strng.get_screen('checklistItem9').ids.radio_item9_na.active == True:
+            item9_resultado = 'Não aplicável'
+            nao_aplicaveis += 1
+
+        porcentagem_conformes = conformes * 100 / 9
+
+
+        lv = {
+                "nome_lv": lv_name,
+                "descricao_lv": lv_descricao,
+                "nome_usuario": nome,
+                "email_usuario": email,
+                "Data_emissao": today.replace('-','/'),
+                "porcentagem_c": round(porcentagem_conformes, 2),
+                "quantidade_nc": nao_conformes,
+                "quantidade_na": nao_aplicaveis,
+                "lv_status": "Status da lista",
+
+                "item1_nome": "Os locais adjacentes das caixas estão limpos e organizados?",
+                "item1_resultado": item1_resultado,
+                "item1_acao": item1_acao,
+                "item1_prazo": item1_prazo,
+                "item1_responsavel": item1_responsavel,
+
+                "item2_nome": "As caixas estão com acúmulo excessivo de gordura?",
+                "item2_resultado": item2_resultado,
+                "item2_acao": item2_acao,
+                "item2_prazo": item2_prazo,
+                "item2_responsavel": item2_responsavel,
+
+                "item3_nome": "As caixas de gordura estão obstruídas?",
+                "item3_resultado": item3_resultado,
+                "item3_acao": item3_acao,
+                "item3_prazo": item3_prazo,
+                "item3_responsavel": item3_responsavel,
+
+                "item4_nome": "Há evidências de transbordo?",
+                "item4_resultado": item4_resultado,
+                "item4_acao": item4_acao,
+                "item4_prazo": item4_prazo,
+                "item4_responsavel": item4_responsavel,
+
+                "item5_nome": "Há evidência de odores?",
+                "item5_resultado": item5_resultado,
+                "item5_acao": item5_acao,
+                "item5_prazo": item5_prazo,
+                "item5_responsavel": item5_responsavel,
+
+                "item6_nome": "Há detritos de alimentos, sobras de embalagens, entre outros?",
+                "item6_resultado": item6_resultado,
+                "item6_acao": item6_acao,
+                "item6_prazo": item6_prazo,
+                "item6_responsavel": item6_responsavel,
+
+                "item7_nome": "Há telas (grade) de retenção nas áreas internas do refeitório cin objetivo de reter sobras de alimentos?",
+                "item7_resultado": item7_resultado,
+                "item7_acao": item7_acao,
+                "item7_prazo": item7_prazo,
+                "item7_responsavel": item7_responsavel,
+
+                "item8_nome": "As tampas das caixas estão encaixadas de acordo com a construção?",
+                "item8_resultado": item8_resultado,
+                "item8_acao": item8_acao,
+                "item8_prazo": item8_prazo,
+                "item8_responsavel": item8_responsavel,
+
+                "item9_nome": "O efluente está sendo direcionado para a Estação de tratamento de Efluente - ETE?",
+                "item9_resultado": item9_resultado,
+                "item9_acao": item9_acao,
+                "item9_prazo": item9_prazo,
+                "item9_responsavel": item9_responsavel,
+
+        }
+
+        insert = col_lv.insert_one(lv)
+
     ##################CONFIRMAÇAO DE SAIDA APP################
     dialog = None  
     def show_alert_dialog(self):
@@ -263,9 +547,12 @@ class PawareApp(MDApp):
             myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
             db = myclient["kivyapp"]
             col_lv = db["lvs"]
-            lv_delete= { "_id": 0 }
-            mongo.db.lv_delete.delete_one({'_id': 0})
-            col_lv.delete_one(lv_delete)
+
+            col_lv = col_lv.delete_one(
+                {
+                    "_id": ObjectId("id do bagulho")
+                }
+            )
         except Exception as erro:
             print(erro)
     
@@ -405,6 +692,8 @@ class PawareApp(MDApp):
             self.store.put('UserInfo',name = name, email= email)
             self.strng.get_screen('dob').ids.disabled_button2.disabled = False
             self.set_refresh()
+            self.update()
+
 
 
     ######BUSCANDO VALORES DEPOIS DE PREENCHER A LV############
@@ -431,76 +720,75 @@ class PawareApp(MDApp):
         myclient = pymongo.MongoClient("mongodb+srv://julio:senha@cluster0.pn3vb.mongodb.net/kivyapp?retryWrites=true&w=majority")
         db = myclient["kivyapp"]
         col_lv = db["lvs"]
-        
-        for i in range(0,1):
-            soma_altura = 0.20
-            for item in col_lv.find({},{ "_id": i}):
-                print(i)
-                list_name = item["nome_lv"]
-                descricao_lv = item["descricao_lv"]
-                criado_por = item["nome_usuario"]
-                email_usuario = item["email_usuario"]
-                criado_em = item["Data_emissao"]
-                porcentagem_c = item["porcentagem_c"]
-                quantidade_nc = item["quantidade_nc"]
-                quantidade_na = item["quantidade_na"]
-                status = item["lv_status"]
 
-                item1_resultaldo = item['item1_resultado']
-                acao = item['item1_acao']
-                reponsavel_relizar = item['item1_responsavel']
-                prazo = item['item1_prazo']
+        soma_altura = 0.83
+        for item in col_lv.find():
+            print(item)
+            list_name = item["nome_lv"]
+            descricao_lv = item["descricao_lv"]
+            criado_por = item["nome_usuario"]
+            email_usuario = item["email_usuario"]
+            criado_em = item["Data_emissao"]
+            porcentagem_c = item["porcentagem_c"]
+            quantidade_nc = item["quantidade_nc"]
+            quantidade_na = item["quantidade_na"]
+            status = item["lv_status"]
 
-                item2_resultaldo = item['item2_resultado']
-                item2_acao = item['item2_acao']
-                item2_responsavel = item['item2_responsavel']
-                item2_prazo = item['item2_prazo']
+            item1_resultaldo = item['item1_resultado']
+            acao = item['item1_acao']
+            reponsavel_relizar = item['item1_responsavel']
+            prazo = item['item1_prazo']
 
-                item3_resultaldo = item['item3_resultado']
-                item3_acao = item['item3_acao']
-                item3_responsavel = item['item3_responsavel']
-                item3_prazo = item['item3_prazo']
+            item2_resultaldo = item['item2_resultado']
+            item2_acao = item['item2_acao']
+            item2_responsavel = item['item2_responsavel']
+            item2_prazo = item['item2_prazo']
 
-                item4_resultaldo = item['item4_resultado']
-                item4_acao = item['item4_acao']
-                item4_responsavel = item['item4_responsavel']
-                item4_prazo = item['item4_prazo']
+            item3_resultaldo = item['item3_resultado']
+            item3_acao = item['item3_acao']
+            item3_responsavel = item['item3_responsavel']
+            item3_prazo = item['item3_prazo']
 
-                item5_resultaldo = item['item5_resultado']
-                item5_acao = item['item5_acao']
-                item5_responsavel = item['item5_responsavel']
-                item5_prazo = item['item5_prazo']
+            item4_resultaldo = item['item4_resultado']
+            item4_acao = item['item4_acao']
+            item4_responsavel = item['item4_responsavel']
+            item4_prazo = item['item4_prazo']
 
-                item6_resultaldo = item['item6_resultado']
-                item6_acao = item['item6_acao']
-                item6_responsavel = item['item6_responsavel']
-                item6_prazo = item['item6_prazo']
+            item5_resultaldo = item['item5_resultado']
+            item5_acao = item['item5_acao']
+            item5_responsavel = item['item5_responsavel']
+            item5_prazo = item['item5_prazo']
 
-                item7_resultaldo = item['item7_resultado']
-                item7_acao = item['item7_acao']
-                item7_responsavel = item['item7_responsavel']
-                item7_prazo = item['item7_prazo']
+            item6_resultaldo = item['item6_resultado']
+            item6_acao = item['item6_acao']
+            item6_responsavel = item['item6_responsavel']
+            item6_prazo = item['item6_prazo']
 
-                item8_resultaldo = item['item8_resultado']
-                item8_acao = item['item8_acao']
-                item8_responsavel = item['item8_responsavel']
-                item8_prazo = item['item8_prazo']
+            item7_resultaldo = item['item7_resultado']
+            item7_acao = item['item7_acao']
+            item7_responsavel = item['item7_responsavel']
+            item7_prazo = item['item7_prazo']
 
-                item9_resultaldo = item['item9_resultado']
-                item9_acao = item['item9_acao']
-                item9_responsavel = item['item9_responsavel']
-                item9_prazo = item['item9_prazo']
+            item8_resultaldo = item['item8_resultado']
+            item8_acao = item['item8_acao']
+            item8_responsavel = item['item8_responsavel']
+            item8_prazo = item['item8_prazo']
 
-                self.id_nome = list_name
-                self.id_nome = ThreeLineIconListItem(
-                text=list_name,
-                secondary_text='Responsável: ' + criado_por,
-                tertiary_text='Data de emissão: ' + criado_em,pos_hint={'center_x':0.50,'center_y':soma_altura}, on_release=self.change_screen)
-                self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
-                self.strng.get_screen('screen2').add_widget(self.id_nome)
-                self.strng.get_screen('screen1').manager.current = 'screen1'
+            item9_resultaldo = item['item9_resultado']
+            item9_acao = item['item9_acao']
+            item9_responsavel = item['item9_responsavel']
+            item9_prazo = item['item9_prazo']
 
-                soma_altura += 0.20
+            self.id_nome = list_name
+            self.id_nome = ThreeLineIconListItem(
+            text=list_name,
+            secondary_text='Responsável: ' + criado_por,
+            tertiary_text='Data de emissão: ' + criado_em,pos_hint={'center_x':0.50,'center_y':soma_altura}, on_release=self.change_screen)
+            self.id_nome.add_widget(IconLeftWidget(icon='check-box-outline'))
+            self.strng.get_screen('screen1').ids.checklist.add_widget(self.id_nome)
+            self.strng.get_screen('screen1').manager.current = 'screen1'
+
+            soma_altura -= 0.16
 
     
     
