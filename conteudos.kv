@@ -191,9 +191,9 @@ ScreenManager:
 
     ScrollView:
         size_hint: (0.97, 0.89)
-        pos_hint: {'center_x': .51, 'y': 0.001}
+        pos_hint: {'center_x': .51, 'y': 0.01}
         MDList:
-            id: box
+            id: checklist
             
 
 
@@ -806,7 +806,7 @@ ScreenManager:
             root.manager.current = 'checklistName'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button1
+        id:next_button
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
@@ -853,7 +853,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item1_c
+            id: radio_item_c
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -865,7 +865,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item1_nc
+            id: radio_item_nc
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -877,7 +877,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item1_na
+            id: radio_item_na
             group: 'group'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -885,7 +885,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item1
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -898,7 +898,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item1
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -910,7 +910,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item1
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -921,7 +921,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check1
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
@@ -953,7 +953,7 @@ ScreenManager:
             root.manager.current = 'checklistItem1'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button2
+        id:next_button
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
@@ -1000,7 +1000,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item2_c
+            id: radio_item_c
             group: 'group2'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1012,7 +1012,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item2_nc
+            id: radio_item_nc
             group: 'group2'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1024,7 +1024,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item2_na
+            id: radio_item_na
             group: 'group2'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1032,7 +1032,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item2
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -1045,7 +1045,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item2
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1057,7 +1057,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item2
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1068,7 +1068,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check2
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
@@ -1098,7 +1098,7 @@ ScreenManager:
             root.manager.current = 'checklistItem2'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button3
+        id:next_button
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
@@ -1145,7 +1145,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item3_c
+            id: radio_item_c
             group: 'group3'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1157,7 +1157,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item3_nc
+            id: radio_item_nc
             group: 'group3'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1169,7 +1169,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item3_na
+            id: radio_item_na
             group: 'group3'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1177,7 +1177,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item3
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -1190,7 +1190,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item3
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1202,7 +1202,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item3
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1213,7 +1213,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check3
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
@@ -1244,7 +1244,7 @@ ScreenManager:
             root.manager.current = 'checklistItem3'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button4
+        id:next_button
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
@@ -1291,7 +1291,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item4_c
+            id: radio_item_c
             group: 'group4'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1303,7 +1303,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item4_nc
+            id: radio_item_nc
             group: 'group4'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1315,7 +1315,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item4_na
+            id: radio_item_na
             group: 'group4'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1323,7 +1323,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item4
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -1336,7 +1336,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item4
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1348,7 +1348,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item4
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1359,7 +1359,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check4
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
@@ -1391,7 +1391,7 @@ ScreenManager:
             root.manager.current = 'checklistItem4'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button5
+        id:next_button
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
@@ -1438,7 +1438,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item5_c
+            id: radio_item_c
             group: 'group5'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1450,7 +1450,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item5_nc
+            id: radio_item_nc
             group: 'group5'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1462,7 +1462,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item5_na
+            id: radio_item_na
             group: 'group5'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1470,7 +1470,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item5
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -1483,7 +1483,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item5
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1495,7 +1495,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item5
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1506,7 +1506,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check5
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
@@ -1538,7 +1538,7 @@ ScreenManager:
             root.manager.transition.direction = 'right'
 
     MDFloatingActionButton:
-        id:next_button6
+        id:next_button
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
@@ -1585,7 +1585,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item6_c
+            id: radio_item_c
             group: 'group6'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1597,7 +1597,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item6_nc
+            id: radio_item_nc
             group: 'group6'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1609,7 +1609,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item6_na
+            id: radio_item_na
             group: 'group6'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1617,7 +1617,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item6
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -1630,7 +1630,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item6
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1642,7 +1642,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item6
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1653,7 +1653,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check6
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
@@ -1684,7 +1684,7 @@ ScreenManager:
             root.manager.current = 'checklistItem6'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button7
+        id:next_button
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
@@ -1732,7 +1732,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item7_c
+            id: radio_item_c
             group: 'group7'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1744,7 +1744,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item7_nc
+            id: radio_item_nc
             group: 'group7'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1756,7 +1756,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item7_na
+            id: radio_item_na
             group: 'group7'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1764,7 +1764,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item7
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -1777,7 +1777,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item7
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1789,7 +1789,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item7
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1800,7 +1800,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check7
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
@@ -1830,7 +1830,7 @@ ScreenManager:
             root.manager.current = 'checklistItem7'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button8
+        id:next_button
         disabled: True
         icon: 'arrow-right'
         md_bg_color:app.theme_cls.primary_color
@@ -1878,7 +1878,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item8_c
+            id: radio_item_c
             group: 'group8'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1890,7 +1890,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item8_nc
+            id: radio_item_nc
             group: 'group8'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1902,7 +1902,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item8_na
+            id: radio_item_na
             group: 'group8'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -1910,7 +1910,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item8
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -1923,7 +1923,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item8
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -1935,7 +1935,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item8
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -1946,7 +1946,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check8
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
@@ -1978,7 +1978,7 @@ ScreenManager:
             root.manager.current = 'checklistItem8'
             root.manager.transition.direction = 'right'
     MDFloatingActionButton:
-        id:next_button9
+        id:next_button
         disabled: False
         icon: 'check'
         md_bg_color:app.theme_cls.primary_color
@@ -2025,7 +2025,7 @@ ScreenManager:
                 app.clear_items_inputs()
                 app.enable_items_inputs()
                 app.disable_nextButton()
-            id: radio_item9_c
+            id: radio_item_c
             group: 'group9'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -2037,7 +2037,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item9_nc
+            id: radio_item_nc
             group: 'group9'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -2049,7 +2049,7 @@ ScreenManager:
                 app.enable_items_inputs()
                 app.disable_nextButton()
             active: False
-            id: radio_item9_na
+            id: radio_item_na
             group: 'group9'
             size_hint: None, None
             size: dp(90), dp(90)
@@ -2057,7 +2057,7 @@ ScreenManager:
 
 
     MDTextField:
-        id: acao_item9
+        id: acao_item
         disabled: True
         pos_hint: {'center_x':0.5,'center_y':0.55}
         size_hint: (0.7,0.1)
@@ -2070,7 +2070,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: responsavel_item9
+        id: responsavel_item
         pos_hint: {'center_x':0.5,'center_y':0.45}
         size_hint: (0.7,0.1)
         hint_text : 'Responsável'
@@ -2082,7 +2082,7 @@ ScreenManager:
 
     MDTextField:
         disabled: True
-        id: prazo_item9
+        id: prazo_item
         pos_hint: {'center_x':0.5,'center_y':0.35}
         size_hint: (0.7,0.1)
         hint_text : 'Prazo'
@@ -2093,7 +2093,7 @@ ScreenManager:
         required : True
 
     MDFillRoundFlatIconButton:
-        id:check9
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
