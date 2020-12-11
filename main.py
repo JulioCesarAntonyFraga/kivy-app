@@ -28,7 +28,6 @@ from datetime import date
 from kivy.animation import Animation
 
 
-
 class Content(BoxLayout):
     pass
 ##################TELAS APP####################
@@ -70,6 +69,9 @@ class ChecklistItem8(Screen):  #####ITEM 1 NOVA LV#####
     pass
 class ChecklistItem9(Screen):  #####ITEM 1 NOVA LV#####
     pass
+
+class CustomItem(TwoLineAvatarIconListItem):
+    icon = StringProperty('')
 
 #######INTEGRANDO TELAS NO GERENCIADOR DE SCREEN########
 sm = ScreenManager()
@@ -170,41 +172,15 @@ class PawareApp(MDApp):
             self.strng.get_screen('welcomescreen').manager.current = 'welcomescreen'
 
     def clear_items_inputs(self):
-        if self.strng.get_screen('checklistItem1').ids.radio_item1_c.active or self.strng.get_screen(
-                'checklistItem1').ids.radio_item1_na.active:
-            self.strng.get_screen('checklistItem1').ids.acao_item1.text = ''
-            self.strng.get_screen('checklistItem1').ids.responsavel_item1.text = ''
-            self.strng.get_screen('checklistItem1').ids.prazo_item1.text = ''
 
-        if self.strng.get_screen('checklistItem2').ids.radio_item2_c.active or self.strng.get_screen(
-                'checklistItem2').ids.radio_item2_na.active:
-            self.strng.get_screen('checklistItem2').ids.acao_item2.text = ''
-            self.strng.get_screen('checklistItem2').ids.responsavel_item2.text = ''
-            self.strng.get_screen('checklistItem2').ids.prazo_item2.text = ''
+        for i in range(1,9):
 
-        if self.strng.get_screen('checklistItem3').ids.radio_item3_c.active or self.strng.get_screen(
-                'checklistItem3').ids.radio_item3_na.active:
-            self.strng.get_screen('checklistItem3').ids.acao_item3.text = ''
-            self.strng.get_screen('checklistItem3').ids.responsavel_item3.text = ''
-            self.strng.get_screen('checklistItem3').ids.prazo_item3.text = ''
+            if self.strng.get_screen(f'checklistItem{i}').ids.radio_item_c.active or self.strng.get_screen(
+                f'checklistItem{i}').ids.radio_item_na.active:
 
-        if self.strng.get_screen('checklistItem4').ids.radio_item4_c.active or self.strng.get_screen(
-                'checklistItem4').ids.radio_item4_na.active:
-            self.strng.get_screen('checklistItem4').ids.acao_item4.text = ''
-            self.strng.get_screen('checklistItem4').ids.responsavel_item4.text = ''
-            self.strng.get_screen('checklistItem4').ids.prazo_item4.text = ''
-
-        if self.strng.get_screen('checklistItem5').ids.radio_item5_c.active or self.strng.get_screen(
-                'checklistItem5').ids.radio_item5_na.active:
-            self.strng.get_screen('checklistItem5').ids.acao_item5.text = ''
-            self.strng.get_screen('checklistItem5').ids.responsavel_item5.text = ''
-            self.strng.get_screen('checklistItem5').ids.prazo_item5.text = ''
-
-        if self.strng.get_screen('checklistItem6').ids.radio_item6_c.active or self.strng.get_screen(
-                'checklistItem6').ids.radio_item6_na.active:
-            self.strng.get_screen('checklistItem6').ids.acao_item6.text = ''
-            self.strng.get_screen('checklistItem6').ids.responsavel_item6.text = ''
-            self.strng.get_screen('checklistItem6').ids.prazo_item6.text = ''
+                self.strng.get_screen(f'checklistItem{i}').ids.acao_item.text = ''
+                self.strng.get_screen(f'checklistItem{i}').ids.responsavel_item.text = ''
+                self.strng.get_screen(f'checklistItem{i}').ids.prazo_item.text = ''
 
     class ContentNavigationDrawer(BoxLayout):  #######PERFIL########
         pass

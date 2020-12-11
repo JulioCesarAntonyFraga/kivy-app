@@ -21,7 +21,7 @@ ScreenManager:
     ChecklistItem8:
     ChecklistItem9:
     Profile:
-
+       
 
 <WelcomeScreen>:
     name : 'welcomescreen'
@@ -259,7 +259,7 @@ ScreenManager:
         MDToolbar:
             title: 'Minhas CheckList'
             left_action_items: [["menu",  lambda x: nav_drawer2.toggle_nav_drawer()]]
-            right_action_items: [["exit-run", lambda x: app.show_alert_dialog()]]
+            right_action_items: [["file-document-box-plus-outline", lambda x: app.change_to_screen5()]]
             size_hint_y: 0.11
             elevation:5
 
@@ -895,6 +895,7 @@ ScreenManager:
 
     MDFillRoundFlatIconButton:
         id:check1
+        id:check
         text: 'CONFIRMAR'
         icon: 'alert-circle-outline'
         pos_hint: {'center_x':0.5,'center_y':0.25}
